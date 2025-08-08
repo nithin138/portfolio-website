@@ -70,6 +70,10 @@ const LanguagesTools = () => {
     'Database Design',
     'Performance Optimization',
     'Security Best Practices',
+    'Web Scraping',
+    'Prompt Engineering',
+    'Server Side Rendering (SSR)',
+    'Unit and integration Testing'
   ];
 
   const containerVariants = {
