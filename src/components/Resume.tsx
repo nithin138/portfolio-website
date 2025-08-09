@@ -3,49 +3,69 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Download, FileText, Award, Briefcase } from 'lucide-react';
 
-const Resume = () => {
+interface Experience {
+  title: string;
+  company: string;
+  duration: string;
+  description: string;
+}
+
+interface Education {
+  degree: string;
+  institution: string;
+  year: string;
+  gpa: string;
+}
+
+type ResumeType = 'mern' | 'data';
+
+const Resume: React.FC = () => {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
 
-  const handleDownloadResume = () => {
-    // Create a dummy PDF download
+  const handleDownloadResume = (type: ResumeType) => {
     const link = document.createElement('a');
-    link.href = 'data:application/pdf;base64,'; // In real app, this would be your actual resume PDF
-    link.download = 'Nithin_Sudheer_Resume.pdf';
+
+    if (type === 'mern') {
+      link.href = 'public/nithin sudheer narayanapuram MERN[resume].docx';
+      link.download = 'Nithin_Sudheer_MERN_Developer.docx';
+    } else if (type === 'data') {
+      link.href = 'public/nithin sudheer narayanapuram DA [resume].docx';
+      link.download = 'Nithin_Sudheer_Data_Analyst.docx';
+    }
+
+    document.body.appendChild(link);
     link.click();
+    document.body.removeChild(link);
   };
 
-  const experiences = [
+  const experiences: Experience[] = [
     {
-      title: 'Full-Stack Developer',
-      company: 'Tech Solutions Inc.',
-      duration: '2023 - Present',
+      title: 'Software Engineer',
+      company: 'CodeFacts Solutions Pvt Ltd.',
+      duration: 'May 2024 - Present',
       description: 'Developing scalable web applications using MERN stack, implementing AI/ML solutions, and managing databases.',
     },
-    {
-      title: 'Junior Developer',
-      company: 'StartupXYZ',
-      duration: '2022 - 2023',
-      description: 'Built responsive web interfaces, integrated APIs, and collaborated on data analysis projects.',
-    },
+ 
   ];
 
-  const education = [
+  const education: Education[] = [
     {
       degree: 'Bachelor in Computer Science',
-      institution: 'University of Technology',
-      year: '2022',
-      gpa: '3.8/4.0',
+      institution: 'Anurag Engineering Colelge',
+      year: 'May 2024',
+      gpa: '7.5',
     },
   ];
 
-  const certifications = [
-    'AWS Cloud Practitioner',
-    'Google Data Analytics Certificate',
-    'Meta React Developer Certificate',
-    'MongoDB Developer Certification',
+  const certifications: string[] = [
+    'IBM Data Analyst',
+    'Cisco Data Analytics Essentials',
+    'Forage Data Visualitation',
+    'IBM AI Fundamentals',
+
   ];
 
   const containerVariants = {
@@ -74,7 +94,7 @@ const Resume = () => {
           ref={ref}
           variants={containerVariants}
           initial="hidden"
-          animate={inView ? "visible" : "hidden"}
+          animate={inView ? 'visible' : 'hidden'}
         >
           <motion.h2
             variants={itemVariants}
@@ -83,17 +103,25 @@ const Resume = () => {
             Resume
           </motion.h2>
 
-          {/* Download Button */}
+          {/* Download Buttons */}
           <motion.div
             variants={itemVariants}
-            className="text-center mb-12"
+            className="text-center mb-12 flex flex-col sm:flex-row justify-center gap-4"
           >
             <button
-              onClick={handleDownloadResume}
+              onClick={() => handleDownloadResume('mern')}
               className="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 rounded-full text-white font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-purple-500/25"
             >
               <Download size={20} className="mr-2 group-hover:animate-bounce" />
-              Download Resume
+              Download MERN Developer Resume
+            </button>
+
+            <button
+              onClick={() => handleDownloadResume('data')}
+              className="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-teal-500 to-green-500 hover:from-teal-600 hover:to-green-600 rounded-full text-white font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-green-500/25"
+            >
+              <Download size={20} className="mr-2 group-hover:animate-bounce" />
+              Download Data Analyst Resume
             </button>
           </motion.div>
 
@@ -104,7 +132,7 @@ const Resume = () => {
                 <Briefcase className="text-purple-400 mr-3" size={24} />
                 <h3 className="text-2xl font-semibold text-white">Experience</h3>
               </div>
-              
+
               <div className="space-y-6">
                 {experiences.map((exp, index) => (
                   <div key={index} className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-6 border border-gray-700">
@@ -125,7 +153,7 @@ const Resume = () => {
                   <FileText className="text-blue-400 mr-3" size={24} />
                   <h3 className="text-2xl font-semibold text-white">Education</h3>
                 </div>
-                
+
                 <div className="space-y-4">
                   {education.map((edu, index) => (
                     <div key={index} className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-6 border border-gray-700">
@@ -146,7 +174,7 @@ const Resume = () => {
                   <Award className="text-teal-400 mr-3" size={24} />
                   <h3 className="text-2xl font-semibold text-white">Certifications</h3>
                 </div>
-                
+
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {certifications.map((cert, index) => (
                     <div key={index} className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-4 border border-gray-700 hover:border-teal-500/50 transition-colors duration-300">

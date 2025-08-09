@@ -48,37 +48,14 @@ const Projects = () => {
   }, []);
 
   return (
-    <section id="projects" className="py-20 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 min-h-screen">
+    <section id="projects" className="py-20 bg-gray-900 min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
-          <div className="flex items-center justify-center mb-6">
-            <div className="p-3 bg-gradient-to-r from-purple-500 to-blue-500 rounded-xl">
-              <Folder className="w-8 h-8 text-white" />
-            </div>
-          </div>
-          <h2 className="text-5xl font-bold mb-4 bg-gradient-to-r from-purple-400 via-blue-500 to-cyan-400 bg-clip-text text-transparent">
+          <h2 className="text-4xl font-bold mb164 bg-gradient-to-r from-purple-400 via-blue-500 bg-clip-text text-transparent">
             Project Portfolio
           </h2>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
-            Explore my diverse collection of projects spanning artificial intelligence, data science, and full-stack development
-          </p>
         </div>
-
-        {/* Search Bar */}
-        <div className="max-w-md mx-auto mb-12">
-          <div className="relative">
-            <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-            <input
-              type="text"
-              placeholder="Search projects, technologies..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-12 pr-4 py-3 bg-gray-800/50 border border-gray-700/50 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500/50 transition-all duration-300"
-            />
-          </div>
-        </div>
-
         {/* Genre Filter */}
         <GenreFilter
           activeGenre={activeGenre}

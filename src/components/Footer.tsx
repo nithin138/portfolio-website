@@ -7,17 +7,17 @@ const Footer = () => {
   const socialLinks = [
     {
       icon: <Github size={20} />,
-      href: 'https://github.com',
+      href: 'https://github.com/nithin138',
       label: 'GitHub',
     },
     {
       icon: <Linkedin size={20} />,
-      href: 'https://linkedin.com',
+      href: 'https://www.linkedin.com/in/nithin138/',
       label: 'LinkedIn',
     },
     {
       icon: <Mail size={20} />,
-      href: 'mailto:nithin.sudheer@email.com',
+      href: 'mailto:nnsudheer138@gmail.com',
       label: 'Email',
     },
   ];

@@ -44,19 +44,19 @@ const Contact = () => {
     {
       icon: <Mail size={24} />,
       title: 'Email',
-      value: 'nithin.sudheer@email.com',
-      href: 'mailto:nithin.sudheer@email.com',
+      value: 'nnsudheer138@gmail.com',
+      href: 'mailto:nnsudheer138@gmail.com',
     },
     {
       icon: <Phone size={24} />,
       title: 'Phone',
-      value: '+91 9876543210',
-      href: 'tel:+919876543210',
+      value: '+91 9441670138',
+      href: 'tel:+919441670138',
     },
     {
       icon: <MapPin size={24} />,
       title: 'Location',
-      value: 'Bangalore, India',
+      value: 'Hyderabad, India',
       href: null,
     },
   ];
