@@ -24,7 +24,7 @@ const LanguagesTools = () => {
     {
       title: 'Programming Languages',
       icon: <Code2 className="w-6 h-6" />,
-      items: ['JavaScript', 'Python', 'TypeScript', 'HTML5', 'CSS3', 'SQL'],
+      items: ['JavaScript', 'Python', 'TypeScript', 'HTML5', 'CSS3', 'SQL','R'],
       color: 'from-purple-500 to-pink-500',
     },
     {
@@ -48,7 +48,7 @@ const LanguagesTools = () => {
     {
       title: 'Development Tools',
       icon: <Terminal className="w-6 h-6" />,
-      items: ['VS Code', 'Git', 'GitHub', 'Postman', 'Docker', 'npm/yarn'],
+      items: ['VS Code', 'Git', 'GitHub', 'Postman', 'Docker', 'npm/yarn','R Studio'],
       color: 'from-indigo-500 to-purple-500',
     },
     {

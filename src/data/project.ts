@@ -1,78 +1,103 @@
 import { Project } from '../types/project';
 
 export const projects: Project[] = [
+  // Full Stack Web Development Projects
   {
     id: '1',
-    title: 'E-Commerce MERN Platform',
-    description: 'Full-featured e-commerce platform with user authentication, product management, shopping cart, and payment integration using Stripe.',
-    tech: ['React', 'Node.js', 'Express', 'MongoDB', 'Stripe API'],
-    github: 'https://github.com',
-    demo: 'https://demo.com',
+    title: 'Rntout.com',
+    description: 'A complete rental management web platform with property listings, user authentication, booking management, and responsive UI.',
+    tech: ['React', 'Node.js', 'Express', 'MongoDB', 'Razorpay API'],
+    github: 'https://github.com', // replace with actual repo
+    demo: 'https://rntout.com/', // replace with actual demo
     genre: 'Dev',
     featured: true,
+    demoed: true
   },
   {
     id: '2',
-    title: 'AI-Powered Movie Recommender',
-    description: 'Machine learning system that recommends movies based on user preferences using collaborative filtering and content-based algorithms.',
-    tech: ['Python', 'scikit-learn', 'Pandas', 'Flask', 'React'],
-    github: 'https://github.com',
-    demo: 'https://demo.com',
-    genre: 'AI',
-    featured: true,
+    title: 'ReachHub Admin Panel',
+    description: 'Admin dashboard for managing service and product provider listings, user accounts, and analytics for the ReachHub platform.',
+    tech: ['React', 'Node.js', 'Express', 'MongoDB', 'JWT'],
+    github: 'https://github.com/nithin138/ReachHub-Admin', // replace with actual repo
+    demo: 'https://demo.com', // replace with actual demo
+    genre: 'Dev',
+    demoed: true
   },
   {
     id: '3',
-    title: 'Sales Analytics Dashboard',
-    description: 'Interactive dashboard for sales data analysis with real-time charts, KPI tracking, and automated reporting features.',
-    tech: ['React', 'D3.js', 'Python', 'PostgreSQL', 'Chart.js'],
-    github: 'https://github.com',
-    demo: 'https://demo.com',
-    genre: 'DS',
-    featured: true,
+    title: 'ReachHub User Application',
+    description: 'User-facing application for discovering and connecting with service and product providers, with search, filtering, and profile management.',
+    tech: ['React', 'Node.js', 'Express', 'MongoDB'],
+    github: 'https://github.com', // replace with actual repo
+    demo: 'https://demo.com', // replace with actual demo
+    genre: 'Dev',
+    demoed: true
   },
+
+  // AI Projects
   {
     id: '4',
-    title: 'Task Management API',
-    description: 'RESTful API for task management with authentication, CRUD operations, file uploads, and email notifications.',
-    tech: ['Node.js', 'Express', 'MongoDB', 'JWT', 'Nodemailer'],
-    github: 'https://github.com',
-    genre: 'Dev',
+    title: 'AI-Powered Movie Recommendation System',
+    description: 'Recommends movies based on user preferences using collaborative filtering and content-based machine learning algorithms.',
+    tech: ['Python', 'scikit-learn', 'Pandas', 'NumPy', 'Model building'],
+    github: 'https://github.com/nithin138/ML-based-Movie-Recomendation-System',
+    demo: 'https://demo.com',
+    genre: 'AI'
   },
   {
     id: '5',
-    title: 'Weather Prediction Model',
-    description: 'Machine learning model for weather prediction using historical data with 87% accuracy rate and real-time API integration.',
-    tech: ['Python', 'TensorFlow', 'Pandas', 'FastAPI', 'Docker'],
-    github: 'https://github.com',
+    title: 'Email/SMS Spam Detection',
+    description: 'Machine learning model to classify and filter spam messages using natural language processing techniques.',
+    tech: ['Python', 'scikit-learn', 'NLTK', 'Pandas', 'Flask'],
+    github: 'https://github.com/nithin138/spam-detection', // replace with actual repo
     demo: 'https://demo.com',
-    genre: 'AI',
+    genre: 'AI'
   },
   {
     id: '6',
-    title: 'Customer Churn Analysis',
-    description: 'Predictive analytics model to identify customers likely to churn, with interactive visualizations and business insights.',
-    tech: ['Python', 'Pandas', 'Plotly', 'Scikit-learn', 'Jupyter'],
-    github: 'https://github.com',
+    title: 'Security Breach Detection Model',
+    description: 'AI model to detect unusual activity patterns and potential security breaches in network traffic.',
+    tech: ['Python', 'TensorFlow', 'Pandas', 'Scikit-learn', 'Docker'],
+    github: 'https://github.com/nithin138/IOT-integrated-ML-model-for-Security-breach-Detection', // replace with actual repo
     demo: 'https://demo.com',
-    genre: 'DS',
+    genre: 'AI'
   },
+
+  // Data Science Projects
   {
     id: '7',
-    title: 'Real-time Chat Application',
-    description: 'WebSocket-based chat app with rooms, file sharing, emoji reactions, and message encryption.',
-    tech: ['React', 'Socket.io', 'Node.js', 'Redis', 'MongoDB'],
-    github: 'https://github.com',
+    title: 'Twitter Data Sentiment Analysis',
+    description: 'Analyzes sentiment from Twitter data using NLP techniques and visualizes trends over time.',
+    tech: ['Python', 'NLTK', 'Pandas', 'Matplotlib', 'Seaborn'],
+    github: 'https://github.com/nithin138/Twitter-data-Sentiment-Analysis', // replace with actual repo
     demo: 'https://demo.com',
-    genre: 'Dev',
+    genre: 'DS'
   },
   {
     id: '8',
-    title: 'Computer Vision OCR',
-    description: 'Optical character recognition system using deep learning to extract text from images with 95% accuracy.',
-    tech: ['Python', 'OpenCV', 'TensorFlow', 'Tesseract', 'Flask'],
-    github: 'https://github.com',
+    title: 'Customer Segmentation Analysis',
+    description: 'Performs customer segmentation using clustering algorithms to enable targeted marketing strategies.',
+    tech: ['Python', 'Pandas', 'Scikit-learn', 'Matplotlib', 'Seaborn'],
+    github: 'https://github.com/nithin138/customer-segmentation-analysis', // replace with actual repo
     demo: 'https://demo.com',
-    genre: 'AI',
+    genre: 'DS'
   },
+  {
+    id: '9',
+    title: 'Hotel Booking Analytics',
+    description: 'Exploratory data analysis and visualization of hotel booking patterns to identify business insights.',
+    tech: ['Python', 'Pandas', 'Matplotlib', 'Seaborn'],
+    github: 'https://github.com/nithin138/Hotel-Booking-Analytics', // replace with actual repo
+    demo: 'https://demo.com',
+    genre: 'DS'
+  },
+  {
+    id: '10',
+    title: 'Business Dashboards Collection',
+    description: 'Multiple interactive dashboards addressing various business problems using Power BI and MS Excel.',
+    tech: ['Power BI', 'MS Excel', 'DAX', 'Data Modeling'],
+    github: 'https://github.com/nithin138/business-dashboard-collection', // replace with actual repo
+    demo: 'https://demo.com',
+    genre: 'DS'
+  }
 ];

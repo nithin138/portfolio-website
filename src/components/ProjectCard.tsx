@@ -108,7 +108,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
             <span>Code</span>
           </a>
           
-          {project.demo && (
+          {project.demo && project?.demoed === true && (
             <a
               href={project.demo}
               target="_blank"

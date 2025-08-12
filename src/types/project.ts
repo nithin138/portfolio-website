@@ -7,6 +7,7 @@ export interface Project {
   demo?: string;
   genre: 'AI' | 'DS' | 'Dev';
   featured?: boolean;
+  demoed?: boolean;
 }
 
 export type ProjectGenre = 'All' | 'AI' | 'DS' | 'Dev';

@@ -31,6 +31,7 @@ const Skills = () => {
         { name: 'NumPy', level: 80 },
         { name: 'Matplotlib', level: 75 },
         { name: 'Model Training', level: 70 },
+        { name: 'Statistics',level:70}
       ],
       color: 'from-blue-500 to-cyan-500',
     },
