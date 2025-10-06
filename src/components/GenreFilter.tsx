@@ -48,7 +48,7 @@ const GenreFilter: React.FC<GenreFilterProps> = ({ activeGenre, onGenreChange, p
             onClick={() => onGenreChange(genre.key)}
             className={`group relative flex items-center space-x-2 px-6 py-3 rounded-xl font-medium transition-all duration-300 ${
               isActive
-                ? `bg-gradient-to-r ${genre.gradient} text-white shadow-lg transform scale-105`
+                ? `bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-lg transform scale-105`
                 : 'bg-gray-800/50 text-gray-300 hover:bg-gray-700/50 hover:text-white border border-gray-700/50 hover:border-gray-600/50'
             }`}
           >

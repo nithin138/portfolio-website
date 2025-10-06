@@ -68,7 +68,7 @@ const Skills = () => {
   };
 
   return (
-    <section id="skills" className="py-20 bg-gray-900">
+    <section id="skills" className="py-20 bg-white/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           ref={ref}
@@ -78,7 +78,7 @@ const Skills = () => {
         >
           <motion.h2
             variants={itemVariants}
-            className="text-4xl font-bold text-center mb-16 bg-gradient-to-r from-purple-400 to-blue-500 bg-clip-text text-transparent"
+            className="text-4xl font-bold text-center mb-16 bg-cyan-500 bg-clip-text text-transparent"
           >
             Skills & Expertise
           </motion.h2>
@@ -88,9 +88,9 @@ const Skills = () => {
               <motion.div
                 key={category.title}
                 variants={itemVariants}
-                className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 border border-gray-700 hover:border-purple-500/50 transition-all duration-300"
+                className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 border border-gray-700 hover:border-cyan-400/50 transition-all duration-300"
               >
-                <h3 className={`text-xl font-semibold mb-6 bg-gradient-to-r ${category.color} bg-clip-text text-transparent`}>
+                <h3 className={`text-xl font-semibold mb-6 bg-cyan-500 bg-clip-text text-transparent`}>
                   {category.title}
                 </h3>
                 
@@ -104,7 +104,7 @@ const Skills = () => {
                       
                       <div className="w-full bg-gray-700 rounded-full h-2">
                         <motion.div
-                          className={`h-2 rounded-full bg-gradient-to-r ${category.color}`}
+                          className={`h-2 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500`}
                           initial={{ width: 0 }}
                           animate={inView ? { width: `${skill.level}%` } : { width: 0 }}
                           transition={{

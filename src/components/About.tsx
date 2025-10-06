@@ -29,7 +29,7 @@ const About = () => {
   };
 
   return (
-    <section id="about" className="py-20 bg-gray-800">
+    <section id="about" className="py-20 bg-white/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           ref={ref}
@@ -42,46 +42,50 @@ const About = () => {
           <div>
             <motion.h2
               variants={itemVariants}
-              className="text-4xl font-bold mb-6 bg-gradient-to-r from-purple-400 to-blue-500 bg-clip-text text-transparent"
+              className="text-4xl font-bold mb-6  bg-clip-text text-transparent"
             >
               About Me
             </motion.h2>
             
-            <motion.p
-              variants={itemVariants}
-              className="text-lg text-gray-300 mb-6 leading-relaxed"
-            >
-              I'm a passionate MERN Stack Developer with 1.4 years of experience building 
-              scalable web applications. My journey in technology spans across full-stack 
-              development, artificial intelligence, and data analytics.
-            </motion.p>
+           <motion.p
+  variants={itemVariants}
+  className="text-lg text-gray-300 mb-6 leading-relaxed"
+>
+  I'm a versatile Full-Stack and AI Engineer with 1 year 6 months of experience
+  designing and developing intelligent, scalable web applications. My expertise
+  lies in the MERN stack, where I build responsive, high-performance systems
+  that seamlessly integrate modern AI capabilities.
+</motion.p>
 
-            <motion.p
-              variants={itemVariants}
-              className="text-lg text-gray-300 mb-8 leading-relaxed"
-            >
-              I have hands-on experience in building AI/ML models using Python and can work 
-              as a Data Analyst using tools like Excel, Python (Pandas, NumPy), and SQL. 
-              I'm passionate about learning and exploring end-to-end solutions from frontend 
-              to backend, always staying curious about emerging technologies.
-            </motion.p>
+<motion.p
+  variants={itemVariants}
+  className="text-lg text-gray-300 mb-8 leading-relaxed"
+>
+  Beyond full-stack development, I specialize in Artificial Intelligence and
+  Natural Language Processing—building agentic AI systems, voice-based
+  assistants, and Generative AI applications. I’m also skilled in data analytics
+  and automation using Python, SQL, and advanced ML frameworks. Passionate about
+  solving real-world problems through innovation, I thrive at the intersection
+  of AI, software engineering, and human-centered design.
+</motion.p>
+
 
             <motion.div
               variants={itemVariants}
               className="grid grid-cols-1 sm:grid-cols-3 gap-4"
             >
-              <div className="flex items-center space-x-3 p-4 bg-gray-700/50 rounded-lg backdrop-blur-sm">
-                <Code className="text-purple-400" size={24} />
+              <div className="flex items-center space-x-3 p-4 bg-white/5 rounded-lg backdrop-blur-sm">
+                <Code className="text-cyan-400" size={24} />
                 <span className="text-sm font-medium">Full-Stack Dev</span>
               </div>
               
-              <div className="flex items-center space-x-3 p-4 bg-gray-700/50 rounded-lg backdrop-blur-sm">
-                <Brain className="text-blue-400" size={24} />
+              <div className="flex items-center space-x-3 p-4 bg-white/5 rounded-lg backdrop-blur-sm">
+                <Brain className="text-cyan-400" size={24} />
                 <span className="text-sm font-medium">AI/ML Explorer</span>
               </div>
               
-              <div className="flex items-center space-x-3 p-4 bg-gray-700/50 rounded-lg backdrop-blur-sm">
-                <BarChart3 className="text-teal-400" size={24} />
+              <div className="flex items-center space-x-3 p-4 bg-white/5 rounded-lg backdrop-blur-sm">
+                <BarChart3 className="text-cyan-400" size={24} />
                 <span className="text-sm font-medium">Data Analyst</span>
               </div>
             </motion.div>
@@ -93,10 +97,10 @@ const About = () => {
             className="flex justify-center lg:justify-end"
           >
             <div className="relative">
-              <div className="w-80 h-80 rounded-full bg-gradient-to-br from-purple-500 to-blue-600 p-1">
+              <div className="w-80 h-80 rounded-full bg-cyan-500 p-1">
                 <div className="w-full h-full rounded-full bg-gray-800 flex items-center justify-center">
                   <img
-                    src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400"
+                    src="/pic.jpg"
                     alt="Nithin Sudheer"
                     className="w-72 h-72 rounded-full object-cover"
                   />
@@ -104,11 +108,11 @@ const About = () => {
               </div>
               
               {/* Floating Elements */}
-              <div className="absolute -top-4 -right-4 w-16 h-16 bg-purple-500 rounded-full flex items-center justify-center shadow-lg animate-pulse">
+              <div className="absolute -top-4 -right-4 w-16 h-16 bg-cyan-500 rounded-full flex items-center justify-center shadow-lg animate-pulse">
                 <Code className="text-white" size={24} />
               </div>
               
-              <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center shadow-lg animate-pulse delay-1000">
+              <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-cyan-500 rounded-full flex items-center justify-center shadow-lg animate-pulse delay-1000">
                 <Brain className="text-white" size={24} />
               </div>
             </div>

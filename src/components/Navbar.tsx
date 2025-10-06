@@ -9,7 +9,7 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const navItems = [
-    { href: 'hero', label: 'Home' },
+    // { href: 'hero', label: 'Home' },
     { href: 'about', label: 'About' },
     { href: 'skills', label: 'Skills' },
     { href: 'languages-tools', label: 'Tools' },
@@ -27,11 +27,11 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
   };
 
   return (
-    <nav className="fixed top-0 w-full bg-gray-900/90 backdrop-blur-sm z-50 border-b border-gray-800">
+    <nav className="fixed top-0 w-full  backdrop-blur-sm z-50 border-b border-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex-shrink-0">
-            <span className="text-xl font-bold bg-gradient-to-r from-purple-400 to-blue-500 bg-clip-text text-transparent">
+            <span className="text-xl font-bold bg-cyan-500 bg-clip-text text-transparent">
               Nithin Sudheer
             </span>
           </div>
@@ -45,8 +45,8 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
                   onClick={() => scrollToSection(item.href)}
                   className={`px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${
                     activeSection === item.href
-                      ? 'bg-purple-600 text-white'
-                      : 'text-gray-300 hover:bg-gray-700 hover:text-white'
+                      ? 'bg-cyan-500 text-white'
+                      : 'text-cyan-400 hover:bg-gray-700 hover:text-white'
                   }`}
                 >
                   {item.label}

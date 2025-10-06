@@ -33,7 +33,7 @@ function App() {
   return (
     <div className="bg-gray-900 text-white min-h-screen">
       <Navbar activeSection={activeSection} />
-      <Hero />
+      {/* <Hero /> */}
       <About />
       <Skills />
       <LanguagesTools />

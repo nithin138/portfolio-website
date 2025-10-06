@@ -96,7 +96,7 @@ const LanguagesTools = () => {
   };
 
   return (
-    <section id="languages-tools" className="py-20 bg-gray-900">
+    <section id="languages-tools" className="py-20 bg-white/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           ref={ref}
@@ -106,7 +106,7 @@ const LanguagesTools = () => {
         >
           <motion.h2
             variants={itemVariants}
-            className="text-4xl font-bold text-center mb-16 bg-gradient-to-r from-purple-400 to-blue-500 bg-clip-text text-transparent"
+            className="text-4xl font-bold text-center mb-16 bg-cyan-500 bg-clip-text text-transparent"
           >
             Languages & Tools
           </motion.h2>
@@ -117,13 +117,13 @@ const LanguagesTools = () => {
               <motion.div
                 key={category.title}
                 variants={itemVariants}
-                className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 border border-gray-700 hover:border-purple-500/50 transition-all duration-300 group"
+                className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 border border-gray-700 hover:border-cyan-400 transition-all duration-300 group"
               >
                 <div className="flex items-center mb-4">
-                  <div className={`p-3 rounded-lg bg-gradient-to-r ${category.color} mr-3`}>
+                  <div className={`p-3 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 mr-3`}>
                     {category.icon}
                   </div>
-                  <h3 className="text-lg font-semibold text-white group-hover:text-purple-400 transition-colors duration-300">
+                  <h3 className="text-lg font-semibold text-white group-hover:text-cyan-400 transition-colors duration-300">
                     {category.title}
                   </h3>
                 </div>
@@ -145,10 +145,10 @@ const LanguagesTools = () => {
           {/* Development Practices */}
           <motion.div
             variants={itemVariants}
-            className="bg-gray-800/30 backdrop-blur-sm rounded-xl p-8 border border-gray-700"
+            className="  rounded-xl p-8 border border-gray-700"
           >
             <div className="flex items-center justify-center mb-6">
-              <Settings className="w-8 h-8 text-purple-400 mr-3" />
+              <Settings className="w-8 h-8 text-cyan-400 mr-3" />
               <h3 className="text-2xl font-semibold text-white">Development Practices</h3>
             </div>
             
@@ -157,7 +157,7 @@ const LanguagesTools = () => {
                 <motion.div
                   key={practice}
                   variants={itemVariants}
-                  className="flex items-center justify-center p-3 bg-gradient-to-r from-purple-600/20 to-blue-600/20 rounded-lg border border-purple-500/30 hover:border-purple-400 transition-all duration-300 group"
+                  className="flex items-center justify-center p-3 bg-white/5 rounded-lg border border-purple-500/30 hover:border-cyan-400 transition-all duration-300 group"
                 >
                   <span className="text-sm text-gray-300 group-hover:text-white transition-colors duration-300 text-center">
                     {practice}

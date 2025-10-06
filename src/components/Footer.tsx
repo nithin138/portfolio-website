@@ -23,7 +23,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-gray-900 py-12 border-t border-gray-800">
+    <footer className="bg-white/5 py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center space-y-6">
           {/* Social Links */}
@@ -34,7 +34,7 @@ const Footer = () => {
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-3 bg-gray-800 hover:bg-purple-600 text-gray-300 hover:text-white rounded-full transition-all duration-300 transform hover:scale-110"
+                className="p-3 bg-gray-800 hover:bg-gradient-to-r from-cyan-500 to-blue-500 hover:text-white rounded-full transition-all duration-300 transform hover:scale-110"
                 aria-label={link.label}
               >
                 {link.icon}
@@ -45,7 +45,7 @@ const Footer = () => {
           {/* Built with React Badge */}
           <div className="flex items-center space-x-2 text-gray-400">
             <span>Built with</span>
-            <Heart size={16} className="text-red-500" />
+            <Heart size={16} className="text-cyan-400" />
             <span>using</span>
             <div className="flex items-center space-x-1 px-3 py-1 bg-gray-800 rounded-full">
               <Code size={16} className="text-blue-400" />

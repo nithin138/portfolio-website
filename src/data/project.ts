@@ -14,6 +14,32 @@ export const projects: Project[] = [
     demoed: true
   },
   {
+  id: '11',
+  title: 'TechMate - User Application',
+  description:
+    'A smart service marketplace platform that connects users with verified technicians for repairs, installations, and IT services. The app includes real-time booking, service tracking, wallet payments, and personalized recommendations powered by AI-driven matching.',
+  tech: ['React', 'Node.js', 'Express', 'MongoDB', 'Razorpay API', 'JWT Auth'],
+  github: 'https://github.com/nithin138/Techmate_UserWebApp-22-01-25', // replace with actual repo
+  demo: 'https://techmateservices.in/', // replace with actual demo
+  genre: 'Dev',
+  featured: true,
+  demoed: true
+},
+
+{
+  id: '12',
+  title: 'TechMate - Admin Panel',
+  description:
+    'An advanced admin dashboard for managing technicians, user requests, service categories, and transactions. Features include analytics visualization, role-based access control, service approval workflows, and integrated payment monitoring for complete operational oversight.',
+  tech: ['React', 'Node.js', 'Express', 'MongoDB', 'Chart.js', 'JWT Auth'],
+  github: 'https://github.com/nithin138/Techlink_AdminWebApp', // replace with actual repo
+  demo: 'https://admin.techmateservices.in/', // replace with actual demo
+  genre: 'Dev',
+  featured: true,
+  demoed: true
+},
+
+  {
     id: '2',
     title: 'ReachHub Admin Panel',
     description: 'Admin dashboard for managing service and product provider listings, user accounts, and analytics for the ReachHub platform.',

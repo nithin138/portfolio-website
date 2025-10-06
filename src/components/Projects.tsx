@@ -48,11 +48,11 @@ const Projects = () => {
   }, []);
 
   return (
-    <section id="projects" className="py-20 bg-gray-900 min-h-screen">
+    <section id="projects" className="py-20 bg-white/5 min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb164 bg-gradient-to-r from-purple-400 via-blue-500 bg-clip-text text-transparent">
+          <h2 className="text-4xl font-bold mb164 bg-cyan-500 bg-clip-text text-transparent">
             Project Portfolio
           </h2>
         </div>
@@ -65,7 +65,7 @@ const Projects = () => {
 
         {/* Results Info */}
         <div className="text-center mb-8">
-          <p className="text-gray-400">
+          <p className="text-cyan-400">
             {filteredProjects.length === 0 ? (
               <span>No projects found matching your criteria</span>
             ) : (

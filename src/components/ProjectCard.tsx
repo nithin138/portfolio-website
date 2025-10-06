@@ -13,28 +13,28 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
         return {
           icon: <Brain className="w-5 h-5" />,
           gradient: 'from-purple-500 to-pink-500',
-          bgGradient: 'from-purple-500/10 to-pink-500/10',
+          bgGradient: 'from-cyan-500/10 to-cyan-500/10',
           borderColor: 'border-purple-500/30',
-          hoverBorder: 'hover:border-purple-400',
-          badge: 'bg-purple-500/20 text-purple-300 border-purple-500/30',
+          hoverBorder: 'hover:border-cyan-400',
+          badge: 'bg-cyan-500/20 text-cyan-300 border-cyan-500/30',
         };
       case 'DS':
         return {
           icon: <Database className="w-5 h-5" />,
           gradient: 'from-blue-500 to-cyan-500',
-          bgGradient: 'from-blue-500/10 to-cyan-500/10',
+          bgGradient: 'from-cyan-500/10 to-cyan-500/10',
           borderColor: 'border-blue-500/30',
-          hoverBorder: 'hover:border-blue-400',
-          badge: 'bg-blue-500/20 text-blue-300 border-blue-500/30',
+          hoverBorder: 'hover:border-cyan-400',
+          badge: 'bg-cyan-500/20 text-cyan-300 border-cyan-500/30',
         };
       case 'Dev':
         return {
           icon: <Code className="w-5 h-5" />,
           gradient: 'from-emerald-500 to-teal-500',
-          bgGradient: 'from-emerald-500/10 to-teal-500/10',
+          bgGradient: 'from-cyan-500/10 to-cyan-500/10',
           borderColor: 'border-emerald-500/30',
-          hoverBorder: 'hover:border-emerald-400',
-          badge: 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30',
+          hoverBorder: 'hover:border-cyan-400',
+          badge: 'bg-cyan-500/20 text-cyan-300 border-cyan-500/30',
         };
       default:
         return {
@@ -68,7 +68,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
       <div className="relative p-6">
         {/* Header */}
         <div className="flex items-start justify-between mb-4">
-          <div className={`inline-flex p-2.5 rounded-lg bg-gradient-to-r ${config.gradient}`}>
+          <div className={`inline-flex p-2.5 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500`}>
             {config.icon}
           </div>
           <div className={`px-2 py-1 text-xs font-medium rounded-full border ${config.badge}`}>
@@ -113,7 +113,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
               href={project.demo}
               target="_blank"
               rel="noopener noreferrer"
-              className={`flex items-center space-x-2 px-4 py-2.5 text-sm bg-gradient-to-r ${config.gradient} text-white rounded-lg hover:opacity-90 transition-all duration-300 flex-1 justify-center shadow-lg`}
+              className={`flex items-center space-x-2 px-4 py-2.5 text-sm bg-gradient-to-r from-cyan-500 to-blue-500 text-white rounded-lg hover:opacity-90 transition-all duration-300 flex-1 justify-center shadow-lg`}
             >
               <ExternalLink size={16} />
               <span>Demo</span>
