@@ -22,7 +22,7 @@ export const projects: Project[] = [
     demo: 'https://admin.techmateservices.in/',
     genre: 'Dev',
     featured: true,
-    demoed: true
+    demoed: false
   },
   {
     id: '3',
@@ -44,7 +44,7 @@ export const projects: Project[] = [
     demo: 'https://demo.com',
     genre: 'Dev',
     featured: false,
-    demoed: true
+    demoed: false
   },
   {
     id: '5',
@@ -54,8 +54,8 @@ export const projects: Project[] = [
     github: 'https://github.com',
     demo: 'https://demo.com',
     genre: 'Dev',
-    featured: true,
-    demoed: true
+    featured: false,
+    demoed: false
   },
   {
     id: '6',
@@ -63,7 +63,7 @@ export const projects: Project[] = [
     description: 'Enterprise-grade application designed for large organizations to manage and resolve disputes in sales data from platforms like Salesforce and Xactly. Features automated dispute detection, workflow management, audit trails, multi-level approvals, and comprehensive reporting for sales operations teams.',
     tech: ['React', 'Node.js', 'Express', 'PostgreSQL', 'Salesforce API', 'Xactly Integration'],
     github: 'https://github.com',
-    demo: 'https://demo.com',
+    demo: 'https://dream.uniflo.ai/auth/sign-in?returnTo=%2Fhome',
     genre: 'Dev',
     featured: true,
     demoed: true
@@ -74,7 +74,7 @@ export const projects: Project[] = [
     description: 'An innovative AI-based educational platform designed for children aged 6-14. Unlike traditional AI tools that provide direct answers, myWiz focuses on enhancing cognitive thinking and problem-solving skills through guided learning, interactive challenges, and adaptive AI that encourages critical thinking.',
     tech: ['React', 'Node.js', 'Python', 'OpenAI API', 'MongoDB', 'TensorFlow'],
     github: 'https://github.com',
-    demo: 'https://demo.com',
+    demo: 'https://mywiz.ai/',
     genre: 'AI',
     featured: true,
     demoed: true

@@ -17,8 +17,6 @@ interface Education {
   gpa: string;
 }
 
-type ResumeType = 'view' | 'download';
-
 const Resume: React.FC = () => {
   const [ref, inView] = useInView({
     triggerOnce: true,
@@ -26,12 +24,12 @@ const Resume: React.FC = () => {
   });
 
   const handleViewResume = () => {
-    window.open('public/nithin sudheer narayanapuram MERN[resume].pdf', '_blank');
+    window.open('/nithin sudheer narayanapuram MERN[resume].pdf', '_blank');
   };
 
   const handleDownloadResume = () => {
     const link = document.createElement('a');
-    link.href = 'public/nithin sudheer narayanapuram MERN[resume].docx';
+    link.href = '/nithin sudheer narayanapuram MERN[resume].docx';
     link.download = 'Nithin_Sudheer_FullStack_AI_Developer.docx';
     document.body.appendChild(link);
     link.click();

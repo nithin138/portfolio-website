@@ -93,17 +93,19 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
         </div>
 
         {/* Action Button */}
-        <div className="flex gap-3 mt-auto">
-          <a
-            href={project.demo}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`flex items-center justify-center gap-2 px-4 py-2.5 text-sm bg-gradient-to-r ${config.gradient} text-white rounded-xl hover:opacity-90 transition-all duration-300 w-full shadow-lg group/btn`}
-          >
-            <ExternalLink size={16} className="group-hover/btn:scale-110 transition-transform" />
-            <span>View Live Demo</span>
-          </a>
-        </div>
+        {project.demoed && (
+          <div className="flex gap-3 mt-auto">
+            <a
+              href={project.demo}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`flex items-center justify-center gap-2 px-4 py-2.5 text-sm bg-gradient-to-r ${config.gradient} text-white rounded-xl hover:opacity-90 transition-all duration-300 w-full shadow-lg group/btn`}
+            >
+              <ExternalLink size={16} className="group-hover/btn:scale-110 transition-transform" />
+              <span>View Live Demo</span>
+            </a>
+          </div>
+        )}
       </div>
     </div>
   );
