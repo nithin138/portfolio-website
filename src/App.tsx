@@ -31,16 +31,18 @@ function App() {
   }, []);
 
   return (
-    <div className="bg-gray-900 text-white min-h-screen">
-      <Navbar activeSection={activeSection} />
-      {/* <Hero /> */}
-      <About />
-      <Skills />
-      <LanguagesTools />
-      <Projects />
-      <Resume />
-      <Contact />
-      <Footer />
+    <div className="bg-navy-500 text-slate-200 min-h-screen animated-gradient-bg">
+      <div className="mesh-gradient min-h-screen">
+        <Navbar activeSection={activeSection} />
+        <Hero />
+        <About />
+        <Skills />
+        <LanguagesTools />
+        <Projects />
+        <Resume />
+        <Contact />
+        <Footer />
+      </div>
     </div>
   );
 }

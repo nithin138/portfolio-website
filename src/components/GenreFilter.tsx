@@ -1,5 +1,5 @@
 import React from 'react';
-import { Brain, Database, Code, Grid3X3 } from 'lucide-react';
+import { Brain, Code, Grid3X3 } from 'lucide-react';
 import { ProjectGenre } from '../types/project';
 
 interface GenreFilterProps {
@@ -14,7 +14,7 @@ const GenreFilter: React.FC<GenreFilterProps> = ({ activeGenre, onGenreChange, p
       key: 'All',
       label: 'All Projects',
       icon: <Grid3X3 className="w-4 h-4" />,
-      gradient: 'from-gray-500 to-gray-600',
+      gradient: 'from-slate-500 to-slate-600',
     },
     {
       key: 'AI',
@@ -23,16 +23,10 @@ const GenreFilter: React.FC<GenreFilterProps> = ({ activeGenre, onGenreChange, p
       gradient: 'from-purple-500 to-pink-500',
     },
     {
-      key: 'DS',
-      label: 'Data Science',
-      icon: <Database className="w-4 h-4" />,
-      gradient: 'from-blue-500 to-cyan-500',
-    },
-    {
       key: 'Dev',
       label: 'Development',
       icon: <Code className="w-4 h-4" />,
-      gradient: 'from-emerald-500 to-teal-500',
+      gradient: 'from-blue-500 to-indigo-500',
     },
   ];
 
@@ -46,20 +40,20 @@ const GenreFilter: React.FC<GenreFilterProps> = ({ activeGenre, onGenreChange, p
           <button
             key={genre.key}
             onClick={() => onGenreChange(genre.key)}
-            className={`group relative flex items-center space-x-2 px-6 py-3 rounded-xl font-medium transition-all duration-300 ${
+            className={`group relative flex items-center gap-3 px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${
               isActive
-                ? `bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-lg transform scale-105`
-                : 'bg-gray-800/50 text-gray-300 hover:bg-gray-700/50 hover:text-white border border-gray-700/50 hover:border-gray-600/50'
+                ? `bg-gradient-to-r ${genre.gradient} text-white shadow-glow transform scale-105`
+                : 'glass-card text-slate-300 hover:text-white hover:scale-105'
             }`}
           >
-            <div className={`${isActive ? 'text-white' : 'text-gray-400 group-hover:text-gray-300'} transition-colors duration-300`}>
+            <div className={`${isActive ? 'text-white' : 'text-slate-400 group-hover:text-slate-200'} transition-colors duration-300`}>
               {genre.icon}
             </div>
             <span className="text-sm">{genre.label}</span>
-            <div className={`px-2 py-0.5 text-xs rounded-full ${
+            <div className={`px-2.5 py-0.5 text-xs font-bold rounded-full ${
               isActive 
                 ? 'bg-white/20 text-white' 
-                : 'bg-gray-700/50 text-gray-400 group-hover:bg-gray-600/50 group-hover:text-gray-300'
+                : 'bg-slate-700/50 text-slate-400 group-hover:bg-slate-600/50 group-hover:text-slate-200'
             } transition-all duration-300`}>
               {count}
             </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Code, Brain, BarChart3 } from 'lucide-react';
+import { Code, Brain, BarChart3, Sparkles } from 'lucide-react';
 
 const About = () => {
   const [ref, inView] = useInView({
@@ -29,8 +29,8 @@ const About = () => {
   };
 
   return (
-    <section id="about" className="py-20 bg-white/5">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="about" className="py-20 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           ref={ref}
           variants={containerVariants}
@@ -40,53 +40,61 @@ const About = () => {
         >
           {/* Text Content */}
           <div>
-            <motion.h2
-              variants={itemVariants}
-              className="text-4xl font-bold mb-6  bg-clip-text text-transparent"
-            >
-              About Me
-            </motion.h2>
+            <motion.div variants={itemVariants} className="mb-6">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-500/10 border border-emerald-500/20 rounded-full mb-4">
+                <Sparkles className="w-4 h-4 text-emerald-400" />
+                <span className="text-sm text-emerald-400 font-medium">About Me</span>
+              </div>
+              <h2 className="text-4xl font-bold text-gradient">
+                Crafting Digital Excellence
+              </h2>
+            </motion.div>
             
-           <motion.p
-  variants={itemVariants}
-  className="text-lg text-gray-300 mb-6 leading-relaxed"
->
-  I'm a versatile Full-Stack and AI Engineer with 1 year 6 months of experience
-  designing and developing intelligent, scalable web applications. My expertise
-  lies in the MERN stack, where I build responsive, high-performance systems
-  that seamlessly integrate modern AI capabilities.
-</motion.p>
+            <motion.p
+              variants={itemVariants}
+              className="text-lg text-slate-300 mb-6 leading-relaxed"
+            >
+              I'm a versatile Full-Stack AI Developer with experience designing and developing 
+              intelligent, scalable web applications. My expertise lies in the MERN stack, where 
+              I build responsive, high-performance systems that seamlessly integrate cutting-edge 
+              AI capabilities.
+            </motion.p>
 
-<motion.p
-  variants={itemVariants}
-  className="text-lg text-gray-300 mb-8 leading-relaxed"
->
-  Beyond full-stack development, I specialize in Artificial Intelligence and
-  Natural Language Processing—building agentic AI systems, voice-based
-  assistants, and Generative AI applications. I’m also skilled in data analytics
-  and automation using Python, SQL, and advanced ML frameworks. Passionate about
-  solving real-world problems through innovation, I thrive at the intersection
-  of AI, software engineering, and human-centered design.
-</motion.p>
-
+            <motion.p
+              variants={itemVariants}
+              className="text-lg text-slate-300 mb-8 leading-relaxed"
+            >
+              I specialize in Artificial Intelligence and Natural Language Processing—building
+              agentic AI systems, chatbots, and Generative AI applications. My work combines 
+              full-stack development with advanced ML frameworks, creating intelligent solutions 
+              that leverage Python, modern web technologies, and cloud services. Passionate about 
+              solving real-world problems through innovation, I thrive at the intersection of AI, 
+              software engineering, and human-centered design.
+            </motion.p>
 
             <motion.div
               variants={itemVariants}
               className="grid grid-cols-1 sm:grid-cols-3 gap-4"
             >
-              <div className="flex items-center space-x-3 p-4 bg-white/5 rounded-lg backdrop-blur-sm">
-                <Code className="text-cyan-400" size={24} />
-                <span className="text-sm font-medium">Full-Stack Dev</span>
+              <div className="group glass-card p-5 rounded-xl flex flex-col items-center text-center space-y-3">
+                <div className="p-3 bg-gradient-to-br from-emerald-500/20 to-cyan-500/20 rounded-lg group-hover:scale-110 transition-transform duration-300">
+                  <Code className="text-emerald-400" size={28} />
+                </div>
+                <span className="text-sm font-semibold text-slate-200">Full-Stack Dev</span>
               </div>
               
-              <div className="flex items-center space-x-3 p-4 bg-white/5 rounded-lg backdrop-blur-sm">
-                <Brain className="text-cyan-400" size={24} />
-                <span className="text-sm font-medium">AI/ML Explorer</span>
+              <div className="group glass-card p-5 rounded-xl flex flex-col items-center text-center space-y-3">
+                <div className="p-3 bg-gradient-to-br from-cyan-500/20 to-blue-500/20 rounded-lg group-hover:scale-110 transition-transform duration-300">
+                  <Brain className="text-cyan-400" size={28} />
+                </div>
+                <span className="text-sm font-semibold text-slate-200">AI/ML Expert</span>
               </div>
               
-              <div className="flex items-center space-x-3 p-4 bg-white/5 rounded-lg backdrop-blur-sm">
-                <BarChart3 className="text-cyan-400" size={24} />
-                <span className="text-sm font-medium">Data Analyst</span>
+              <div className="group glass-card p-5 rounded-xl flex flex-col items-center text-center space-y-3">
+                <div className="p-3 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-lg group-hover:scale-110 transition-transform duration-300">
+                  <BarChart3 className="text-blue-400" size={28} />
+                </div>
+                <span className="text-sm font-semibold text-slate-200">Cloud & DevOps</span>
               </div>
             </motion.div>
           </div>
@@ -97,24 +105,48 @@ const About = () => {
             className="flex justify-center lg:justify-end"
           >
             <div className="relative">
-              <div className="w-80 h-80 rounded-full bg-cyan-500 p-1">
-                <div className="w-full h-full rounded-full bg-gray-800 flex items-center justify-center">
+              {/* Animated Gradient Ring */}
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                className="absolute inset-0 rounded-full bg-gradient-to-r from-emerald-500 via-cyan-500 to-blue-500 p-1 blur-sm"
+              />
+              
+              {/* Main Image Container */}
+              <div className="relative w-80 h-80 rounded-full bg-gradient-to-r from-emerald-500 via-cyan-500 to-blue-500 p-1">
+                <div className="w-full h-full rounded-full bg-slate-850 flex items-center justify-center overflow-hidden">
                   <img
                     src="/pic.jpg"
                     alt="Nithin Sudheer"
-                    className="w-72 h-72 rounded-full object-cover"
+                    className="w-full h-full object-cover"
                   />
                 </div>
               </div>
               
-              {/* Floating Elements */}
-              <div className="absolute -top-4 -right-4 w-16 h-16 bg-cyan-500 rounded-full flex items-center justify-center shadow-lg animate-pulse">
-                <Code className="text-white" size={24} />
-              </div>
+              {/* Floating Icons */}
+              <motion.div
+                animate={{ y: [0, -10, 0] }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute -top-4 -right-4 w-20 h-20 glass-card rounded-2xl flex items-center justify-center shadow-glow"
+              >
+                <Code className="text-emerald-400" size={32} />
+              </motion.div>
               
-              <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-cyan-500 rounded-full flex items-center justify-center shadow-lg animate-pulse delay-1000">
-                <Brain className="text-white" size={24} />
-              </div>
+              <motion.div
+                animate={{ y: [0, 10, 0] }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+                className="absolute -bottom-4 -left-4 w-20 h-20 glass-card rounded-2xl flex items-center justify-center shadow-glow-cyan"
+              >
+                <Brain className="text-cyan-400" size={32} />
+              </motion.div>
+
+              <motion.div
+                animate={{ y: [0, -8, 0] }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                className="absolute top-1/2 -right-8 w-16 h-16 glass-card rounded-xl flex items-center justify-center shadow-glow-blue"
+              >
+                <BarChart3 className="text-blue-400" size={24} />
+              </motion.div>
             </div>
           </motion.div>
         </motion.div>

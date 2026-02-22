@@ -1,8 +1,33 @@
-import React from 'react';
-import { Download, MessageCircle, ChevronDown } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { Download, MessageCircle, ChevronDown, Sparkles } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const Hero = () => {
+  const [experience, setExperience] = useState({ years: 0, months: 0 });
+
+  useEffect(() => {
+    const startDate = new Date('2024-05-01');
+    const currentDate = new Date();
+    
+    const totalMonths = (currentDate.getFullYear() - startDate.getFullYear()) * 12 + 
+                        (currentDate.getMonth() - startDate.getMonth());
+    
+    const years = Math.floor(totalMonths / 12);
+    const months = totalMonths % 12;
+    
+    setExperience({ years, months });
+  }, []);
+
+  const getExperienceText = () => {
+    if (experience.years === 0) {
+      return `${experience.months}+ mo`;
+    } else if (experience.months === 0) {
+      return `${experience.years}+ yr`;
+    } else {
+      return `${experience.years}.${experience.months}+ yr`;
+    }
+  };
+
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -12,57 +37,74 @@ const Hero = () => {
 
   return (
     <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden">
-      {/* Hero Background Image */}
-      <div className="absolute inset-0">
-        <img
-          src="https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop"
-          alt="Tech Background"
-          className="w-full h-full object-cover"
+      {/* Floating Geometric Shapes */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+        <motion.div
+          animate={{ y: [0, -30, 0], rotate: [0, 180, 360] }}
+          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+          className="absolute top-20 left-10 w-20 h-20 border-2 border-blue-500/20 rounded-lg"
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-900/90 via-blue-900/85 to-indigo-900/90"></div>
-      </div>
-      
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0">
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
-        <div className="absolute top-3/4 right-1/4 w-64 h-64 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse delay-1000"></div>
-        <div className="absolute bottom-1/4 left-1/2 w-64 h-64 bg-indigo-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse delay-2000"></div>
+        <motion.div
+          animate={{ y: [0, 30, 0], rotate: [0, -180, -360] }}
+          transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+          className="absolute top-40 right-20 w-16 h-16 border-2 border-indigo-500/20 rounded-full"
+        />
+        <motion.div
+          animate={{ y: [0, -20, 0], x: [0, 20, 0] }}
+          transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute bottom-32 left-20 w-24 h-24 border-2 border-purple-500/20"
+          style={{ clipPath: 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)' }}
+        />
+        <motion.div
+          animate={{ y: [0, 25, 0], rotate: [0, 90, 180] }}
+          transition={{ duration: 22, repeat: Infinity, ease: "linear" }}
+          className="absolute top-60 left-1/2 w-12 h-12 border-2 border-violet-500/20 rounded-lg"
+        />
       </div>
 
-      {/* Floating Tech Icons */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-10 text-purple-400/20 animate-float">
-          <svg className="w-16 h-16" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M12 2L2 7v10c0 5.55 3.84 9.739 9 11 5.16-1.261 9-5.45 9-11V7l-10-5z"/>
-          </svg>
-        </div>
-        <div className="absolute top-40 right-20 text-blue-400/20 animate-float delay-1000">
-          <svg className="w-12 h-12" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-          </svg>
-        </div>
-        <div className="absolute bottom-32 left-20 text-teal-400/20 animate-float delay-2000">
-          <svg className="w-14 h-14" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0L19.2 12l-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/>
-          </svg>
-        </div>
-        <div className="absolute top-60 left-1/2 text-pink-400/20 animate-float delay-500">
-          <svg className="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-          </svg>
-        </div>
+      {/* Particle Effect */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+        {[...Array(20)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-1 h-1 bg-blue-400/40 rounded-full"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+            }}
+            animate={{
+              y: [0, -100, 0],
+              opacity: [0, 1, 0],
+            }}
+            transition={{
+              duration: 3 + Math.random() * 3,
+              repeat: Infinity,
+              delay: Math.random() * 5,
+            }}
+          />
+        ))}
       </div>
-      <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+
+      <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
+          className="mb-6"
         >
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">
+          <motion.div
+            animate={{ rotate: [0, 360] }}
+            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+            className="inline-block mb-4"
+          >
+            <Sparkles className="w-12 h-12 text-blue-400" />
+          </motion.div>
+          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-4">
+            <span className="text-gradient">
               Nithin Sudheer
             </span>
           </h1>
+          <div className="h-1 w-32 mx-auto bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 rounded-full"></div>
         </motion.div>
 
         <motion.div
@@ -70,8 +112,11 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <p className="text-xl sm:text-2xl lg:text-3xl text-gray-300 mb-8 font-light">
-            Full-Stack Developer | AI/ML Explorer | Data Analyst
+          <p className="text-2xl sm:text-3xl lg:text-4xl text-slate-300 mb-4 font-light">
+            Full-Stack AI Developer
+          </p>
+          <p className="text-lg sm:text-xl text-slate-400 mb-8 max-w-2xl mx-auto">
+            Crafting intelligent, scalable web applications with cutting-edge AI/ML integration
           </p>
         </motion.div>
 
@@ -79,11 +124,11 @@ const Hero = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6 mb-16"
+          className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6 mb-16"
         >
           <button
             onClick={() => scrollToSection('resume')}
-            className="group flex items-center px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 rounded-full text-white font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-purple-500/25"
+            className="btn-primary group flex items-center"
           >
             <Download size={20} className="mr-2 group-hover:animate-bounce" />
             View Resume
@@ -91,22 +136,43 @@ const Hero = () => {
           
           <button
             onClick={() => scrollToSection('contact')}
-            className="group flex items-center px-8 py-4 border-2 border-purple-500 hover:bg-purple-500 text-purple-400 hover:text-white rounded-full font-semibold transition-all duration-300 transform hover:scale-105"
+            className="btn-secondary group flex items-center"
           >
             <MessageCircle size={20} className="mr-2 group-hover:animate-pulse" />
-            Contact Me
+            Let's Connect
           </button>
+        </motion.div>
+
+        {/* Stats Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="grid grid-cols-3 gap-4 sm:gap-8 max-w-2xl mx-auto mb-16"
+        >
+          <div className="glass-card p-4 sm:p-6 rounded-xl">
+            <div className="text-3xl sm:text-4xl font-bold text-gradient-static mb-2">{getExperienceText()}</div>
+            <div className="text-xs sm:text-sm text-slate-400">Experience</div>
+          </div>
+          <div className="glass-card p-4 sm:p-6 rounded-xl">
+            <div className="text-3xl sm:text-4xl font-bold text-gradient-static mb-2">15+</div>
+            <div className="text-xs sm:text-sm text-slate-400">Projects Built</div>
+          </div>
+          <div className="glass-card p-4 sm:p-6 rounded-xl">
+            <div className="text-3xl sm:text-4xl font-bold text-gradient-static mb-2">10+</div>
+            <div className="text-xs sm:text-sm text-slate-400">Technologies</div>
+          </div>
         </motion.div>
 
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
+          transition={{ duration: 0.8, delay: 0.8 }}
           className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
         >
           <button
             onClick={() => scrollToSection('about')}
-            className="animate-bounce text-gray-400 hover:text-white transition-colors duration-300"
+            className="animate-bounce text-blue-400 hover:text-blue-300 transition-colors duration-300 p-2 rounded-full hover:bg-blue-500/10"
           >
             <ChevronDown size={32} />
           </button>

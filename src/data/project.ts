@@ -4,126 +4,79 @@ export const projects: Project[] = [
   // Full Stack Web Development Projects
   {
     id: '1',
-    title: 'Rntout.com',
-    description: 'A complete rental management web platform with property listings, user authentication, booking management, and responsive UI.',
-    tech: ['React', 'Node.js', 'Express', 'MongoDB', 'Razorpay API'],
-    github: 'https://github.com', // replace with actual repo
-    demo: 'https://rntout.com/', // replace with actual demo
+    title: 'TechMate - Service Marketplace',
+    description: 'A comprehensive service and product provider platform connecting users with verified professionals across multiple sectors including hardware repairs, software solutions, home appliances, plumbing, electrical work, and more. Features real-time booking, service tracking, secure payments, and AI-powered technician matching.',
+    tech: ['React', 'Node.js', 'Express', 'MongoDB', 'Razorpay API', 'JWT Auth', 'Socket.io'],
+    github: 'https://github.com/nithin138/Techmate_UserWebApp-22-01-25',
+    demo: 'https://techmateservices.in/',
     genre: 'Dev',
     featured: true,
     demoed: true
   },
   {
-  id: '11',
-  title: 'TechMate - User Application',
-  description:
-    'A smart service marketplace platform that connects users with verified technicians for repairs, installations, and IT services. The app includes real-time booking, service tracking, wallet payments, and personalized recommendations powered by AI-driven matching.',
-  tech: ['React', 'Node.js', 'Express', 'MongoDB', 'Razorpay API', 'JWT Auth'],
-  github: 'https://github.com/nithin138/Techmate_UserWebApp-22-01-25', // replace with actual repo
-  demo: 'https://techmateservices.in/', // replace with actual demo
-  genre: 'Dev',
-  featured: true,
-  demoed: true
-},
-
-{
-  id: '12',
-  title: 'TechMate - Admin Panel',
-  description:
-    'An advanced admin dashboard for managing technicians, user requests, service categories, and transactions. Features include analytics visualization, role-based access control, service approval workflows, and integrated payment monitoring for complete operational oversight.',
-  tech: ['React', 'Node.js', 'Express', 'MongoDB', 'Chart.js', 'JWT Auth'],
-  github: 'https://github.com/nithin138/Techlink_AdminWebApp', // replace with actual repo
-  demo: 'https://admin.techmateservices.in/', // replace with actual demo
-  genre: 'Dev',
-  featured: true,
-  demoed: true
-},
-
-  {
     id: '2',
-    title: 'ReachHub Admin Panel',
-    description: 'Admin dashboard for managing service and product provider listings, user accounts, and analytics for the ReachHub platform.',
-    tech: ['React', 'Node.js', 'Express', 'MongoDB', 'JWT'],
-    github: 'https://github.com/nithin138/ReachHub-Admin', // replace with actual repo
-    demo: 'https://demo.com', // replace with actual demo
+    title: 'TechMate - Admin Panel',
+    description: 'Advanced administrative dashboard for managing the TechMate platform. Provides complete control over technician verification, service requests, user management, transaction monitoring, analytics visualization, and operational workflows with role-based access control.',
+    tech: ['React', 'Node.js', 'Express', 'MongoDB', 'Chart.js', 'JWT Auth'],
+    github: 'https://github.com/nithin138/Techlink_AdminWebApp',
+    demo: 'https://admin.techmateservices.in/',
     genre: 'Dev',
+    featured: true,
     demoed: true
   },
   {
     id: '3',
-    title: 'ReachHub User Application',
-    description: 'User-facing application for discovering and connecting with service and product providers, with search, filtering, and profile management.',
-    tech: ['React', 'Node.js', 'Express', 'MongoDB'],
-    github: 'https://github.com', // replace with actual repo
-    demo: 'https://demo.com', // replace with actual demo
+    title: 'Rntout - Rental Platform',
+    description: 'A versatile rental marketplace enabling users to rent products across diverse categories from everyday items like iron boxes to high-value electronics and vehicles. Features include smart search, availability tracking, booking management, damage protection, and secure payment processing.',
+    tech: ['React', 'Node.js', 'Express', 'MongoDB', 'Razorpay API', 'AWS S3'],
+    github: 'https://github.com',
+    demo: 'https://rntout.com/',
     genre: 'Dev',
+    featured: true,
     demoed: true
   },
-
-  // AI Projects
   {
     id: '4',
-    title: 'AI-Powered Movie Recommendation System',
-    description: 'Recommends movies based on user preferences using collaborative filtering and content-based machine learning algorithms.',
-    tech: ['Python', 'scikit-learn', 'Pandas', 'NumPy', 'Model building'],
-    github: 'https://github.com/nithin138/ML-based-Movie-Recomendation-System',
+    title: 'Rntout - Admin Panel',
+    description: 'Comprehensive admin dashboard for Rntout platform management. Handles product listings, rental inventory, user verification, booking oversight, payment reconciliation, dispute resolution, and business analytics with real-time monitoring capabilities.',
+    tech: ['React', 'Node.js', 'Express', 'MongoDB', 'Chart.js', 'JWT Auth'],
+    github: 'https://github.com',
     demo: 'https://demo.com',
-    genre: 'AI'
+    genre: 'Dev',
+    featured: false,
+    demoed: true
   },
   {
     id: '5',
-    title: 'Email/SMS Spam Detection',
-    description: 'Machine learning model to classify and filter spam messages using natural language processing techniques.',
-    tech: ['Python', 'scikit-learn', 'NLTK', 'Pandas', 'Flask'],
-    github: 'https://github.com/nithin138/spam-detection', // replace with actual repo
+    title: 'Bodegaa - Fresh Grocery E-commerce',
+    description: 'A modern e-commerce platform similar to BigBasket, specializing in fresh vegetables, fruits, and essential kitchen items including oils, flours, and spices. Features include real-time inventory management, quality assurance, doorstep delivery tracking, and personalized recommendations.',
+    tech: ['React', 'Node.js', 'Express', 'MongoDB', 'Payment Gateway', 'Google Maps API'],
+    github: 'https://github.com',
     demo: 'https://demo.com',
-    genre: 'AI'
+    genre: 'Dev',
+    featured: true,
+    demoed: true
   },
   {
     id: '6',
-    title: 'Security Breach Detection Model',
-    description: 'AI model to detect unusual activity patterns and potential security breaches in network traffic.',
-    tech: ['Python', 'TensorFlow', 'Pandas', 'Scikit-learn', 'Docker'],
-    github: 'https://github.com/nithin138/IOT-integrated-ML-model-for-Security-breach-Detection', // replace with actual repo
+    title: 'Dream - Enterprise Dispute Resolution',
+    description: 'Enterprise-grade application designed for large organizations to manage and resolve disputes in sales data from platforms like Salesforce and Xactly. Features automated dispute detection, workflow management, audit trails, multi-level approvals, and comprehensive reporting for sales operations teams.',
+    tech: ['React', 'Node.js', 'Express', 'PostgreSQL', 'Salesforce API', 'Xactly Integration'],
+    github: 'https://github.com',
     demo: 'https://demo.com',
-    genre: 'AI'
+    genre: 'Dev',
+    featured: true,
+    demoed: true
   },
-
-  // Data Science Projects
   {
     id: '7',
-    title: 'Twitter Data Sentiment Analysis',
-    description: 'Analyzes sentiment from Twitter data using NLP techniques and visualizes trends over time.',
-    tech: ['Python', 'NLTK', 'Pandas', 'Matplotlib', 'Seaborn'],
-    github: 'https://github.com/nithin138/Twitter-data-Sentiment-Analysis', // replace with actual repo
+    title: 'myWiz - AI-Powered EdTech for Kids',
+    description: 'An innovative AI-based educational platform designed for children aged 6-14. Unlike traditional AI tools that provide direct answers, myWiz focuses on enhancing cognitive thinking and problem-solving skills through guided learning, interactive challenges, and adaptive AI that encourages critical thinking.',
+    tech: ['React', 'Node.js', 'Python', 'OpenAI API', 'MongoDB', 'TensorFlow'],
+    github: 'https://github.com',
     demo: 'https://demo.com',
-    genre: 'DS'
-  },
-  {
-    id: '8',
-    title: 'Customer Segmentation Analysis',
-    description: 'Performs customer segmentation using clustering algorithms to enable targeted marketing strategies.',
-    tech: ['Python', 'Pandas', 'Scikit-learn', 'Matplotlib', 'Seaborn'],
-    github: 'https://github.com/nithin138/customer-segmentation-analysis', // replace with actual repo
-    demo: 'https://demo.com',
-    genre: 'DS'
-  },
-  {
-    id: '9',
-    title: 'Hotel Booking Analytics',
-    description: 'Exploratory data analysis and visualization of hotel booking patterns to identify business insights.',
-    tech: ['Python', 'Pandas', 'Matplotlib', 'Seaborn'],
-    github: 'https://github.com/nithin138/Hotel-Booking-Analytics', // replace with actual repo
-    demo: 'https://demo.com',
-    genre: 'DS'
-  },
-  {
-    id: '10',
-    title: 'Business Dashboards Collection',
-    description: 'Multiple interactive dashboards addressing various business problems using Power BI and MS Excel.',
-    tech: ['Power BI', 'MS Excel', 'DAX', 'Data Modeling'],
-    github: 'https://github.com/nithin138/business-dashboard-collection', // replace with actual repo
-    demo: 'https://demo.com',
-    genre: 'DS'
+    genre: 'AI',
+    featured: true,
+    demoed: true
   }
 ];

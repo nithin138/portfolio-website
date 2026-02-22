@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Download, FileText, Award, Briefcase } from 'lucide-react';
+import { Download, FileText, Award, Briefcase, Sparkles, Eye } from 'lucide-react';
 
 interface Experience {
   title: string;
@@ -17,7 +17,7 @@ interface Education {
   gpa: string;
 }
 
-type ResumeType = 'mern' | 'data';
+type ResumeType = 'view' | 'download';
 
 const Resume: React.FC = () => {
   const [ref, inView] = useInView({
@@ -25,17 +25,14 @@ const Resume: React.FC = () => {
     threshold: 0.1,
   });
 
-  const handleDownloadResume = (type: ResumeType) => {
+  const handleViewResume = () => {
+    window.open('public/nithin sudheer narayanapuram MERN[resume].pdf', '_blank');
+  };
+
+  const handleDownloadResume = () => {
     const link = document.createElement('a');
-
-    if (type === 'mern') {
-      link.href = 'public/nithin sudheer narayanapuram MERN[resume].docx';
-      link.download = 'Nithin_Sudheer_MERN_Developer.docx';
-    } else if (type === 'data') {
-      link.href = 'public/nithin sudheer narayanapuram DA [resume].docx';
-      link.download = 'Nithin_Sudheer_Data_Analyst.docx';
-    }
-
+    link.href = 'public/nithin sudheer narayanapuram MERN[resume].docx';
+    link.download = 'Nithin_Sudheer_FullStack_AI_Developer.docx';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -43,29 +40,33 @@ const Resume: React.FC = () => {
 
   const experiences: Experience[] = [
     {
+      title: 'Full Stack Developer',
+      company: 'Vyva IT Solutions',
+      duration: 'November 2025 - Present',
+      description: 'Developing scalable web applications using MERN stack, implementing AI/ML solutions, and managing cloud infrastructure.',
+    },
+    {
       title: 'Software Engineer',
       company: 'CodeFacts Solutions Pvt Ltd.',
-      duration: 'May 2024 - Present',
-      description: 'Developing scalable web applications using MERN stack, implementing AI/ML solutions, and managing databases.',
+      duration: 'May 2024 - October 2025',
+      description: 'Developed scalable web applications using MERN stack, implemented AI/ML solutions, and managed databases.',
     },
- 
   ];
 
   const education: Education[] = [
     {
       degree: 'Bachelor in Computer Science',
-      institution: 'Anurag Engineering Colelge',
+      institution: 'Anurag Engineering College',
       year: 'May 2024',
       gpa: '7.5',
     },
   ];
 
   const certifications: string[] = [
-    'IBM Data Analyst',
-    'Cisco Data Analytics Essentials',
-    'Forage Data Visualitation',
     'IBM AI Fundamentals',
-
+    'AWS Cloud Practitioner',
+    'MongoDB Developer',
+    'React Advanced Patterns',
   ];
 
   const containerVariants = {
@@ -88,58 +89,63 @@ const Resume: React.FC = () => {
   };
 
   return (
-    <section id="resume" className="py-20 bg-white/5">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="resume" className="py-20 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           ref={ref}
           variants={containerVariants}
           initial="hidden"
           animate={inView ? 'visible' : 'hidden'}
         >
-          <motion.h2
-            variants={itemVariants}
-            className="text-4xl font-bold text-center mb-16 bg-cyan-500 bg-clip-text text-transparent"
-          >
-            Resume
-          </motion.h2>
+          <motion.div variants={itemVariants} className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-500/10 border border-blue-500/20 rounded-full mb-4">
+              <Sparkles className="w-4 h-4 text-blue-400" />
+              <span className="text-sm text-blue-400 font-medium">Professional Background</span>
+            </div>
+            <h2 className="text-4xl font-bold text-gradient mb-4">
+              Resume
+            </h2>
+          </motion.div>
 
-          {/* Download Buttons */}
+          {/* Action Buttons */}
           <motion.div
             variants={itemVariants}
-            className="text-center mb-12 flex flex-col sm:flex-row justify-center gap-4"
+            className="text-center mb-16 flex flex-col sm:flex-row justify-center gap-4"
           >
             <button
-              onClick={() => handleDownloadResume('mern')}
-              className="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-purple-700 hover:to-blue-700 rounded-full text-gray-800 font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-purple-500/25"
+              onClick={handleViewResume}
+              className="btn-primary group inline-flex items-center justify-center px-4 py-3"
             >
-              <Download size={20} className="mr-2 group-hover:animate-bounce" />
-              Download MERN Developer Resume
+              <Eye size={20} className="mr-2 group-hover:animate-pulse" />
+              View Resume
             </button>
 
             <button
-              onClick={() => handleDownloadResume('data')}
-              className="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-teal-600 hover:to-green-600 rounded-full text-gray-800 font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-green-500/25"
+              onClick={handleDownloadResume}
+              className="btn-secondary group inline-flex items-center justify-center px-4 py-3"
             >
               <Download size={20} className="mr-2 group-hover:animate-bounce" />
-              Download Data Analyst Resume
+              Download Resume
             </button>
           </motion.div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Experience */}
             <motion.div variants={itemVariants}>
-              <div className="flex items-center mb-6">
-                <Briefcase className="text-cyan-400 mr-3" size={24} />
-                <h3 className="text-2xl font-semibold text-white">Experience</h3>
+              <div className="flex items-center gap-3 mb-6">
+                <div className="p-3 rounded-xl bg-gradient-to-r from-emerald-500 to-cyan-500">
+                  <Briefcase size={24} />
+                </div>
+                <h3 className="text-2xl font-bold text-slate-200">Experience</h3>
               </div>
 
               <div className="space-y-6">
                 {experiences.map((exp, index) => (
-                  <div key={index} className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-6 border border-gray-700 hover:border-cyan-400">
-                    <h4 className="text-lg font-semibold text-cyan-400 mb-1">{exp.title}</h4>
-                    <p className="text-blue-400 mb-2">{exp.company}</p>
-                    <p className="text-sm text-gray-400 mb-3">{exp.duration}</p>
-                    <p className="text-gray-300 leading-relaxed">{exp.description}</p>
+                  <div key={index} className="glass-card rounded-2xl p-6">
+                    <h4 className="text-lg font-bold text-gradient-static mb-1">{exp.title}</h4>
+                    <p className="text-cyan-400 font-semibold mb-2">{exp.company}</p>
+                    <p className="text-sm text-slate-400 mb-3">{exp.duration}</p>
+                    <p className="text-slate-300 leading-relaxed">{exp.description}</p>
                   </div>
                 ))}
               </div>
@@ -149,19 +155,21 @@ const Resume: React.FC = () => {
             <motion.div variants={itemVariants}>
               {/* Education */}
               <div className="mb-8">
-                <div className="flex items-center mb-6">
-                  <FileText className="text-cyan-400 mr-3" size={24} />
-                  <h3 className="text-2xl font-semibold text-white">Education</h3>
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="p-3 rounded-xl bg-gradient-to-r from-blue-500 to-purple-500">
+                    <FileText size={24} />
+                  </div>
+                  <h3 className="text-2xl font-bold text-slate-200">Education</h3>
                 </div>
 
                 <div className="space-y-4">
                   {education.map((edu, index) => (
-                    <div key={index} className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-6 border border-gray-700 hover:border-cyan-400">
-                      <h4 className="text-lg font-semibold text-cyan-400 mb-1">{edu.degree}</h4>
-                      <p className="text-blue-400 mb-2">{edu.institution}</p>
+                    <div key={index} className="glass-card rounded-2xl p-6">
+                      <h4 className="text-lg font-bold text-gradient-static mb-1">{edu.degree}</h4>
+                      <p className="text-blue-400 font-semibold mb-2">{edu.institution}</p>
                       <div className="flex justify-between items-center">
-                        <p className="text-sm text-gray-400">{edu.year}</p>
-                        <p className="text-sm text-cyan-400 font-medium">GPA: {edu.gpa}</p>
+                        <p className="text-sm text-slate-400">{edu.year}</p>
+                        <p className="text-sm text-emerald-400 font-semibold">GPA: {edu.gpa}</p>
                       </div>
                     </div>
                   ))}
@@ -170,17 +178,19 @@ const Resume: React.FC = () => {
 
               {/* Certifications */}
               <div>
-                <div className="flex items-center mb-6">
-                  <Award className="text-cyan-400 mr-3" size={24} />
-                  <h3 className="text-2xl font-semibold text-white">Certifications</h3>
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="p-3 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500">
+                    <Award size={24} />
+                  </div>
+                  <h3 className="text-2xl font-bold text-slate-200">Certifications</h3>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {certifications.map((cert, index) => (
-                    <div key={index} className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-4 border border-gray-700 hover:border-cyan-400/50 transition-colors duration-300">
-                      <div className="flex items-center">
-                        <Award className="text-cyan-400 mr-2" size={16} />
-                        <p className="text-gray-300 text-sm font-medium">{cert}</p>
+                    <div key={index} className="glass-card rounded-xl p-4 hover:scale-105 transition-transform duration-300">
+                      <div className="flex items-center gap-2">
+                        <Award className="text-amber-400 flex-shrink-0" size={16} />
+                        <p className="text-slate-300 text-sm font-medium">{cert}</p>
                       </div>
                     </div>
                   ))}

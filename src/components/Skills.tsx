@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import { Code, Brain, Cloud, Sparkles } from 'lucide-react';
 
 const Skills = () => {
   const [ref, inView] = useInView({
@@ -11,40 +12,45 @@ const Skills = () => {
   const skillCategories = [
     {
       title: 'Full Stack Development',
+      icon: <Code className="w-6 h-6" />,
       skills: [
         { name: 'React.js', level: 90 },
         { name: 'Node.js', level: 85 },
         { name: 'Express.js', level: 85 },
         { name: 'MongoDB', level: 80 },
         { name: 'JavaScript', level: 95 },
-        { name: 'HTML/CSS', level: 95 },
+        { name: 'TypeScript', level: 88 },
         { name: 'REST APIs', level: 88 },
       ],
-      color: 'from-purple-500 to-pink-500',
+      gradient: 'from-emerald-500 to-cyan-500',
     },
     {
       title: 'AI & Machine Learning',
+      icon: <Brain className="w-6 h-6" />,
       skills: [
         { name: 'Python', level: 85 },
-        { name: 'scikit-learn', level: 75 },
-        { name: 'Pandas', level: 85 },
-        { name: 'NumPy', level: 80 },
-        { name: 'Matplotlib', level: 75 },
-        { name: 'Model Training', level: 70 },
-        { name: 'Statistics',level:70}
+        { name: 'TensorFlow', level: 75 },
+        { name: 'NLP', level: 80 },
+        { name: 'LangChain', level: 78 },
+        { name: 'OpenAI APIs', level: 85 },
+        { name: 'Model Training', level: 75 },
+        { name: 'Prompt Engineering', level: 88 }
       ],
-      color: 'from-blue-500 to-cyan-500',
+      gradient: 'from-cyan-500 to-blue-500',
     },
     {
-      title: 'Data Analytics',
+      title: 'Cloud & DevOps',
+      icon: <Cloud className="w-6 h-6" />,
       skills: [
-        { name: 'SQL', level: 88 },
-        { name: 'Excel', level: 90 },
-        { name: 'Data Cleaning', level: 85 },
-        { name: 'Data Visualization', level: 80 },
-        { name: 'Python Analytics', level: 82 },
+        { name: 'AWS', level: 80 },
+        { name: 'Azure', level: 75 },
+        { name: 'Google Cloud', level: 70 },
+        { name: 'Docker', level: 75 },
+        { name: 'Kubernetes', level: 70 },
+        { name: 'GitHub', level: 90 },
+        { name: 'CI/CD', level: 75 },
       ],
-      color: 'from-teal-500 to-green-500',
+      gradient: 'from-blue-500 to-purple-500',
     },
   ];
 
@@ -68,47 +74,55 @@ const Skills = () => {
   };
 
   return (
-    <section id="skills" className="py-20 bg-white/5">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="skills" className="py-20 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           ref={ref}
           variants={containerVariants}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
         >
-          <motion.h2
-            variants={itemVariants}
-            className="text-4xl font-bold text-center mb-16 bg-cyan-500 bg-clip-text text-transparent"
-          >
-            Skills & Expertise
-          </motion.h2>
+          <motion.div variants={itemVariants} className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-cyan-500/10 border border-cyan-500/20 rounded-full mb-4">
+              <Sparkles className="w-4 h-4 text-cyan-400" />
+              <span className="text-sm text-cyan-400 font-medium">Technical Expertise</span>
+            </div>
+            <h2 className="text-4xl font-bold text-gradient">
+              Skills & Proficiency
+            </h2>
+          </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {skillCategories.map((category, categoryIndex) => (
               <motion.div
                 key={category.title}
                 variants={itemVariants}
-                className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 border border-gray-700 hover:border-cyan-400/50 transition-all duration-300"
+                className="glass-card rounded-2xl p-8 group"
               >
-                <h3 className={`text-xl font-semibold mb-6 bg-cyan-500 bg-clip-text text-transparent`}>
-                  {category.title}
-                </h3>
+                <div className="flex items-center gap-3 mb-6">
+                  <div className={`p-3 rounded-xl bg-gradient-to-r ${category.gradient} bg-opacity-20`}>
+                    {category.icon}
+                  </div>
+                  <h3 className="text-xl font-bold text-slate-200">
+                    {category.title}
+                  </h3>
+                </div>
                 
-                <div className="space-y-4">
+                <div className="space-y-5">
                   {category.skills.map((skill, skillIndex) => (
                     <div key={skill.name} className="space-y-2">
                       <div className="flex justify-between items-center">
-                        <span className="text-gray-300 font-medium">{skill.name}</span>
-                        <span className="text-sm text-gray-400">{skill.level}%</span>
+                        <span className="text-slate-300 font-medium text-sm">{skill.name}</span>
+                        <span className="text-xs text-slate-400 font-mono">{skill.level}%</span>
                       </div>
                       
-                      <div className="w-full bg-gray-700 rounded-full h-2">
+                      <div className="relative w-full bg-slate-800/50 rounded-full h-2 overflow-hidden">
                         <motion.div
-                          className={`h-2 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500`}
+                          className={`absolute top-0 left-0 h-full rounded-full bg-gradient-to-r ${category.gradient} shadow-glow`}
                           initial={{ width: 0 }}
                           animate={inView ? { width: `${skill.level}%` } : { width: 0 }}
                           transition={{
-                            duration: 1,
+                            duration: 1.2,
                             delay: categoryIndex * 0.2 + skillIndex * 0.1,
                             ease: "easeOut",
                           }}
