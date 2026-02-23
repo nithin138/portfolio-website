@@ -126,21 +126,21 @@ const Hero = () => {
             {/* Expertise Cards */}
             <div className="grid grid-cols-3 gap-4 w-full max-w-md">
               <div className="glass-card-no-shadow p-4 rounded-xl flex flex-col items-center text-center space-y-2">
-                <div className="p-3 bg-gradient-to-b from-slate-600/95 via-slate-700/92 to-slate-900/95 rounded-lg">
+                <div className="p-3 bg-transperant rounded-lg">
                   <Code className="text-white" size={24} />
                 </div>
                 <span className="text-xs font-medium text-slate-300">Full-Stack</span>
               </div>
               
               <div className="glass-card-no-shadow p-4 rounded-xl flex flex-col items-center text-center space-y-2">
-                <div className="p-3 bg-gradient-to-b from-slate-600/95 via-slate-700/92 to-slate-900/95 rounded-lg">
+                <div className="p-3 bg-transperant rounded-lg">
                   <Brain className="text-white" size={24} />
                 </div>
                 <span className="text-xs font-medium text-slate-300">AI/ML</span>
               </div>
               
               <div className="glass-card-no-shadow p-4 rounded-xl flex flex-col items-center text-center space-y-2">
-                <div className="p-3 bg-gradient-to-b from-slate-600/95 via-slate-700/92 to-slate-900/95 rounded-lg">
+                <div className="p-3 bg-transperant rounded-lg">
                   <BarChart3 className="text-white" size={24} />
                 </div>
                 <span className="text-xs font-medium text-slate-300">Cloud</span>

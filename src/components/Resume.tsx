@@ -154,7 +154,7 @@ const Resume: React.FC = () => {
               {/* Education */}
               <div className="mb-8">
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="p-3 rounded-xl bg-gradient-to-r from-slate-500 to-gray-600">
+                  <div className="p-3 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-500">
                     <FileText size={24} />
                   </div>
                   <h3 className="text-2xl font-bold text-white">Education</h3>
