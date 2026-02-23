@@ -14,7 +14,7 @@ function App() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['hero', 'about', 'skills', 'languages-tools', 'projects', 'resume', 'contact'];
+      const sections = ['hero', 'skills', 'languages-tools', 'projects', 'resume', 'contact'];
       const current = sections.find(section => {
         const element = document.getElementById(section);
         if (element) {
@@ -32,10 +32,9 @@ function App() {
 
   return (
     <div className="bg-navy-500 text-slate-200 min-h-screen animated-gradient-bg">
-      <div className="mesh-gradient min-h-screen">
+      <div className="bg-gradient-to-b from-slate-800/98 via-slate-900/95 to-slate-950/98 min-h-screen">
         <Navbar activeSection={activeSection} />
         <Hero />
-        <About />
         <Skills />
         <LanguagesTools />
         <Projects />

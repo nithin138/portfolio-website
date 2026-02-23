@@ -96,11 +96,11 @@ const Resume: React.FC = () => {
           animate={inView ? 'visible' : 'hidden'}
         >
           <motion.div variants={itemVariants} className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-500/10 border border-blue-500/20 rounded-full mb-4">
-              <Sparkles className="w-4 h-4 text-blue-400" />
-              <span className="text-sm text-blue-400 font-medium">Professional Background</span>
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-orange-500/10 border border-orange-500/20 rounded-full mb-4">
+              <Sparkles className="w-4 h-4 text-orange-400" />
+              <span className="text-sm text-orange-400 font-medium">Professional Background</span>
             </div>
-            <h2 className="text-4xl font-bold text-gradient mb-4">
+            <h2 className="text-4xl font-bold text-white mb-4">
               Resume
             </h2>
           </motion.div>
@@ -131,17 +131,17 @@ const Resume: React.FC = () => {
             {/* Experience */}
             <motion.div variants={itemVariants}>
               <div className="flex items-center gap-3 mb-6">
-                <div className="p-3 rounded-xl bg-gradient-to-r from-emerald-500 to-cyan-500">
+                <div className="p-3 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500">
                   <Briefcase size={24} />
                 </div>
-                <h3 className="text-2xl font-bold text-slate-200">Experience</h3>
+                <h3 className="text-2xl font-bold text-white">Experience</h3>
               </div>
 
               <div className="space-y-6">
                 {experiences.map((exp, index) => (
                   <div key={index} className="glass-card rounded-2xl p-6">
                     <h4 className="text-lg font-bold text-gradient-static mb-1">{exp.title}</h4>
-                    <p className="text-cyan-400 font-semibold mb-2">{exp.company}</p>
+                    <p className="text-orange-400 font-semibold mb-2">{exp.company}</p>
                     <p className="text-sm text-slate-400 mb-3">{exp.duration}</p>
                     <p className="text-slate-300 leading-relaxed">{exp.description}</p>
                   </div>
@@ -154,20 +154,20 @@ const Resume: React.FC = () => {
               {/* Education */}
               <div className="mb-8">
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="p-3 rounded-xl bg-gradient-to-r from-blue-500 to-purple-500">
+                  <div className="p-3 rounded-xl bg-gradient-to-r from-slate-500 to-gray-600">
                     <FileText size={24} />
                   </div>
-                  <h3 className="text-2xl font-bold text-slate-200">Education</h3>
+                  <h3 className="text-2xl font-bold text-white">Education</h3>
                 </div>
 
                 <div className="space-y-4">
                   {education.map((edu, index) => (
                     <div key={index} className="glass-card rounded-2xl p-6">
                       <h4 className="text-lg font-bold text-gradient-static mb-1">{edu.degree}</h4>
-                      <p className="text-blue-400 font-semibold mb-2">{edu.institution}</p>
+                      <p className="text-orange-400 font-semibold mb-2">{edu.institution}</p>
                       <div className="flex justify-between items-center">
                         <p className="text-sm text-slate-400">{edu.year}</p>
-                        <p className="text-sm text-emerald-400 font-semibold">GPA: {edu.gpa}</p>
+                        <p className="text-sm text-orange-400 font-semibold">GPA: {edu.gpa}</p>
                       </div>
                     </div>
                   ))}
@@ -177,10 +177,10 @@ const Resume: React.FC = () => {
               {/* Certifications */}
               <div>
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="p-3 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500">
+                  <div className="p-3 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-500">
                     <Award size={24} />
                   </div>
-                  <h3 className="text-2xl font-bold text-slate-200">Certifications</h3>
+                  <h3 className="text-2xl font-bold text-white">Certifications</h3>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">

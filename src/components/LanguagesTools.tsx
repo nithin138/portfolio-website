@@ -23,37 +23,37 @@ const LanguagesTools = () => {
       title: 'Programming Languages',
       icon: <Code2 className="w-6 h-6" />,
       items: ['JavaScript', 'Python', 'Java',, 'R','TypeScript', 'HTML5', 'CSS3', 'SQL'],
-      gradient: 'from-purple-500 to-pink-500',
+      gradient: 'from-orange-500 to-amber-500',
     },
     {
       title: 'Frontend Technologies',
       icon: <Globe className="w-6 h-6" />,
       items: ['React.js', 'Next.js', 'Tailwind CSS', 'Framer Motion','Material-UI','Bootstrap'],
-      gradient: 'from-blue-500 to-cyan-500',
+      gradient: 'from-orange-500 to-amber-500',
     },
     {
       title: 'Backend & Databases',
       icon: <Database className="w-6 h-6" />,
       items: ['Node.js', 'Express.js', 'MySQL', 'MongoDB' ,'Fast APIs','REST APIs', 'PostgreSQL'],
-      gradient: 'from-emerald-500 to-teal-500',
+      gradient: 'from-orange-500 to-amber-500',
     },
     {
       title: 'AI/ML & NLP',
       icon: <Zap className="w-6 h-6" />,
       items: ['TensorFlow', 'Hugging Face','LangChain', 'RAG Systems','OpenAI', 'Vector DBs'],
-      gradient: 'from-orange-500 to-red-500',
+      gradient: 'from-orange-500 to-amber-500',
     },
     {
       title: 'Development Tools',
       icon: <Terminal className="w-6 h-6" />,
       items: ['VS Code', 'Git', 'GitHub', 'Postman', 'Docker', 'npm/yarn', 'R Studio'],
-      gradient: 'from-indigo-500 to-purple-500',
+      gradient: 'from-orange-500 to-amber-500',
     },
     {
       title: 'Cloud & Deployment',
       icon: <Cloud className="w-6 h-6" />,
       items: ['AWS', 'Netlify', 'Vercel', 'Heroku', 'Firebase', 'MongoDB Atlas'],
-      gradient: 'from-cyan-500 to-blue-500',
+      gradient: 'from-orange-500 to-amber-500',
     },
   ];
 
@@ -103,11 +103,11 @@ const LanguagesTools = () => {
           animate={inView ? "visible" : "hidden"}
         >
           <motion.div variants={itemVariants} className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-purple-500/10 border border-purple-500/20 rounded-full mb-4">
-              <Sparkles className="w-4 h-4 text-purple-400" />
-              <span className="text-sm text-purple-400 font-medium">Tech Stack</span>
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-orange-500/10 border border-orange-500/20 rounded-full mb-4">
+              <Sparkles className="w-4 h-4 text-orange-400" />
+              <span className="text-sm text-orange-400 font-medium">Tech Stack</span>
             </div>
-            <h2 className="text-4xl font-bold text-gradient">
+            <h2 className="text-4xl font-bold text-white">
               Languages & Tools
             </h2>
           </motion.div>
@@ -124,7 +124,7 @@ const LanguagesTools = () => {
                   <div className={`p-3 rounded-xl bg-gradient-to-r ${category.gradient} mr-3 group-hover:scale-110 transition-transform duration-300`}>
                     {category.icon}
                   </div>
-                  <h3 className="text-lg font-bold text-slate-200">
+                  <h3 className="text-lg font-bold text-white">
                     {category.title}
                   </h3>
                 </div>
@@ -149,10 +149,10 @@ const LanguagesTools = () => {
             className="glass-card rounded-2xl p-8"
           >
             <div className="flex items-center justify-center mb-8">
-              <div className="p-3 rounded-xl bg-gradient-to-r from-emerald-500 to-cyan-500 mr-3">
+              <div className="p-3 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 mr-3">
                 <Settings className="w-6 h-6" />
               </div>
-              <h3 className="text-2xl font-bold text-slate-200">Development Practices</h3>
+              <h3 className="text-2xl font-bold text-white">Development Practices</h3>
             </div>
             
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
@@ -160,9 +160,9 @@ const LanguagesTools = () => {
                 <motion.div
                   key={practice}
                   variants={itemVariants}
-                  className="flex items-center justify-center p-3 bg-gradient-to-r from-emerald-500/10 to-cyan-500/10 rounded-lg border border-emerald-500/20 hover:border-emerald-500/40 hover:scale-105 transition-all duration-300 group"
+                  className="flex items-center justify-center p-3 bg-slate-900/90 rounded-lg border border-orange-500/20 hover:border-orange-500/40 hover:scale-105 transition-all duration-300 group"
                 >
-                  <span className="text-xs font-medium text-slate-300 group-hover:text-emerald-300 transition-colors duration-300 text-center">
+                  <span className="text-xs font-medium text-slate-300 group-hover:text-orange-300 transition-colors duration-300 text-center">
                     {practice}
                   </span>
                 </motion.div>

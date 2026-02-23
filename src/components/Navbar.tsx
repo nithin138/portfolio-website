@@ -19,7 +19,6 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
 
   const navItems = [
     { href: 'hero', label: 'Home' },
-    { href: 'about', label: 'About' },
     { href: 'skills', label: 'Skills' },
     { href: 'languages-tools', label: 'Tools' },
     { href: 'projects', label: 'Projects' },
@@ -37,12 +36,12 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
 
   return (
     <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-      scrolled ? 'glass-effect shadow-lg' : 'bg-transparent'
+      scrolled ? 'glass-effect' : 'bg-transparent'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex-shrink-0">
-            <span className="text-xl font-bold text-gradient cursor-pointer" onClick={() => scrollToSection('hero')}>
+            <span className="text-xl font-bold text-white cursor-pointer" onClick={() => scrollToSection('hero')}>
               Nithin Sudheer
             </span>
           </div>
@@ -61,11 +60,11 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
                   }`}
                 >
                   {activeSection === item.href && (
-                    <span className="absolute inset-0 bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-lg opacity-20"></span>
+                    <span className="absolute inset-0 bg-gradient-to-r from-orange-500 to-amber-500 rounded-lg opacity-20"></span>
                   )}
                   <span className="relative">{item.label}</span>
                   {activeSection === item.href && (
-                    <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1/2 h-0.5 bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-full"></span>
+                    <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1/2 h-0.5 bg-gradient-to-r from-orange-500 to-amber-500 rounded-full"></span>
                   )}
                 </button>
               ))}
@@ -78,7 +77,7 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
               href="https://github.com/nithin138"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 text-slate-300 hover:text-emerald-400 transition-all duration-300 hover:scale-110 rounded-lg hover:bg-emerald-500/10"
+              className="p-2 text-slate-300 hover:text-orange-400 transition-all duration-300 hover:scale-110 rounded-lg hover:bg-orange-500/10"
             >
               <Github size={20} />
             </a>
@@ -86,7 +85,7 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
               href="https://www.linkedin.com/in/nithin138/"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 text-slate-300 hover:text-cyan-400 transition-all duration-300 hover:scale-110 rounded-lg hover:bg-cyan-500/10"
+              className="p-2 text-slate-300 hover:text-orange-400 transition-all duration-300 hover:scale-110 rounded-lg hover:bg-orange-500/10"
             >
               <Linkedin size={20} />
             </a>
@@ -96,7 +95,7 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
           <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-lg text-slate-300 hover:text-white hover:bg-emerald-500/10 transition-all duration-300"
+              className="inline-flex items-center justify-center p-2 rounded-lg text-slate-300 hover:text-white hover:bg-orange-500/10 transition-all duration-300"
             >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -114,7 +113,7 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
                 onClick={() => scrollToSection(item.href)}
                 className={`block px-4 py-3 rounded-lg text-base font-medium w-full text-left transition-all duration-300 ${
                   activeSection === item.href
-                    ? 'bg-gradient-to-r from-emerald-500/20 to-cyan-500/20 text-white border border-emerald-500/30'
+                    ? 'bg-gradient-to-r from-orange-500/20 to-amber-500/20 text-white border border-orange-500/30'
                     : 'text-slate-300 hover:bg-white/5 hover:text-white'
                 }`}
               >
@@ -126,7 +125,7 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
                 href="https://github.com/nithin138"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 text-slate-300 hover:text-emerald-400 transition-all duration-300 rounded-lg hover:bg-emerald-500/10"
+                className="p-2 text-slate-300 hover:text-orange-400 transition-all duration-300 rounded-lg hover:bg-orange-500/10"
               >
                 <Github size={20} />
               </a>
@@ -134,7 +133,7 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
                 href="https://www.linkedin.com/in/nithin138/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 text-slate-300 hover:text-cyan-400 transition-all duration-300 rounded-lg hover:bg-cyan-500/10"
+                className="p-2 text-slate-300 hover:text-orange-400 transition-all duration-300 rounded-lg hover:bg-orange-500/10"
               >
                 <Linkedin size={20} />
               </a>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Code, Brain, Cloud, Sparkles } from 'lucide-react';
+import { Code, Brain, Cloud, Sparkles, Users, Lightbulb, Target, Zap } from 'lucide-react';
 
 const Skills = () => {
   const [ref, inView] = useInView({
@@ -11,46 +11,40 @@ const Skills = () => {
 
   const skillCategories = [
     {
-      title: 'Full Stack Development',
+      title: 'Full-Stack Development',
       icon: <Code className="w-6 h-6" />,
-      skills: [
-        { name: 'React.js', level: 90 },
-        { name: 'Node.js', level: 85 },
-        { name: 'Express.js', level: 85 },
-        { name: 'MongoDB', level: 80 },
-        { name: 'JavaScript', level: 95 },
-        { name: 'TypeScript', level: 88 },
-        { name: 'REST APIs', level: 88 },
-      ],
-      gradient: 'from-emerald-500 to-cyan-500',
+      skills: ['MERN Stack Architecture', 'RESTful API Design', 'Database Design', 'Responsive Web Design', 'Server-Side Rendering'],
+      gradient: 'from-orange-500 to-amber-500',
     },
     {
       title: 'AI & Machine Learning',
       icon: <Brain className="w-6 h-6" />,
-      skills: [
-        { name: 'Python', level: 85 },
-        { name: 'TensorFlow', level: 75 },
-        { name: 'NLP', level: 80 },
-        { name: 'LangChain', level: 78 },
-        { name: 'OpenAI APIs', level: 85 },
-        { name: 'Model Training', level: 75 },
-        { name: 'Prompt Engineering', level: 88 }
-      ],
-      gradient: 'from-cyan-500 to-blue-500',
+      skills: ['Natural Language Processing', 'Generative AI Applications', 'RAG Systems', 'Prompt Engineering', 'Model Integration'],
+      gradient: 'from-orange-500 to-amber-500',
     },
     {
       title: 'Cloud & DevOps',
       icon: <Cloud className="w-6 h-6" />,
-      skills: [
-        { name: 'AWS', level: 80 },
-        { name: 'Azure', level: 75 },
-        { name: 'Google Cloud', level: 70 },
-        { name: 'Docker', level: 75 },
-        { name: 'Kubernetes', level: 70 },
-        { name: 'GitHub', level: 90 },
-        { name: 'CI/CD', level: 75 },
-      ],
-      gradient: 'from-blue-500 to-purple-500',
+      skills: ['Cloud Architecture', 'Containerization', 'CI/CD Pipelines', 'Infrastructure as Code', 'Microservices'],
+      gradient: 'from-orange-500 to-amber-500',
+    },
+    {
+      title: 'Problem Solving',
+      icon: <Lightbulb className="w-6 h-6" />,
+      skills: ['Algorithm Design', 'System Architecture', 'Performance Optimization', 'Debugging & Testing', 'Code Review'],
+      gradient: 'from-orange-500 to-amber-500',
+    },
+    {
+      title: 'Project Management',
+      icon: <Target className="w-6 h-6" />,
+      skills: ['Agile Development', 'Scrum Methodology', 'Version Control', 'Documentation', 'Team Collaboration'],
+      gradient: 'from-orange-500 to-amber-500',
+    },
+    {
+      title: 'Innovation & Learning',
+      icon: <Zap className="w-6 h-6" />,
+      skills: ['Rapid Prototyping', 'Technology Research', 'Continuous Learning', 'Best Practices', 'Industry Trends'],
+      gradient: 'from-orange-500 to-amber-500',
     },
   ];
 
@@ -60,7 +54,7 @@ const Skills = () => {
       opacity: 1,
       transition: {
         delayChildren: 0.3,
-        staggerChildren: 0.2,
+        staggerChildren: 0.1,
       },
     },
   };
@@ -83,52 +77,49 @@ const Skills = () => {
           animate={inView ? "visible" : "hidden"}
         >
           <motion.div variants={itemVariants} className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-cyan-500/10 border border-cyan-500/20 rounded-full mb-4">
-              <Sparkles className="w-4 h-4 text-cyan-400" />
-              <span className="text-sm text-cyan-400 font-medium">Technical Expertise</span>
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-orange-500/10 border border-orange-500/20 rounded-full mb-4">
+              <Sparkles className="w-4 h-4 text-orange-400" />
+              <span className="text-sm text-orange-400 font-medium">Core Competencies</span>
             </div>
-            <h2 className="text-4xl font-bold text-gradient">
-              Skills & Proficiency
+            <h2 className="text-4xl font-bold text-white">
+              Skills & Expertise
             </h2>
+            <p className="text-slate-400 text-lg mt-4 max-w-2xl mx-auto">
+              Core competencies and methodologies that drive successful project delivery
+            </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {skillCategories.map((category, categoryIndex) => (
               <motion.div
                 key={category.title}
                 variants={itemVariants}
-                className="glass-card rounded-2xl p-8 group"
+                className="glass-card rounded-2xl p-6 group hover:scale-105 transition-all duration-300"
               >
                 <div className="flex items-center gap-3 mb-6">
-                  <div className={`p-3 rounded-xl bg-gradient-to-r ${category.gradient} bg-opacity-20`}>
+                  <div className={`p-3 rounded-xl bg-gradient-to-r ${category.gradient} group-hover:scale-110 transition-transform duration-300`}>
                     {category.icon}
                   </div>
-                  <h3 className="text-xl font-bold text-slate-200">
+                  <h3 className="text-lg font-bold text-white">
                     {category.title}
                   </h3>
                 </div>
                 
-                <div className="space-y-5">
+                <div className="space-y-2">
                   {category.skills.map((skill, skillIndex) => (
-                    <div key={skill.name} className="space-y-2">
-                      <div className="flex justify-between items-center">
-                        <span className="text-slate-300 font-medium text-sm">{skill.name}</span>
-                        <span className="text-xs text-slate-400 font-mono">{skill.level}%</span>
-                      </div>
-                      
-                      <div className="relative w-full bg-slate-800/50 rounded-full h-2 overflow-hidden">
-                        <motion.div
-                          className={`absolute top-0 left-0 h-full rounded-full bg-gradient-to-r ${category.gradient} shadow-glow`}
-                          initial={{ width: 0 }}
-                          animate={inView ? { width: `${skill.level}%` } : { width: 0 }}
-                          transition={{
-                            duration: 1.2,
-                            delay: categoryIndex * 0.2 + skillIndex * 0.1,
-                            ease: "easeOut",
-                          }}
-                        />
-                      </div>
-                    </div>
+                    <motion.div
+                      key={skill}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
+                      transition={{
+                        duration: 0.3,
+                        delay: categoryIndex * 0.1 + skillIndex * 0.05,
+                      }}
+                      className="flex items-center gap-2 text-sm text-slate-300"
+                    >
+                      <div className="w-1.5 h-1.5 rounded-full bg-orange-400"></div>
+                      <span>{skill}</span>
+                    </motion.div>
                   ))}
                 </div>
               </motion.div>

@@ -71,21 +71,21 @@ const Contact = () => {
       title: 'Email',
       value: 'nnsudheer138@gmail.com',
       href: 'mailto:nnsudheer138@gmail.com',
-      gradient: 'from-emerald-500 to-cyan-500',
+      gradient: 'from-orange-500 to-amber-500',
     },
     {
       icon: <Phone size={24} />,
       title: 'Phone',
       value: '+91 9441670138',
       href: 'tel:+919441670138',
-      gradient: 'from-cyan-500 to-blue-500',
+      gradient: 'from-orange-500 to-amber-500',
     },
     {
       icon: <MapPin size={24} />,
       title: 'Location',
       value: 'Hyderabad, India',
       href: null,
-      gradient: 'from-blue-500 to-purple-500',
+      gradient: 'from-orange-500 to-amber-500',
     },
   ];
 
@@ -118,11 +118,11 @@ const Contact = () => {
           animate={inView ? "visible" : "hidden"}
         >
           <motion.div variants={itemVariants} className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-500/10 border border-emerald-500/20 rounded-full mb-4">
-              <Sparkles className="w-4 h-4 text-emerald-400" />
-              <span className="text-sm text-emerald-400 font-medium">Let's Talk</span>
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-orange-500/10 border border-orange-500/20 rounded-full mb-4">
+              <Sparkles className="w-4 h-4 text-orange-400" />
+              <span className="text-sm text-orange-400 font-medium">Let's Talk</span>
             </div>
-            <h2 className="text-4xl font-bold text-gradient mb-4">
+            <h2 className="text-4xl font-bold text-white mb-4">
               Get In Touch
             </h2>
             <p className="text-slate-400 text-lg max-w-2xl mx-auto">
@@ -133,7 +133,7 @@ const Contact = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Information */}
             <motion.div variants={itemVariants}>
-              <h3 className="text-2xl font-bold mb-6 text-slate-200">Let's Connect</h3>
+              <h3 className="text-2xl font-bold text-white mb-6">Let's Connect</h3>
               <p className="text-slate-300 mb-8 leading-relaxed">
                 I'm always open to discussing new opportunities, interesting projects, 
                 or just having a chat about technology. Feel free to reach out!
@@ -151,7 +151,7 @@ const Contact = () => {
                         {info.href ? (
                           <a
                             href={info.href}
-                            className="text-slate-400 hover:text-emerald-400 transition-colors duration-300"
+                            className="text-slate-400 hover:text-orange-400 transition-colors duration-300"
                           >
                             {info.value}
                           </a>
@@ -179,7 +179,7 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 glass-card rounded-xl text-slate-200 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-all duration-300"
+                    className="w-full px-4 py-3 glass-card rounded-xl text-slate-200 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-orange-500 transition-all duration-300"
                     placeholder="Your Name"
                   />
                 </div>
@@ -195,7 +195,7 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 glass-card rounded-xl text-slate-200 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-all duration-300"
+                    className="w-full px-4 py-3 glass-card rounded-xl text-slate-200 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-orange-500 transition-all duration-300"
                     placeholder="your.email@example.com"
                   />
                 </div>
@@ -211,7 +211,7 @@ const Contact = () => {
                     onChange={handleChange}
                     required
                     rows={6}
-                    className="w-full px-4 py-3 glass-card rounded-xl text-slate-200 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-all duration-300 resize-none"
+                    className="w-full px-4 py-3 glass-card rounded-xl text-slate-200 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-orange-500 transition-all duration-300 resize-none"
                     placeholder="Your message..."
                   />
                 </div>
@@ -246,7 +246,7 @@ const Contact = () => {
 
                 {/* Success Message */}
                 {isSubmitted && (
-                  <div className="flex items-center gap-2 p-4 bg-emerald-500/10 border border-emerald-500/30 rounded-xl text-emerald-400">
+                  <div className="flex items-center gap-2 p-4 bg-orange-500/10 border border-orange-500/30 rounded-xl text-orange-400">
                     <CheckCircle size={20} />
                     <span className="text-sm">Thank you! Your message has been sent successfully.</span>
                   </div>

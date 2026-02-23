@@ -14,19 +14,19 @@ const GenreFilter: React.FC<GenreFilterProps> = ({ activeGenre, onGenreChange, p
       key: 'All',
       label: 'All Projects',
       icon: <Grid3X3 className="w-4 h-4" />,
-      gradient: 'from-slate-500 to-slate-600',
+      gradient: 'from-orange-500 to-amber-500',
     },
     {
       key: 'AI',
       label: 'Artificial Intelligence',
       icon: <Brain className="w-4 h-4" />,
-      gradient: 'from-purple-500 to-pink-500',
+      gradient: 'from-orange-500 to-amber-500',
     },
     {
       key: 'Dev',
       label: 'Development',
       icon: <Code className="w-4 h-4" />,
-      gradient: 'from-blue-500 to-indigo-500',
+      gradient: 'from-orange-500 to-amber-500',
     },
   ];
 
@@ -42,7 +42,7 @@ const GenreFilter: React.FC<GenreFilterProps> = ({ activeGenre, onGenreChange, p
             onClick={() => onGenreChange(genre.key)}
             className={`group relative flex items-center gap-3 px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${
               isActive
-                ? `bg-gradient-to-r ${genre.gradient} text-white shadow-glow transform scale-105`
+                ? `bg-gradient-to-r ${genre.gradient} text-white transform scale-105`
                 : 'glass-card text-slate-300 hover:text-white hover:scale-105'
             }`}
           >
