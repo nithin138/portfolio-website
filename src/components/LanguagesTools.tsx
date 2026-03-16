@@ -129,7 +129,7 @@ const practices: Practice[] = [
   { name: 'Performance Optimization',  icon: <Gauge className="w-5 h-5" />,          color: '#FBBF24' },
   { name: 'Security Best Practices',   icon: <ShieldCheck className="w-5 h-5" />,    color: '#34D399' },
   { name: 'Microservices',             icon: <SiKubernetes />,     color: '#326CE5' },
-  { name: 'Prompt Engineering',        icon: <SiOpenai />,         color: '#ffffff' },
+  { name: 'Prompt Engineering',        icon: <SiOpenai />,         color: '#000000' },
   { name: 'Server Side Rendering',     icon: <RefreshCw className="w-5 h-5" />,      color: '#FB923C' },
   { name: 'Unit & Integration Testing',icon: <TestTube2 className="w-5 h-5" />,      color: '#F472B6' },
 ];
