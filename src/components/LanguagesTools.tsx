@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Sparkles, Settings } from 'lucide-react';
 import {
-  SiJavascript, SiPython, SiTypescript, SiHtml5, SiCss, SiMysql,
+  SiJavascript, SiPython, SiTypescript, SiHtml5, SiMysql,
   SiReact, SiNextdotjs, SiTailwindcss, SiFramer, SiMui, SiBootstrap,
   SiNodedotjs, SiExpress, SiMongodb, SiPostgresql,
   SiTensorflow, SiHuggingface, SiLangchain, SiOpenai,
@@ -12,7 +12,7 @@ import {
   SiJest, SiCypress, SiEslint, SiPrettier, SiJira, SiGithubactions,
   SiCircleci, SiKubernetes, SiTerraform, SiScrumalliance,
 } from 'react-icons/si';
-import { FaJava, FaRProject } from 'react-icons/fa';
+import { FaJava, FaRProject,FaCss3Alt } from 'react-icons/fa';
 import {
   Code2, Database, Globe, Cloud as CloudIcon, Terminal, Zap,
   GitBranch, ShieldCheck, Gauge, Layers, RefreshCw, TestTube2,
@@ -43,7 +43,7 @@ const categories: Category[] = [
       { name: 'Java',       icon: <FaJava />,        color: '#ED8B00' },
       { name: 'TypeScript', icon: <SiTypescript />,  color: '#3178C6' },
       { name: 'HTML5',      icon: <SiHtml5 />,       color: '#E34F26' },
-      { name: 'CSS3',       icon: <SiCss />,         color: '#1572B6' },
+      { name: 'CSS3',       icon: <FaCss3Alt />,         color: '#1572B6' },
       { name: 'SQL',        icon: <SiMysql />,       color: '#4479A1' },
       { name: 'R',          icon: <FaRProject />,    color: '#276DC3' },
     ],
