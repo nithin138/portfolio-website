@@ -122,10 +122,10 @@ const Contact = () => {
               <Sparkles className="w-4 h-4 text-orange-400" />
               <span className="text-sm text-orange-400 font-medium">Let's Talk</span>
             </div>
-            <h2 className="text-4xl font-bold text-white mb-4">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
               Get In Touch
             </h2>
-            <p className="text-slate-400 text-lg max-w-2xl mx-auto">
+            <p className="text-gray-500 text-lg max-w-2xl mx-auto">
               Have a project in mind or just want to chat? I'd love to hear from you!
             </p>
           </motion.div>
@@ -133,8 +133,8 @@ const Contact = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Information */}
             <motion.div variants={itemVariants}>
-              <h3 className="text-2xl font-bold text-white mb-6">Let's Connect</h3>
-              <p className="text-slate-300 mb-8 leading-relaxed">
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">Let's Connect</h3>
+              <p className="text-gray-500 mb-8 leading-relaxed">
                 I'm always open to discussing new opportunities, interesting projects, 
                 or just having a chat about technology. Feel free to reach out!
               </p>
@@ -147,16 +147,13 @@ const Contact = () => {
                         {info.icon}
                       </div>
                       <div>
-                        <h4 className="text-slate-200 font-semibold mb-1">{info.title}</h4>
+                        <h4 className="text-gray-800 font-semibold mb-1">{info.title}</h4>
                         {info.href ? (
-                          <a
-                            href={info.href}
-                            className="text-slate-400 hover:text-orange-400 transition-colors duration-300"
-                          >
+                          <a href={info.href} className="text-gray-500 hover:text-orange-500 transition-colors duration-300">
                             {info.value}
                           </a>
                         ) : (
-                          <p className="text-slate-400">{info.value}</p>
+                          <p className="text-gray-500">{info.value}</p>
                         )}
                       </div>
                     </div>
@@ -169,7 +166,7 @@ const Contact = () => {
             <motion.div variants={itemVariants}>
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-semibold text-slate-300 mb-2">
+                  <label htmlFor="name" className="block text-sm font-semibold text-gray-700 mb-2">
                     Name
                   </label>
                   <input
@@ -179,13 +176,13 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 glass-card rounded-xl text-slate-200 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-orange-500 transition-all duration-300"
+                    className="w-full px-4 py-3 glass-card rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500 transition-all duration-300"
                     placeholder="Your Name"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="email" className="block text-sm font-semibold text-slate-300 mb-2">
+                  <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-2">
                     Email
                   </label>
                   <input
@@ -195,13 +192,13 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 glass-card rounded-xl text-slate-200 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-orange-500 transition-all duration-300"
+                    className="w-full px-4 py-3 glass-card rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500 transition-all duration-300"
                     placeholder="your.email@example.com"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-semibold text-slate-300 mb-2">
+                  <label htmlFor="message" className="block text-sm font-semibold text-gray-700 mb-2">
                     Message
                   </label>
                   <textarea
@@ -211,7 +208,7 @@ const Contact = () => {
                     onChange={handleChange}
                     required
                     rows={6}
-                    className="w-full px-4 py-3 glass-card rounded-xl text-slate-200 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-orange-500 transition-all duration-300 resize-none"
+                    className="w-full px-4 py-3 glass-card rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500 transition-all duration-300 resize-none"
                     placeholder="Your message..."
                   />
                 </div>

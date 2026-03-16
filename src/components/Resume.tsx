@@ -100,7 +100,7 @@ const Resume: React.FC = () => {
               <Sparkles className="w-4 h-4 text-orange-400" />
               <span className="text-sm text-orange-400 font-medium">Professional Background</span>
             </div>
-            <h2 className="text-4xl font-bold text-white mb-4">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
               Resume
             </h2>
           </motion.div>
@@ -134,7 +134,7 @@ const Resume: React.FC = () => {
                 <div className="p-3 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500">
                   <Briefcase size={24} />
                 </div>
-                <h3 className="text-2xl font-bold text-white">Experience</h3>
+                <h3 className="text-2xl font-bold text-gray-900">Experience</h3>
               </div>
 
               <div className="space-y-6">
@@ -142,8 +142,8 @@ const Resume: React.FC = () => {
                   <div key={index} className="glass-card rounded-2xl p-6">
                     <h4 className="text-lg font-bold text-gradient-static mb-1">{exp.title}</h4>
                     <p className="text-orange-400 font-semibold mb-2">{exp.company}</p>
-                    <p className="text-sm text-slate-400 mb-3">{exp.duration}</p>
-                    <p className="text-slate-300 leading-relaxed">{exp.description}</p>
+                    <p className="text-sm text-gray-500">{exp.duration}</p>
+                    <p className="text-gray-600 leading-relaxed">{exp.description}</p>
                   </div>
                 ))}
               </div>
@@ -157,7 +157,7 @@ const Resume: React.FC = () => {
                   <div className="p-3 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-500">
                     <FileText size={24} />
                   </div>
-                  <h3 className="text-2xl font-bold text-white">Education</h3>
+                  <h3 className="text-2xl font-bold text-gray-900">Education</h3>
                 </div>
 
                 <div className="space-y-4">
@@ -166,7 +166,7 @@ const Resume: React.FC = () => {
                       <h4 className="text-lg font-bold text-gradient-static mb-1">{edu.degree}</h4>
                       <p className="text-orange-400 font-semibold mb-2">{edu.institution}</p>
                       <div className="flex justify-between items-center">
-                        <p className="text-sm text-slate-400">{edu.year}</p>
+                        <p className="text-sm text-gray-500">{edu.year}</p>
                         <p className="text-sm text-orange-400 font-semibold">GPA: {edu.gpa}</p>
                       </div>
                     </div>
@@ -180,7 +180,7 @@ const Resume: React.FC = () => {
                   <div className="p-3 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-500">
                     <Award size={24} />
                   </div>
-                  <h3 className="text-2xl font-bold text-white">Certifications</h3>
+                  <h3 className="text-2xl font-bold text-gray-900">Certifications</h3>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -188,7 +188,7 @@ const Resume: React.FC = () => {
                     <div key={index} className="glass-card rounded-xl p-4 hover:scale-105 transition-transform duration-300">
                       <div className="flex items-center gap-2">
                         <Award className="text-amber-400 flex-shrink-0" size={16} />
-                        <p className="text-slate-300 text-sm font-medium">{cert}</p>
+                        <p className="text-gray-600 text-sm font-medium">{cert}</p>
                       </div>
                     </div>
                   ))}

@@ -31,8 +31,8 @@ const Footer = () => {
         <div className="flex flex-col items-center space-y-8">
           {/* Logo/Name */}
           <div className="text-center">
-            <h3 className="text-2xl font-bold text-white mb-2">Nithin Sudheer</h3>
-            <p className="text-slate-400 text-sm">Full-Stack AI Developer | AI/ML Expert | Cloud Enthusiast</p>
+            <h3 className="text-2xl font-bold text-gray-900 mb-2">Nithin Sudheer</h3>
+            <p className="text-gray-500 text-sm">Full-Stack AI Developer | AI/ML Expert | Cloud Enthusiast</p>
           </div>
 
           {/* Social Links */}
@@ -46,7 +46,7 @@ const Footer = () => {
                 className={`group p-4 glass-card rounded-xl transition-all duration-300 hover:scale-110`}
                 aria-label={link.label}
               >
-                <div className={`text-slate-300 group-hover:text-white transition-colors duration-300`}>
+                <div className={`text-gray-500 group-hover:text-gray-900 transition-colors duration-300`}>
                   {link.icon}
                 </div>
               </a>
@@ -54,10 +54,10 @@ const Footer = () => {
           </div>
 
           {/* Divider */}
-          <div className="w-full max-w-md h-px bg-gradient-to-r from-transparent via-slate-700 to-transparent"></div>
+          <div className="w-full max-w-md h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent"></div>
 
           {/* Built with Badge */}
-          <div className="flex items-center gap-2 text-slate-400 text-sm">
+          <div className="flex items-center gap-2 text-gray-500 text-sm">
             <span>Built with</span>
             <Heart size={16} className="text-red-400 animate-pulse" />
             <span>using</span>
@@ -73,13 +73,13 @@ const Footer = () => {
           </div>
 
           {/* Copyright */}
-          <div className="text-center text-slate-500 text-sm">
+          <div className="text-center text-gray-400 text-sm">
             <p>&copy; {currentYear} Nithin Sudheer. All rights reserved.</p>
           </div>
 
           {/* Quote */}
           <div className="text-center max-w-2xl">
-            <p className="text-slate-500 italic text-sm">
+            <p className="text-gray-400 italic text-sm">
               "Code is like humor. When you have to explain it, it's bad." - Cory House
             </p>
           </div>

@@ -36,12 +36,12 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
 
   return (
     <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-      scrolled ? 'glass-effect' : 'bg-transparent'
+      scrolled ? 'glass-effect shadow-sm' : 'bg-transparent'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex-shrink-0">
-            <span className="text-xl font-bold text-white cursor-pointer" onClick={() => scrollToSection('hero')}>
+            <span className="text-xl font-bold text-gray-900 cursor-pointer" onClick={() => scrollToSection('hero')}>
               Nithin Sudheer
             </span>
           </div>
@@ -55,8 +55,8 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
                   onClick={() => scrollToSection(item.href)}
                   className={`relative px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
                     activeSection === item.href
-                      ? 'text-white'
-                      : 'text-slate-300 hover:text-white'
+                      ? 'text-gray-900'
+                      : 'text-gray-600 hover:text-gray-900'
                   }`}
                 >
                   {activeSection === item.href && (
@@ -77,7 +77,7 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
               href="https://github.com/nithin138"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 text-slate-300 hover:text-orange-400 transition-all duration-300 hover:scale-110 rounded-lg hover:bg-orange-500/10"
+              className="p-2 text-gray-600 hover:text-orange-500 transition-all duration-300 hover:scale-110 rounded-lg hover:bg-orange-500/10"
             >
               <Github size={20} />
             </a>
@@ -85,7 +85,7 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
               href="https://www.linkedin.com/in/nithin138/"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 text-slate-300 hover:text-orange-400 transition-all duration-300 hover:scale-110 rounded-lg hover:bg-orange-500/10"
+              className="p-2 text-gray-600 hover:text-orange-500 transition-all duration-300 hover:scale-110 rounded-lg hover:bg-orange-500/10"
             >
               <Linkedin size={20} />
             </a>
@@ -95,7 +95,7 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
           <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-lg text-slate-300 hover:text-white hover:bg-orange-500/10 transition-all duration-300"
+              className="inline-flex items-center justify-center p-2 rounded-lg text-gray-600 hover:text-gray-900 hover:bg-orange-500/10 transition-all duration-300"
             >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -105,7 +105,7 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
 
       {/* Mobile Navigation */}
       {isOpen && (
-        <div className="md:hidden glass-effect border-t border-white/10">
+        <div className="md:hidden glass-effect border-t border-white/30">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             {navItems.map((item) => (
               <button
@@ -113,8 +113,8 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
                 onClick={() => scrollToSection(item.href)}
                 className={`block px-4 py-3 rounded-lg text-base font-medium w-full text-left transition-all duration-300 ${
                   activeSection === item.href
-                    ? 'bg-gradient-to-r from-orange-500/20 to-amber-500/20 text-white border border-orange-500/30'
-                    : 'text-slate-300 hover:bg-white/5 hover:text-white'
+                    ? 'bg-orange-500/10 text-gray-900 border border-orange-500/30'
+                    : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'
                 }`}
               >
                 {item.label}
@@ -125,7 +125,7 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
                 href="https://github.com/nithin138"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 text-slate-300 hover:text-orange-400 transition-all duration-300 rounded-lg hover:bg-orange-500/10"
+                className="p-2 text-gray-600 hover:text-orange-500 transition-all duration-300 rounded-lg hover:bg-orange-500/10"
               >
                 <Github size={20} />
               </a>
@@ -133,7 +133,7 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
                 href="https://www.linkedin.com/in/nithin138/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 text-slate-300 hover:text-orange-400 transition-all duration-300 rounded-lg hover:bg-orange-500/10"
+                className="p-2 text-gray-600 hover:text-orange-500 transition-all duration-300 rounded-lg hover:bg-orange-500/10"
               >
                 <Linkedin size={20} />
               </a>
