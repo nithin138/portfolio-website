@@ -1,88 +1,152 @@
 import React from 'react';
-import { Github, Linkedin, Mail, Heart, Code, Sparkles } from 'lucide-react';
+import { Github, Linkedin, Mail, ArrowUpRight } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
-  const socialLinks = [
+  const navCol1 = [
+    { href: 'hero', label: 'Home' },
+    { href: 'skills', label: 'Skills' },
+    { href: 'languages-tools', label: 'Tools' },
+  ];
+
+  const navCol2 = [
+    { href: 'projects', label: 'Projects' },
+    { href: 'resume', label: 'Resume' },
+    { href: 'contact', label: 'Contact' },
+  ];
+
+  const contactItems = [
     {
-      icon: <Github size={20} />,
-      href: 'https://github.com/nithin138',
-      label: 'GitHub',
-      gradient: 'from-slate-600 to-gray-700',
-    },
-    {
-      icon: <Linkedin size={20} />,
-      href: 'https://www.linkedin.com/in/nithin138/',
-      label: 'LinkedIn',
-      gradient: 'from-orange-500 to-amber-500',
-    },
-    {
-      icon: <Mail size={20} />,
-      href: 'mailto:nnsudheer138@gmail.com',
+      icon: <Mail size={15} />,
       label: 'Email',
-      gradient: 'from-slate-500 to-gray-600',
+      value: 'nnsudheer138@gmail.com',
+      href: 'mailto:nnsudheer138@gmail.com',
+    },
+    {
+      icon: <Github size={15} />,
+      label: 'GitHub',
+      value: 'github.com/nithin138',
+      href: 'https://github.com/nithin138',
+    },
+    {
+      icon: <Linkedin size={15} />,
+      label: 'LinkedIn',
+      value: 'linkedin.com/in/nithin138',
+      href: 'https://www.linkedin.com/in/nithin138/',
     },
   ];
 
+  const socialLinks = [
+    { icon: <Github size={16} />, href: 'https://github.com/nithin138', label: 'GitHub' },
+    { icon: <Linkedin size={16} />, href: 'https://www.linkedin.com/in/nithin138/', label: 'LinkedIn' },
+    { icon: <Mail size={16} />, href: 'mailto:nnsudheer138@gmail.com', label: 'Email' },
+  ];
+
+  const scrollToSection = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
-    <footer className="relative py-12 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="flex flex-col items-center space-y-8">
-          {/* Logo/Name */}
-          <div className="text-center">
-            <h3 className="text-2xl font-bold text-gray-900 mb-2">Nithin Sudheer</h3>
-            <p className="text-gray-500 text-sm">Full-Stack AI Developer | AI/ML Expert | Cloud Enthusiast</p>
-          </div>
+    <footer className="bg-bg-section border-t border-border-default">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
 
-          {/* Social Links */}
-          <div className="flex gap-4">
-            {socialLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`group p-4 glass-card rounded-xl transition-all duration-300 hover:scale-110`}
-                aria-label={link.label}
-              >
-                <div className={`text-gray-500 group-hover:text-gray-900 transition-colors duration-300`}>
-                  {link.icon}
-                </div>
-              </a>
-            ))}
-          </div>
-
-          {/* Divider */}
-          <div className="w-full max-w-md h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent"></div>
-
-          {/* Built with Badge */}
-          <div className="flex items-center gap-2 text-gray-500 text-sm">
-            <span>Built with</span>
-            <Heart size={16} className="text-red-400 animate-pulse" />
-            <span>using</span>
-            <div className="flex items-center gap-1.5 px-3 py-1.5 glass-card rounded-lg">
-              <Code size={16} className="text-orange-400" />
-              <span className="text-orange-400 font-semibold">React</span>
+          {/* ── Col 1: Identity ── */}
+          <div className="flex flex-col gap-4">
+            <div>
+              <p className="text-lg font-bold text-text-primary tracking-tight leading-tight">
+                Nithin Sudheer
+              </p>
+              <p className="text-sm text-primary font-medium mt-0.5">
+                Full Stack Developer
+              </p>
             </div>
-            <span>&</span>
-            <div className="flex items-center gap-1.5 px-3 py-1.5 glass-card rounded-lg">
-              <Sparkles size={16} className="text-orange-400" />
-              <span className="text-orange-400 font-semibold">Tailwind</span>
-            </div>
-          </div>
-
-          {/* Copyright */}
-          <div className="text-center text-gray-400 text-sm">
-            <p>&copy; {currentYear} Nithin Sudheer. All rights reserved.</p>
-          </div>
-
-          {/* Quote */}
-          <div className="text-center max-w-2xl">
-            <p className="text-gray-400 italic text-sm">
-              "Code is like humor. When you have to explain it, it's bad." - Cory House
+            <p className="text-sm text-text-secondary leading-relaxed max-w-xs">
+              Focused on scalable web applications and clean architecture. Building products that are fast, reliable, and maintainable.
             </p>
+            {/* Social icons */}
+            <div className="flex items-center gap-2 mt-1">
+              {socialLinks.map((s) => (
+                <a
+                  key={s.label}
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={s.label}
+                  className="w-8 h-8 flex items-center justify-center rounded-lg border border-border-default text-text-secondary hover:text-primary hover:border-primary hover:bg-primary/10 transition-all duration-200"
+                >
+                  {s.icon}
+                </a>
+              ))}
+            </div>
           </div>
+
+          {/* ── Col 2: Navigation ── */}
+          <div className="flex flex-col gap-4">
+            <p className="text-xs font-semibold uppercase tracking-widest text-text-muted">
+              Navigation
+            </p>
+            <div className="grid grid-cols-2 gap-x-6 gap-y-1">
+              {[...navCol1, ...navCol2].map((link) => (
+                <button
+                  key={link.href}
+                  onClick={() => scrollToSection(link.href)}
+                  className="group flex items-center gap-1.5 py-1.5 text-sm text-text-secondary hover:text-primary transition-colors duration-200 focus:outline-none text-left"
+                >
+                  <span className="w-1 h-1 rounded-full bg-border-default group-hover:bg-primary transition-colors duration-200 flex-shrink-0" />
+                  <span className="group-hover:translate-x-0.5 transition-transform duration-200">
+                    {link.label}
+                  </span>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* ── Col 3: Contact ── */}
+          <div className="flex flex-col gap-4">
+            <p className="text-xs font-semibold uppercase tracking-widest text-text-muted">
+              Get in Touch
+            </p>
+            <div className="flex flex-col gap-2">
+              {contactItems.map((item) => (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center gap-3 px-3 py-2.5 rounded-lg border border-transparent hover:border-border-default hover:bg-bg-card transition-all duration-200"
+                >
+                  <span className="w-7 h-7 flex items-center justify-center rounded-md bg-bg-card border border-border-default text-text-secondary group-hover:text-primary group-hover:border-primary/50 transition-all duration-200 flex-shrink-0">
+                    {item.icon}
+                  </span>
+                  <div className="min-w-0">
+                    <p className="text-xs text-text-muted leading-none mb-0.5">{item.label}</p>
+                    <p className="text-sm text-text-secondary group-hover:text-text-primary transition-colors duration-200 truncate">
+                      {item.value}
+                    </p>
+                  </div>
+                  <ArrowUpRight
+                    size={13}
+                    className="ml-auto text-text-muted opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex-shrink-0"
+                  />
+                </a>
+              ))}
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      {/* ── Bottom bar ── */}
+      <div className="border-t border-border-default">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-2">
+          <p className="text-xs text-text-muted">
+            &copy; {currentYear} Nithin Sudheer. All rights reserved.
+          </p>
+          <p className="text-xs text-text-muted">
+            Built with React + Vite
+          </p>
         </div>
       </div>
     </footer>

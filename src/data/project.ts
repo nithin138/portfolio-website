@@ -66,7 +66,8 @@ export const projects: Project[] = [
     demo: 'https://dream.uniflo.ai/auth/sign-in?returnTo=%2Fhome',
     genre: 'Dev',
     featured: true,
-    demoed: true
+    demoed: true,
+    image: '/dream.png'
   },
   {
     id: '7',
@@ -77,6 +78,7 @@ export const projects: Project[] = [
     demo: 'https://mywiz.ai/',
     genre: 'AI',
     featured: true,
-    demoed: true
+    demoed: true,
+    image: '/mywiz.png'
   }
 ];

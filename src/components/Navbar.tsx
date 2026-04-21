@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Github, Linkedin } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
+import { motion, useScroll, useSpring } from 'framer-motion';
 
 interface NavbarProps {
   activeSection: string;
@@ -15,6 +16,15 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Close mobile menu on resize to desktop
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) setIsOpen(false);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   const navItems = [
@@ -34,114 +44,120 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
     }
   };
 
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, { stiffness: 200, damping: 30 });
+
   return (
-    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-      scrolled ? 'glass-effect shadow-sm' : 'bg-transparent'
-    }`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          <div className="flex-shrink-0">
-            <span className="text-xl font-bold text-gray-900 cursor-pointer" onClick={() => scrollToSection('hero')}>
-              Nithin Sudheer
+    <motion.nav
+      initial={{ y: -64, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.5, ease: 'easeOut' }}
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+        scrolled ? 'navbar-scrolled' : 'navbar-top'
+      }`}
+    >
+      {/* Scroll progress bar */}
+      <motion.div
+        style={{ scaleX, transformOrigin: '0%' }}
+        className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-primary to-secondary"
+      />
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-14">
+
+          {/* Brand */}
+          <button
+            onClick={() => scrollToSection('hero')}
+            className="flex-shrink-0 group focus:outline-none"
+          >
+            <span className="text-base font-bold tracking-tight text-text-primary group-hover:text-primary transition-colors duration-200">
+              N<span className="text-gradient">S</span>
+              <span className="text-text-secondary font-normal text-sm ml-1.5 hidden sm:inline">
+                Nithin Sudheer
+              </span>
             </span>
-          </div>
+          </button>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-1">
-              {navItems.map((item) => (
-                <button
-                  key={item.href}
-                  onClick={() => scrollToSection(item.href)}
-                  className={`relative px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
-                    activeSection === item.href
-                      ? 'text-gray-900'
-                      : 'text-gray-600 hover:text-gray-900'
+          {/* Desktop Nav Links */}
+          <div className="hidden md:flex items-center gap-1">
+            {navItems.map((item) => (
+              <button
+                key={item.href}
+                onClick={() => scrollToSection(item.href)}
+                className={`relative px-3 py-1.5 text-sm font-medium transition-colors duration-200 rounded-md focus:outline-none ${
+                  activeSection === item.href
+                    ? 'text-text-primary'
+                    : 'text-text-secondary hover:text-text-primary'
+                }`}
+              >
+                {item.label}
+                {/* Active underline indicator */}
+                <span
+                  className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-px bg-primary transition-all duration-200 ${
+                    activeSection === item.href ? 'w-4/5 opacity-100' : 'w-0 opacity-0'
                   }`}
-                >
-                  {activeSection === item.href && (
-                    <span className="absolute inset-0 bg-gradient-to-r from-orange-500 to-amber-500 rounded-lg opacity-20"></span>
-                  )}
-                  <span className="relative">{item.label}</span>
-                  {activeSection === item.href && (
-                    <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1/2 h-0.5 bg-gradient-to-r from-orange-500 to-amber-500 rounded-full"></span>
-                  )}
-                </button>
-              ))}
-            </div>
+                />
+              </button>
+            ))}
           </div>
 
-          {/* Social Icons */}
-          <div className="hidden md:flex items-center space-x-4">
+          {/* CTA + Mobile Toggle */}
+          <div className="flex items-center gap-3">
+            {/* CTA — desktop only */}
             <a
-              href="https://github.com/nithin138"
+              href="/nithin sudheer narayanapuram MERN[resume].pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 text-gray-600 hover:text-orange-500 transition-all duration-300 hover:scale-110 rounded-lg hover:bg-orange-500/10"
+              className="hidden md:inline-flex items-center gap-1.5 px-4 py-1.5 text-sm font-medium rounded-lg bg-primary text-white hover:bg-primary-dark transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary/50"
             >
-              <Github size={20} />
+              Download CV
             </a>
-            <a
-              href="https://www.linkedin.com/in/nithin138/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 text-gray-600 hover:text-orange-500 transition-all duration-300 hover:scale-110 rounded-lg hover:bg-orange-500/10"
-            >
-              <Linkedin size={20} />
-            </a>
-          </div>
 
-          {/* Mobile menu button */}
-          <div className="md:hidden">
+            {/* Hamburger */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-lg text-gray-600 hover:text-gray-900 hover:bg-orange-500/10 transition-all duration-300"
+              className="md:hidden p-1.5 rounded-md text-text-secondary hover:text-text-primary hover:bg-white/5 transition-colors duration-200 focus:outline-none"
+              aria-label="Toggle menu"
             >
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
+              {isOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
           </div>
         </div>
       </div>
 
-      {/* Mobile Navigation */}
-      {isOpen && (
-        <div className="md:hidden glass-effect border-t border-white/30">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            {navItems.map((item) => (
-              <button
-                key={item.href}
-                onClick={() => scrollToSection(item.href)}
-                className={`block px-4 py-3 rounded-lg text-base font-medium w-full text-left transition-all duration-300 ${
-                  activeSection === item.href
-                    ? 'bg-orange-500/10 text-gray-900 border border-orange-500/30'
-                    : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'
-                }`}
-              >
-                {item.label}
-              </button>
-            ))}
-            <div className="flex space-x-4 px-4 py-3">
-              <a
-                href="https://github.com/nithin138"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 text-gray-600 hover:text-orange-500 transition-all duration-300 rounded-lg hover:bg-orange-500/10"
-              >
-                <Github size={20} />
-              </a>
-              <a
-                href="https://www.linkedin.com/in/nithin138/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 text-gray-600 hover:text-orange-500 transition-all duration-300 rounded-lg hover:bg-orange-500/10"
-              >
-                <Linkedin size={20} />
-              </a>
-            </div>
+      {/* Mobile Menu */}
+      <div
+        className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
+          isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+        }`}
+      >
+        <div className="navbar-mobile-panel px-4 py-3 space-y-1">
+          {navItems.map((item) => (
+            <button
+              key={item.href}
+              onClick={() => scrollToSection(item.href)}
+              className={`w-full text-left px-4 py-2.5 rounded-lg text-sm font-medium transition-colors duration-200 ${
+                activeSection === item.href
+                  ? 'bg-primary/10 text-text-primary border-l-2 border-primary pl-3.5'
+                  : 'text-text-secondary hover:text-text-primary hover:bg-white/5'
+              }`}
+            >
+              {item.label}
+            </button>
+          ))}
+          {/* CTA in mobile */}
+          <div className="pt-2 pb-1">
+            <a
+              href="/nithin sudheer narayanapuram MERN[resume].pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center w-full px-4 py-2.5 text-sm font-medium rounded-lg bg-primary text-white hover:bg-primary-dark transition-colors duration-200"
+            >
+              Download CV
+            </a>
           </div>
         </div>
-      )}
-    </nav>
+      </div>
+    </motion.nav>
   );
 };
 

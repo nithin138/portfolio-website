@@ -31,7 +31,7 @@ function App() {
   }, []);
 
   return (
-    <div className="text-gray-900 min-h-screen">
+    <div className="text-text-primary min-h-screen bg-bg-main">
       <div className="min-h-screen">
         <Navbar activeSection={activeSection} />
          <Hero />

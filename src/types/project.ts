@@ -8,6 +8,7 @@ export interface Project {
   genre: 'AI' | 'DS' | 'Dev';
   featured?: boolean;
   demoed?: boolean;
+  image?: string;
 }
 
 export type ProjectGenre = 'All' | 'AI' | 'DS' | 'Dev';
