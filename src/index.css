@@ -184,9 +184,9 @@
 
   /* Skills section — premium card */
   .skill-category-card {
-    background: #1F2937;
+    /* background: #1F2937; */
     border: 1px solid #374151;
-    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.35);
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255,255,255,0.04);
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
                 box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1),
                 border-color 0.3s ease,
@@ -195,9 +195,9 @@
 
   .skill-category-card:hover {
     transform: translateY(-5px);
-    background: #212d3f;
+    /* background: #212d3f; */
     border-color: rgba(37, 99, 235, 0.5);
-    box-shadow: 0 8px 32px rgba(37, 99, 235, 0.12), 0 2px 8px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 8px 32px rgba(37, 99, 235, 0.18), 0 2px 8px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255,255,255,0.06);
   }
 
   /* Skill pill — enhanced */
@@ -235,26 +235,27 @@
 
   /* LanguagesTools — floating panel */
   .lt-panel {
-    background: rgba(31, 41, 55, 0.5);
-    border: 1px solid rgba(55, 65, 81, 0.6);
+    /* background: #1F2937; */
+    border: 1px solid #374151;
     border-radius: 1rem;
     padding: 1.25rem;
-    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
-    transition: box-shadow 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255,255,255,0.04);
+    transition: box-shadow 0.3s ease, border-color 0.3s ease, background 0.3s ease, transform 0.3s ease;
   }
 
   .lt-panel:hover {
-    background: rgba(31, 41, 55, 0.75);
-    border-color: rgba(124, 58, 237, 0.25);
-    box-shadow: 0 4px 20px rgba(124, 58, 237, 0.08), 0 1px 8px rgba(0, 0, 0, 0.3);
+    /* background: #212d3f; */
+    border-color: rgba(124, 58, 237, 0.45);
+    box-shadow: 0 8px 28px rgba(124, 58, 237, 0.15), 0 2px 8px rgba(0, 0, 0, 0.5);
+    transform: translateY(-3px);
   }
 
   .lt-practices-panel {
-    background: rgba(31, 41, 55, 0.4);
-    border: 1px solid rgba(55, 65, 81, 0.5);
+    /* background: #1F2937; */
+    border: 1px solid #374151;
     border-radius: 1rem;
     padding: 1.5rem;
-    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255,255,255,0.04);
   }
 
   /* Icon item wrapper */
@@ -280,9 +281,9 @@
 
   .lt-icon-item:hover .lt-icon-box {
     transform: translateY(-3px);
-    background: rgba(37, 99, 235, 0.1);
-    border-color: rgba(37, 99, 235, 0.35);
-    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.12);
+    background: rgba(var(--icon-color-rgb, 37, 99, 235), 0.12);
+    border-color: rgba(37, 99, 235, 0.4);
+    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.18);
   }
 
   /* Scrollbar Hide */

@@ -70,10 +70,11 @@ const Skills = () => {
 
   return (
     <section id="skills" className="py-24 relative overflow-hidden bg-bg-section">
-      {/* Subtle background glow */}
+      {/* Background glows */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/5 rounded-full blur-3xl" />
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/10 rounded-full blur-3xl" />
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -131,9 +132,10 @@ const Skills = () => {
                 </div>
 
                 {/* Proficiency bar */}
-                <div className="w-full h-1 bg-border-default rounded-full overflow-hidden">
+                <div className="w-full h-1.5 bg-border-default rounded-full overflow-hidden">
                   <motion.div
                     className="h-full rounded-full bg-gradient-to-r from-primary to-secondary"
+                    style={{ boxShadow: '0 0 8px rgba(37, 99, 235, 0.6)' }}
                     initial={{ width: 0 }}
                     animate={inView ? { width: `${cat.proficiency}%` } : { width: 0 }}
                     transition={{ duration: 1, delay: 0.4, ease: [0.4, 0, 0.2, 1] }}
