@@ -148,10 +148,11 @@ const LanguagesTools = () => {
 
   return (
     <section id="languages-tools" className="py-24 relative overflow-hidden bg-bg-main">
-      {/* Subtle background accent */}
+      {/* Background glows */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 right-1/3 w-80 h-80 bg-secondary/4 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-1/3 w-80 h-80 bg-primary/4 rounded-full blur-3xl" />
+        <div className="absolute top-0 right-1/3 w-80 h-80 bg-secondary/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-1/3 w-80 h-80 bg-primary/10 rounded-full blur-3xl" />
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-secondary/20 to-transparent" />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
