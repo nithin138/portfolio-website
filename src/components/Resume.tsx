@@ -93,7 +93,12 @@ const Resume: React.FC = () => {
   };
 
   return (
-    <section id="resume" className="py-20 bg-bg-section">
+    <section id="resume" className="py-20 relative overflow-hidden" style={{ background: '#0f0f0f' }}>
+      {/* Ambient background glow */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-[10%] right-[20%] w-[550px] h-[550px] rounded-full blur-[130px] opacity-[0.09]" style={{ background: '#2563eb' }} />
+        <div className="absolute bottom-[10%] left-[10%] w-[450px] h-[450px] rounded-full blur-[120px] opacity-[0.07]" style={{ background: '#1d4ed8' }} />
+      </div>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           ref={ref}
@@ -129,14 +134,18 @@ const Resume: React.FC = () => {
             <div className="flex flex-col sm:items-end gap-2 flex-shrink-0">
               <button
                 onClick={handleDownloadResume}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-primary hover:bg-primary-dark text-white font-semibold text-sm transition-colors duration-200"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-white font-semibold text-sm transition-colors duration-200"
+                style={{ background: '#2563eb' }}
               >
                 <Download size={16} />
                 Download Resume
               </button>
               <button
                 onClick={handleViewResume}
-                className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl border border-border-default hover:border-primary text-text-secondary hover:text-primary font-medium text-sm transition-colors duration-200"
+                className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl text-text-secondary hover:text-primary font-medium text-sm transition-colors duration-200"
+                style={{ border: '1px solid rgba(255,255,255,0.1)' }}
+                onMouseEnter={e => (e.currentTarget as HTMLButtonElement).style.borderColor = 'rgba(37,99,235,0.4)'}
+                onMouseLeave={e => (e.currentTarget as HTMLButtonElement).style.borderColor = 'rgba(255,255,255,0.1)'}
               >
                 <Eye size={15} />
                 View Online
@@ -276,7 +285,8 @@ const Resume: React.FC = () => {
               {highlights.map((item, i) => (
                 <div
                   key={i}
-                  className="flex items-start gap-3 p-4 rounded-xl bg-bg-card border border-border-default"
+                  className="flex items-start gap-3 p-4 rounded-xl"
+                  style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)' }}
                 >
                   <CheckCircle2 size={15} className="text-primary mt-[2px] flex-shrink-0" />
                   <span className="text-text-secondary text-sm leading-relaxed">{item}</span>

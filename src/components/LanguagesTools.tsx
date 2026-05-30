@@ -147,12 +147,13 @@ const LanguagesTools = () => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
 
   return (
-    <section id="languages-tools" className="py-24 relative overflow-hidden bg-bg-main">
-      {/* Background glows */}
+    <section id="languages-tools" className="py-24 relative overflow-hidden" style={{ background: '#0a0a0a' }}>
+      {/* Ambient background glow */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 right-1/3 w-80 h-80 bg-secondary/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-1/3 w-80 h-80 bg-primary/10 rounded-full blur-3xl" />
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-secondary/20 to-transparent" />
+        <div className="absolute -top-[5%] right-[20%] w-[550px] h-[550px] rounded-full blur-[130px] opacity-[0.10]"
+          style={{ background: '#2563eb' }} />
+        <div className="absolute bottom-[5%] left-[15%] w-[500px] h-[500px] rounded-full blur-[120px] opacity-[0.08]"
+          style={{ background: '#1e40af' }} />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -164,7 +165,8 @@ const LanguagesTools = () => {
         >
           {/* Header */}
           <motion.div variants={itemVariants} className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-secondary/10 border border-secondary/20 rounded-full mb-5">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-5"
+              style={{ background: 'rgba(124,58,237,0.08)', border: '1px solid rgba(124,58,237,0.2)' }}>
               <Sparkles className="w-4 h-4 text-secondary-light" />
               <span className="text-sm text-secondary-light font-medium tracking-wide">Tech Stack</span>
             </div>

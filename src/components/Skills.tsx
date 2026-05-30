@@ -1,159 +1,273 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Code, Brain, Cloud, Sparkles, Lightbulb, Target, Zap } from 'lucide-react';
+import { useState } from 'react';
+import {
+  Sparkles,
+  Layers,
+  Brain,
+  Rocket,
+  Cloud,
+  BarChart3,
+  Users,
+  ChevronRight,
+} from 'lucide-react';
 
-interface SkillCategory {
-  title: string;
+interface SkillPillar {
   icon: React.ReactNode;
-  proficiency: number;
-  skills: string[];
-  accent: string; // tailwind gradient classes for icon bg
+  title: string;
+  accent: string;
+  tagline: string;
+  capabilities: string[];
 }
 
-const skillCategories: SkillCategory[] = [
+const pillars: SkillPillar[] = [
   {
-    title: 'Full-Stack Dev',
-    icon: <Code className="w-5 h-5" />,
-    proficiency: 90,
-    skills: ['MERN Stack', 'REST APIs', 'Database Design', 'Responsive UI', 'SSR'],
-    accent: 'from-blue-500 to-blue-700',
+    icon: <Layers className="w-6 h-6" />,
+    title: 'Software Architecture',
+    accent: '#3B82F6',
+    tagline: 'Designing systems that scale from zero to millions without rewrites.',
+    capabilities: [
+      'Distributed Systems',
+      'Scalable System Design',
+      'Microservices',
+      'API Architecture',
+      'Performance Engineering',
+    ],
   },
   {
-    title: 'AI & ML',
-    icon: <Brain className="w-5 h-5" />,
-    proficiency: 85,
-    skills: ['NLP', 'Generative AI', 'RAG Systems', 'Prompt Engineering', 'Model Integration'],
-    accent: 'from-violet-500 to-purple-700',
+    icon: <Brain className="w-6 h-6" />,
+    title: 'AI & Intelligent Systems',
+    accent: '#8B5CF6',
+    tagline: 'Turning AI research into production-grade intelligent products.',
+    capabilities: [
+      'Generative AI',
+      'LLM Integration',
+      'Agentic AI Systems',
+      'NLP',
+      'AI-Powered Automation',
+    ],
   },
   {
-    title: 'Cloud & DevOps',
-    icon: <Cloud className="w-5 h-5" />,
-    proficiency: 75,
-    skills: ['Cloud Architecture', 'Docker', 'CI/CD', 'Microservices', 'IaC'],
-    accent: 'from-sky-500 to-cyan-700',
+    icon: <Rocket className="w-6 h-6" />,
+    title: 'Product Engineering',
+    accent: '#F59E0B',
+    tagline: 'Shipping user-centric products from concept to production at velocity.',
+    capabilities: [
+      'End-to-End Development',
+      'Requirement Analysis',
+      'User-Centric Design',
+      'Production Delivery',
+      'Agile Development',
+    ],
   },
   {
-    title: 'Problem Solving',
-    icon: <Lightbulb className="w-5 h-5" />,
-    proficiency: 92,
-    skills: ['Algorithm Design', 'System Architecture', 'Perf Optimization', 'Debugging', 'Code Review'],
-    accent: 'from-amber-500 to-orange-600',
+    icon: <Cloud className="w-6 h-6" />,
+    title: 'Cloud & Platform Engineering',
+    accent: '#06B6D4',
+    tagline: 'Building resilient infrastructure that teams can ship on confidently.',
+    capabilities: [
+      'AWS / Cloud Infrastructure',
+      'Docker & Containerization',
+      'CI/CD Pipelines',
+      'Monitoring & Observability',
+      'Reliability Engineering',
+    ],
   },
   {
-    title: 'Project Management',
-    icon: <Target className="w-5 h-5" />,
-    proficiency: 80,
-    skills: ['Agile', 'Scrum', 'Version Control', 'Documentation', 'Collaboration'],
-    accent: 'from-emerald-500 to-teal-700',
+    icon: <BarChart3 className="w-6 h-6" />,
+    title: 'Data & Analytics',
+    accent: '#10B981',
+    tagline: 'Transforming raw data into decisions that drive business outcomes.',
+    capabilities: [
+      'Data Modeling',
+      'ETL Pipelines',
+      'Analytics Platforms',
+      'Reporting Systems',
+      'Data-Driven Solutions',
+    ],
   },
   {
-    title: 'Innovation',
-    icon: <Zap className="w-5 h-5" />,
-    proficiency: 88,
-    skills: ['Rapid Prototyping', 'Tech Research', 'Continuous Learning', 'Best Practices', 'Trends'],
-    accent: 'from-pink-500 to-rose-600',
+    icon: <Users className="w-6 h-6" />,
+    title: 'Technical Leadership',
+    accent: '#EC4899',
+    tagline: 'Aligning engineering execution with business strategy and team growth.',
+    capabilities: [
+      'Technical Decision Making',
+      'Project Ownership',
+      'Mentoring',
+      'Cross-Functional Collaboration',
+      'Stakeholder Communication',
+    ],
   },
 ];
 
 const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { delayChildren: 0.2, staggerChildren: 0.1 } },
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.08,
+    },
+  },
 };
 
-const itemVariants = {
-  hidden: { y: 24, opacity: 0 },
-  visible: { y: 0, opacity: 1, transition: { duration: 0.5, ease: [0.4, 0, 0.2, 1] as [number, number, number, number] } },
+const cardVariants = {
+  hidden: { opacity: 0, y: 40, scale: 0.95 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.6,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
 };
 
 const Skills = () => {
-  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
+  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.05 });
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <section id="skills" className="py-24 relative overflow-hidden bg-bg-section">
-      {/* Background glows */}
+    <section id="skills" className="py-28 relative overflow-hidden" style={{ background: '#0a0a0a' }}>
+      {/* Ambient background effects */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/10 rounded-full blur-3xl" />
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
+        <div
+          className="absolute top-[10%] right-[15%] w-[600px] h-[600px] rounded-full blur-[130px] opacity-[0.10]"
+          style={{ background: '#2563eb' }}
+        />
+        <div
+          className="absolute bottom-[5%] left-[10%] w-[500px] h-[500px] rounded-full blur-[120px] opacity-[0.08]"
+          style={{ background: '#1e40af' }}
+        />
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div ref={ref} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Section Header */}
         <motion.div
-          ref={ref}
+          initial={{ opacity: 0, y: 24 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="text-center mb-20"
+        >
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-5 border border-white/[0.06] bg-white/[0.02]">
+            <Sparkles className="w-3.5 h-3.5 text-blue-400" />
+            <span className="text-xs text-blue-400/90 font-medium tracking-wider uppercase">
+              Engineering Pillars
+            </span>
+          </div>
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight tracking-tight">
+            What I <span className="text-gradient">Engineer</span>
+          </h2>
+          <p className="text-gray-400 text-base sm:text-lg mt-5 max-w-2xl mx-auto leading-relaxed">
+            Systems thinking across architecture, AI, cloud, data, and product —
+            delivering impact at every layer of the stack.
+          </p>
+        </motion.div>
+
+        {/* Pillar Grid */}
+        <motion.div
           variants={containerVariants}
           initial="hidden"
           animate={inView ? 'visible' : 'hidden'}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6"
         >
-          {/* Section header */}
-          <motion.div variants={itemVariants} className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 border border-primary/20 rounded-full mb-5">
-              <Sparkles className="w-4 h-4 text-primary-light" />
-              <span className="text-sm text-primary-light font-medium tracking-wide">Core Competencies</span>
-            </div>
-            <motion.h2
-              initial={{ clipPath: 'inset(0 100% 0 0)', opacity: 0 }}
-              animate={inView ? { clipPath: 'inset(0 0% 0 0)', opacity: 1 } : {}}
-              transition={{ duration: 0.7, delay: 0.2, ease: [0.4, 0, 0.2, 1] }}
-              className="text-4xl sm:text-5xl font-bold text-text-primary leading-tight"
+          {pillars.map((pillar, i) => (
+            <motion.div
+              key={pillar.title}
+              variants={cardVariants}
+              onMouseEnter={() => setHoveredIndex(i)}
+              onMouseLeave={() => setHoveredIndex(null)}
+              className="group relative rounded-2xl border border-white/[0.06] bg-white/[0.015] backdrop-blur-sm overflow-hidden cursor-default transition-colors duration-500"
+              style={{
+                borderColor: hoveredIndex === i ? `${pillar.accent}40` : undefined,
+                background: hoveredIndex === i ? `rgba(255,255,255,0.025)` : undefined,
+              }}
             >
-              Skills &{' '}
-              <span className="text-gradient">Technologies</span>
-            </motion.h2>
-            <p className="text-text-muted text-base mt-4 max-w-lg mx-auto leading-relaxed">
-              Technologies and tools used to build scalable, production-ready applications
-            </p>
-          </motion.div>
+              {/* Top gradient line */}
+              <div
+                className="absolute top-0 left-0 right-0 h-[1px] opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                style={{
+                  background: `linear-gradient(90deg, transparent, ${pillar.accent}80, transparent)`,
+                }}
+              />
 
-          {/* Cards grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {skillCategories.map((cat) => (
-              <motion.div
-                key={cat.title}
-                variants={itemVariants}
-                className="skill-category-card group rounded-2xl p-6 flex flex-col gap-5"
-              >
-                {/* Card header */}
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <div
-                      className={`p-2.5 rounded-xl bg-gradient-to-br ${cat.accent} text-white
-                                  shadow-lg group-hover:scale-110 transition-transform duration-300`}
-                    >
-                      {cat.icon}
-                    </div>
-                    <div>
-                      <h3 className="text-sm font-bold text-text-primary leading-tight">{cat.title}</h3>
-                      <p className="text-xs text-text-muted mt-0.5">{cat.proficiency}% proficiency</p>
-                    </div>
+              {/* Hover glow */}
+              <div
+                className="absolute -top-20 -right-20 w-40 h-40 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"
+                style={{ background: `${pillar.accent}15` }}
+              />
+
+              <div className="relative p-7 sm:p-8 flex flex-col h-full">
+                {/* Icon + Title */}
+                <div className="flex items-start gap-4 mb-5">
+                  <div
+                    className="flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:shadow-lg"
+                    style={{
+                      background: `${pillar.accent}12`,
+                      color: pillar.accent,
+                      boxShadow: hoveredIndex === i ? `0 0 20px ${pillar.accent}20` : 'none',
+                    }}
+                  >
+                    {pillar.icon}
                   </div>
-                  <span className="text-xs font-bold text-primary-light bg-primary/10 border border-primary/20 px-2.5 py-1 rounded-full">
-                    {cat.proficiency}%
-                  </span>
+                  <div>
+                    <h3 className="text-lg font-semibold text-white tracking-tight">
+                      {pillar.title}
+                    </h3>
+                    <p className="text-gray-500 text-sm mt-1 leading-relaxed">
+                      {pillar.tagline}
+                    </p>
+                  </div>
                 </div>
 
-                {/* Proficiency bar */}
-                <div className="w-full h-1.5 bg-border-default rounded-full overflow-hidden">
-                  <motion.div
-                    className="h-full rounded-full bg-gradient-to-r from-primary to-secondary"
-                    style={{ boxShadow: '0 0 8px rgba(37, 99, 235, 0.6)' }}
-                    initial={{ width: 0 }}
-                    animate={inView ? { width: `${cat.proficiency}%` } : { width: 0 }}
-                    transition={{ duration: 1, delay: 0.4, ease: [0.4, 0, 0.2, 1] }}
-                  />
-                </div>
-
-                {/* Skill pills */}
-                <div className="flex flex-wrap gap-2">
-                  {cat.skills.map((skill) => (
-                    <span key={skill} className="skill-pill">
-                      <span className="skill-pill-dot" />
-                      {skill}
-                    </span>
+                {/* Capabilities */}
+                <div className="flex-1 space-y-2.5 mt-2">
+                  {pillar.capabilities.map((cap, capIndex) => (
+                    <div
+                      key={cap}
+                      className="flex items-center gap-3 group/item"
+                      style={{
+                        transitionDelay: `${capIndex * 30}ms`,
+                      }}
+                    >
+                      <ChevronRight
+                        className="w-3.5 h-3.5 flex-shrink-0 transition-all duration-300 group-hover/item:translate-x-0.5"
+                        style={{ color: `${pillar.accent}90` }}
+                      />
+                      <span className="text-sm text-gray-400 group-hover/item:text-gray-200 transition-colors duration-300">
+                        {cap}
+                      </span>
+                    </div>
                   ))}
                 </div>
-              </motion.div>
-            ))}
-          </div>
+
+                {/* Bottom accent bar */}
+                <div className="mt-6 pt-5 border-t border-white/[0.04]">
+                  <div className="flex items-center gap-2">
+                    <div
+                      className="w-2 h-2 rounded-full opacity-60 group-hover:opacity-100 transition-opacity duration-500"
+                      style={{ background: pillar.accent }}
+                    />
+                    <span className="text-xs text-gray-600 group-hover:text-gray-400 transition-colors duration-500 font-medium tracking-wide uppercase">
+                      Core Pillar
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        {/* Bottom statement */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          className="mt-16 text-center"
+        >
+          <p className="text-gray-500 text-sm max-w-xl mx-auto leading-relaxed">
+            I don't just write code — I design systems, ship products, and own outcomes end-to-end.
+          </p>
         </motion.div>
       </div>
     </section>

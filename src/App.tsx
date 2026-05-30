@@ -3,7 +3,6 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
 import Skills from './components/Skills';
-import LanguagesTools from './components/LanguagesTools';
 import Projects from './components/Projects';
 import Resume from './components/Resume';
 import Contact from './components/Contact';
@@ -14,7 +13,7 @@ function App() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['hero', 'skills', 'languages-tools', 'projects', 'resume', 'contact'];
+      const sections = ['hero', 'skills', 'projects', 'resume', 'contact'];
       const current = sections.find(section => {
         const element = document.getElementById(section);
         if (element) {
@@ -31,12 +30,11 @@ function App() {
   }, []);
 
   return (
-    <div className="text-text-primary min-h-screen bg-bg-main">
+    <div className="text-text-primary min-h-screen" style={{ background: '#0a0a0a' }}>
       <div className="min-h-screen">
         <Navbar activeSection={activeSection} />
          <Hero />
         <Skills />
-        <LanguagesTools />
         <Projects />
         <Resume />
         <Contact />

@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef, useMemo } from 'react';
 import { Download, ArrowDown, Terminal, Code2, Layers } from 'lucide-react';
-import { motion, useInView, animate, useScroll, useTransform } from 'framer-motion';
+import { motion, useInView, animate } from 'framer-motion';
 
 const techStack = ['React', 'Node.js', 'PostgreSQL', 'Docker', 'AWS', 'Python', 'MongoDB'];
 
@@ -34,7 +34,7 @@ function AnimatedCounter({ to, suffix = '' }: { to: number; suffix?: string }) {
   return <span ref={ref}>0{suffix}</span>;
 }
 
-// Typed line component — types out each code line character by character
+// Typed line component
 function TypedLine({ line, delay }: { line: { indent: number; content: string; color: string }; delay: number }) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true });
@@ -55,10 +55,7 @@ function TypedLine({ line, delay }: { line: { indent: number; content: string; c
   }, [inView, line.content, delay]);
 
   return (
-    <div
-      ref={ref}
-      className={`${line.color} ${line.indent ? 'pl-6' : ''} min-h-[1.75rem]`}
-    >
+    <div ref={ref} className={`${line.color} ${line.indent ? 'pl-6' : ''} min-h-[1.75rem]`}>
       {displayed}
       {inView && displayed.length < line.content.length && (
         <span className="inline-block w-[2px] h-[1em] bg-current align-middle ml-[1px] animate-pulse" />
@@ -67,7 +64,7 @@ function TypedLine({ line, delay }: { line: { indent: number; content: string; c
   );
 }
 
-// Typed headline — handles the gradient span mid-sentence
+// Typed headline
 const HEADLINE_PARTS = [
   { text: 'Building ', gradient: false },
   { text: 'scalable web apps', gradient: true },
@@ -92,7 +89,6 @@ function TypedHeadline() {
     return () => clearInterval(id);
   }, [inView]);
 
-  // Split the typed characters back into segments
   const segments = useMemo(() => {
     let cursor = 0;
     return HEADLINE_PARTS.map(part => {
@@ -109,17 +105,21 @@ function TypedHeadline() {
   return (
     <h1
       ref={ref}
-      className="text-4xl sm:text-5xl lg:text-[3.25rem] xl:text-6xl font-bold leading-[1.15] tracking-tight text-text-primary mb-5"
+      className="text-4xl sm:text-5xl lg:text-[3.25rem] xl:text-6xl font-bold leading-[1.15] tracking-tight mb-5"
+      style={{ color: '#ffffff' }}
     >
       {segments.map((seg, i) =>
         seg.visible ? (
-          <span key={i} className={seg.gradient ? 'text-gradient' : undefined}>
+          <span key={i} style={seg.gradient ? { color: '#3b82f6' } : undefined}>
             {seg.visible}
           </span>
         ) : null
       )}
       {!done && (
-        <span className="inline-block w-[3px] h-[0.85em] bg-primary align-middle ml-[2px] animate-pulse rounded-sm" />
+        <span
+          className="inline-block w-[3px] h-[0.85em] align-middle ml-[2px] animate-pulse rounded-sm"
+          style={{ background: '#3b82f6' }}
+        />
       )}
     </h1>
   );
@@ -147,11 +147,6 @@ const Hero = () => {
     document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  // Parallax for dot grid
-  const { scrollY } = useScroll();
-  const dotGridY = useTransform(scrollY, [0, 600], [0, 80]);
-
-  // Magnetic button hook
   const useMagnetic = () => {
     const ref = useRef<HTMLButtonElement>(null);
     const handleMouseMove = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -162,7 +157,7 @@ const Hero = () => {
       const y = e.clientY - rect.top - rect.height / 2;
       el.style.transform = `translate(${x * 0.25}px, ${y * 0.25}px)`;
     };
-    const handleMouseLeave = () => {
+    const handleMouseLeave = (_e?: React.MouseEvent<HTMLButtonElement>) => {
       if (ref.current) ref.current.style.transform = '';
     };
     return { ref, onMouseMove: handleMouseMove, onMouseLeave: handleMouseLeave };
@@ -174,43 +169,20 @@ const Hero = () => {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center overflow-hidden bg-bg-main"
+      className="relative min-h-screen flex items-center overflow-hidden"
+      style={{ background: '#0a0a0a' }}
     >
-      {/* Subtle background glows */}
-      <div
-        className="pointer-events-none absolute inset-0"
-        aria-hidden="true"
-      >
-        {/* Animated dot grid with parallax */}
-        <motion.svg
-          style={{ y: dotGridY }}
-          className="absolute inset-0 w-full h-full opacity-[0.035]"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <defs>
-            <pattern id="dot-grid" x="0" y="0" width="32" height="32" patternUnits="userSpaceOnUse">
-              <circle cx="1.5" cy="1.5" r="1.5" fill="#3B82F6" />
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#dot-grid)" />
-        </motion.svg>
-        {/* Primary glow — top-left */}
+      {/* ── Background ── */}
+      <div className="pointer-events-none absolute inset-0" aria-hidden="true">
+        {/* Blue glow — top right */}
         <div
-          className="absolute -top-32 -left-32 w-[600px] h-[600px] rounded-full opacity-[0.07]"
-          style={{ background: 'radial-gradient(circle, #2563EB 0%, transparent 70%)' }}
+          className="absolute -top-[10%] right-[5%] w-[700px] h-[700px] rounded-full blur-[140px] opacity-[0.12]"
+          style={{ background: '#2563eb' }}
         />
-        {/* Secondary glow — bottom-right */}
+        {/* Blue glow — bottom left */}
         <div
-          className="absolute -bottom-32 -right-32 w-[500px] h-[500px] rounded-full opacity-[0.06]"
-          style={{ background: 'radial-gradient(circle, #7C3AED 0%, transparent 70%)' }}
-        />
-        {/* Subtle linear overlay */}
-        <div
-          className="absolute inset-0 opacity-[0.03]"
-          style={{
-            background:
-              'linear-gradient(135deg, #2563EB 0%, transparent 50%, #7C3AED 100%)',
-          }}
+          className="absolute bottom-[5%] left-[10%] w-[500px] h-[500px] rounded-full blur-[120px] opacity-[0.08]"
+          style={{ background: '#1d4ed8' }}
         />
       </div>
 
@@ -224,15 +196,22 @@ const Hero = () => {
             transition={{ duration: 0.7, ease: 'easeOut' }}
             className="flex flex-col max-w-xl"
           >
-            {/* Intro badge */}
+            {/* Intro badge — Templar-style pill */}
             <motion.div
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="inline-flex items-center gap-2 mb-6 w-fit"
+              className="inline-flex items-center gap-2 mb-6 w-fit px-3.5 py-1.5 rounded-full select-none"
+              style={{
+                background: 'rgba(255,255,255,0.04)',
+                border: '1px solid rgba(255,255,255,0.1)',
+              }}
             >
-              <span className="flex h-2 w-2 rounded-full bg-green-400 shadow-[0_0_6px_#4ade80]" />
-              <span className="text-sm font-medium text-text-secondary tracking-wide uppercase">
+              <span
+                className="flex h-2 w-2 rounded-full flex-shrink-0"
+                style={{ background: '#4ade80', boxShadow: '0 0 6px #4ade80' }}
+              />
+              <span className="text-sm font-medium tracking-wide uppercase" style={{ color: '#9ca3af' }}>
                 Full-Stack AI Developer
               </span>
             </motion.div>
@@ -241,35 +220,51 @@ const Hero = () => {
             <TypedHeadline />
 
             {/* Supporting description */}
-            <p className="text-base sm:text-lg text-text-secondary leading-relaxed mb-8 max-w-lg">
+            <p
+              className="text-base sm:text-lg leading-relaxed mb-8 max-w-lg"
+              style={{ color: '#9ca3af' }}
+            >
               Experienced in React, Node.js, and modern backend systems — with a focus on
               AI/ML integration, performance, and clean architecture.
             </p>
 
-            {/* CTA buttons */}
+            {/* CTA buttons — Templar style */}
             <div className="flex flex-col sm:flex-row gap-3 mb-10">
               <button
                 ref={magneticProjects.ref}
                 onMouseMove={magneticProjects.onMouseMove}
                 onMouseLeave={magneticProjects.onMouseLeave}
                 onClick={() => scrollToSection('projects')}
-                className="btn-primary flex items-center justify-center gap-2 transition-transform duration-200"
-                style={{ willChange: 'transform' }}
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-semibold text-sm text-white transition-all duration-200 hover:opacity-90 active:scale-95"
+                style={{ background: '#2563eb', willChange: 'transform' }}
                 aria-label="View Projects"
               >
-                <Layers size={18} />
-                View Projects
+                <Layers size={16} />
+                View Projects →
               </button>
               <button
                 ref={magneticResume.ref}
                 onMouseMove={magneticResume.onMouseMove}
-                onMouseLeave={magneticResume.onMouseLeave}
                 onClick={() => scrollToSection('resume')}
-                className="btn-secondary flex items-center justify-center gap-2 transition-transform duration-200"
-                style={{ willChange: 'transform' }}
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-semibold text-sm transition-all duration-200 active:scale-95"
+                style={{
+                  background: 'rgba(255,255,255,0.05)',
+                  border: '1px solid rgba(255,255,255,0.12)',
+                  color: '#e5e7eb',
+                  willChange: 'transform',
+                }}
+                onMouseEnter={e => {
+                  (e.currentTarget as HTMLButtonElement).style.background = 'rgba(255,255,255,0.09)';
+                  (e.currentTarget as HTMLButtonElement).style.borderColor = 'rgba(255,255,255,0.22)';
+                }}
+                onMouseLeave={e => {
+                  (e.currentTarget as HTMLButtonElement).style.background = 'rgba(255,255,255,0.05)';
+                  (e.currentTarget as HTMLButtonElement).style.borderColor = 'rgba(255,255,255,0.12)';
+                  magneticResume.onMouseLeave(e);
+                }}
                 aria-label="Download Resume"
               >
-                <Download size={18} />
+                <Download size={16} />
                 Download Resume
               </button>
             </div>
@@ -277,9 +272,13 @@ const Hero = () => {
             {/* Tech strip */}
             <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
               {techStack.map((tech, i) => (
-                <span key={tech} className="flex items-center gap-2 text-sm text-text-muted">
+                <span key={tech} className="flex items-center gap-2 text-sm" style={{ color: '#6b7280' }}>
                   {i !== 0 && (
-                    <span className="w-1 h-1 rounded-full bg-border-default" aria-hidden="true" />
+                    <span
+                      className="w-1 h-1 rounded-full"
+                      style={{ background: '#374151' }}
+                      aria-hidden="true"
+                    />
                   )}
                   {tech}
                 </span>
@@ -298,24 +297,27 @@ const Hero = () => {
             <motion.div
               animate={{ y: [0, -8, 0] }}
               transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-              className="gradient-border rounded-2xl overflow-hidden shadow-card"
+              className="rounded-2xl overflow-hidden"
+              style={{
+                background: '#111111',
+                border: '1px solid rgba(255,255,255,0.08)',
+                boxShadow: '0 0 0 1px rgba(37,99,235,0.12), 0 24px 64px rgba(0,0,0,0.7)',
+              }}
             >
               {/* Terminal bar */}
-              <div className="flex items-center gap-2 px-4 py-3 bg-bg-card border-b border-border-default">
+              <div
+                className="flex items-center gap-2 px-4 py-3 border-b"
+                style={{ background: '#0d0d0d', borderColor: 'rgba(255,255,255,0.07)' }}
+              >
                 <span className="w-3 h-3 rounded-full bg-red-500/70" />
                 <span className="w-3 h-3 rounded-full bg-yellow-500/70" />
                 <span className="w-3 h-3 rounded-full bg-green-500/70" />
-                <span className="ml-3 text-xs text-text-muted font-mono">developer.ts</span>
+                <span className="ml-3 text-xs font-mono" style={{ color: '#4b5563' }}>developer.ts</span>
               </div>
-
               {/* Code body */}
-              <div className="bg-[#0d1117] px-5 py-5 font-mono text-sm leading-7">
+              <div className="px-5 py-5 font-mono text-sm leading-7">
                 {codeLines.map((line, i) => (
-                  <TypedLine
-                    key={i}
-                    line={line}
-                    delay={0.5 + i * 0.7}
-                  />
+                  <TypedLine key={i} line={line} delay={0.5 + i * 0.7} />
                 ))}
               </div>
             </motion.div>
@@ -329,16 +331,28 @@ const Hero = () => {
               ].map(({ value, label, counter, suffix }) => (
                 <div
                   key={label}
-                  className="glass-card rounded-xl p-4 text-center"
+                  className="rounded-xl p-4 text-center transition-all duration-200"
+                  style={{
+                    background: 'rgba(255,255,255,0.03)',
+                    border: '1px solid rgba(255,255,255,0.08)',
+                  }}
+                  onMouseEnter={e => {
+                    (e.currentTarget as HTMLDivElement).style.borderColor = 'rgba(37,99,235,0.4)';
+                    (e.currentTarget as HTMLDivElement).style.background = 'rgba(37,99,235,0.06)';
+                  }}
+                  onMouseLeave={e => {
+                    (e.currentTarget as HTMLDivElement).style.borderColor = 'rgba(255,255,255,0.08)';
+                    (e.currentTarget as HTMLDivElement).style.background = 'rgba(255,255,255,0.03)';
+                  }}
                 >
-                  <div className="text-2xl font-bold text-text-primary mb-0.5">
+                  <div className="text-2xl font-bold mb-0.5" style={{ color: '#ffffff' }}>
                     {counter ? (
                       <AnimatedCounter to={value as number} suffix={suffix} />
                     ) : (
                       value
                     )}
                   </div>
-                  <div className="text-xs text-text-muted">{label}</div>
+                  <div className="text-xs" style={{ color: '#4b5563' }}>{label}</div>
                 </div>
               ))}
             </div>
@@ -352,9 +366,20 @@ const Hero = () => {
               ].map(({ icon, text }) => (
                 <span
                   key={text}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full
-                             bg-bg-card border border-border-default text-xs text-text-secondary
-                             hover:border-primary hover:text-text-primary transition-colors duration-200"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs transition-all duration-200 cursor-default"
+                  style={{
+                    background: 'rgba(255,255,255,0.03)',
+                    border: '1px solid rgba(255,255,255,0.08)',
+                    color: '#6b7280',
+                  }}
+                  onMouseEnter={e => {
+                    (e.currentTarget as HTMLSpanElement).style.borderColor = 'rgba(255,255,255,0.18)';
+                    (e.currentTarget as HTMLSpanElement).style.color = '#e5e7eb';
+                  }}
+                  onMouseLeave={e => {
+                    (e.currentTarget as HTMLSpanElement).style.borderColor = 'rgba(255,255,255,0.08)';
+                    (e.currentTarget as HTMLSpanElement).style.color = '#6b7280';
+                  }}
                 >
                   {icon}
                   {text}
@@ -370,8 +395,10 @@ const Hero = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.2 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center
-                     gap-1 text-text-muted hover:text-text-secondary transition-colors duration-200"
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 transition-colors duration-200"
+          style={{ color: '#4b5563' }}
+          onMouseEnter={e => ((e.currentTarget as HTMLButtonElement).style.color = '#9ca3af')}
+          onMouseLeave={e => ((e.currentTarget as HTMLButtonElement).style.color = '#4b5563')}
           aria-label="Scroll to next section"
         >
           <span className="text-xs tracking-widest uppercase">Scroll</span>

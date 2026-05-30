@@ -79,7 +79,12 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-20 relative overflow-hidden bg-bg-section">
+    <section id="contact" className="py-20 relative overflow-hidden" style={{ background: '#0a0a0a' }}>
+      {/* Ambient background glow */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-[15%] left-[20%] w-[500px] h-[500px] rounded-full blur-[130px] opacity-[0.09]" style={{ background: '#2563eb' }} />
+        <div className="absolute bottom-[5%] right-[10%] w-[550px] h-[550px] rounded-full blur-[120px] opacity-[0.08]" style={{ background: '#1e40af' }} />
+      </div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           ref={ref}
@@ -140,7 +145,14 @@ const Contact = () => {
                     href={method.href}
                     target={method.href.startsWith('http') ? '_blank' : undefined}
                     rel={method.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                    className="flex items-center gap-4 p-4 bg-bg-card border border-border-default rounded-xl hover:border-primary/50 hover:bg-primary/5 transition-all group"
+                  className="flex items-center gap-4 p-4 rounded-xl hover:bg-white/5 transition-all group"
+                    style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)' }}
+                  onMouseEnter={e => {
+                    (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(37,99,235,0.35)';
+                  }}
+                  onMouseLeave={e => {
+                    (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(255,255,255,0.08)';
+                  }}
                   >
                     <span className="text-primary">{method.icon}</span>
                     <div>
@@ -160,7 +172,7 @@ const Contact = () => {
 
             {/* Right: Contact Form Card */}
             <motion.div variants={itemVariants}>
-              <div className="bg-bg-card border border-border-default rounded-2xl p-8 shadow-lg">
+              <div className="rounded-2xl p-8 shadow-lg" style={{ background: '#111111', border: '1px solid rgba(255,255,255,0.08)' }}>
                 <form onSubmit={handleSubmit} className="space-y-5">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-text-secondary mb-2">
@@ -173,7 +185,10 @@ const Contact = () => {
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 bg-bg-section border border-border-default rounded-lg text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all"
+                      className="w-full px-4 py-3 rounded-lg text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 transition-all"
+                      style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', outline: 'none' }}
+                      onFocus={e => (e.currentTarget.style.borderColor = 'rgba(37,99,235,0.5)')}
+                      onBlur={e => (e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)')}
                       placeholder="Your name"
                     />
                   </div>
@@ -189,7 +204,10 @@ const Contact = () => {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 bg-bg-section border border-border-default rounded-lg text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all"
+                      className="w-full px-4 py-3 rounded-lg text-text-primary placeholder-text-muted focus:outline-none transition-all"
+                      style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}
+                      onFocus={e => (e.currentTarget.style.borderColor = 'rgba(37,99,235,0.5)')}
+                      onBlur={e => (e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)')}
                       placeholder="your.email@example.com"
                     />
                   </div>
@@ -205,7 +223,10 @@ const Contact = () => {
                       onChange={handleChange}
                       required
                       rows={5}
-                      className="w-full px-4 py-3 bg-bg-section border border-border-default rounded-lg text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all resize-none"
+                      className="w-full px-4 py-3 rounded-lg text-text-primary placeholder-text-muted focus:outline-none transition-all resize-none"
+                      style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}
+                      onFocus={e => (e.currentTarget.style.borderColor = 'rgba(37,99,235,0.5)')}
+                      onBlur={e => (e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)')}
                       placeholder="Tell me about your project..."
                     />
                   </div>
@@ -213,7 +234,8 @@ const Contact = () => {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-primary hover:bg-primary-dark text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed inline-flex items-center justify-center gap-2"
+                    className="w-full text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed inline-flex items-center justify-center gap-2"
+                    style={{ background: '#2563eb' }}
                   >
                     {isSubmitting ? (
                       <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />

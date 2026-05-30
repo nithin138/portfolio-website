@@ -48,8 +48,12 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-bg-section border-t border-border-default">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+    <footer className="relative overflow-hidden" style={{ background: '#0a0a0a', borderTop: '1px solid rgba(255,255,255,0.07)' }}>
+      {/* Ambient background glow */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-[20%] left-[30%] w-[500px] h-[500px] rounded-full blur-[130px] opacity-[0.08]" style={{ background: '#2563eb' }} />
+      </div>
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
 
           {/* ── Col 1: Identity ── */}
@@ -74,7 +78,16 @@ const Footer = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={s.label}
-                  className="w-8 h-8 flex items-center justify-center rounded-lg border border-border-default text-text-secondary hover:text-primary hover:border-primary hover:bg-primary/10 transition-all duration-200"
+                  className="w-8 h-8 flex items-center justify-center rounded-lg text-text-secondary hover:text-primary transition-all duration-200"
+                  style={{ border: '1px solid rgba(255,255,255,0.08)' }}
+                  onMouseEnter={e => {
+                    (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(37,99,235,0.4)';
+                    (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(37,99,235,0.08)';
+                  }}
+                  onMouseLeave={e => {
+                    (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(255,255,255,0.08)';
+                    (e.currentTarget as HTMLAnchorElement).style.background = 'transparent';
+                  }}
                 >
                   {s.icon}
                 </a>
@@ -139,7 +152,7 @@ const Footer = () => {
       </div>
 
       {/* ── Bottom bar ── */}
-      <div className="border-t border-border-default">
+      <div style={{ borderTop: '1px solid rgba(255,255,255,0.07)' }}>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-2">
           <p className="text-xs text-text-muted">
             &copy; {currentYear} Nithin Sudheer. All rights reserved.

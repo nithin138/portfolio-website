@@ -16,7 +16,12 @@ const About = () => {
   };
 
   return (
-    <section id="about" className="py-20 relative overflow-hidden bg-bg-section">
+    <section id="about" className="py-20 relative overflow-hidden" style={{ background: '#0f0f0f' }}>
+      {/* Ambient background glow */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute -top-[5%] left-[20%] w-[550px] h-[550px] rounded-full blur-[130px] opacity-[0.09]" style={{ background: '#2563eb' }} />
+        <div className="absolute bottom-[10%] right-[10%] w-[450px] h-[450px] rounded-full blur-[120px] opacity-[0.07]" style={{ background: '#1d4ed8' }} />
+      </div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           ref={ref}
@@ -28,7 +33,8 @@ const About = () => {
           {/* Text Content */}
           <div>
             <motion.div variants={itemVariants} className="mb-6">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 border border-primary/20 rounded-full mb-4">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-4"
+                style={{ background: 'rgba(37,99,235,0.08)', border: '1px solid rgba(37,99,235,0.2)' }}>
                 <Sparkles className="w-4 h-4 text-primary-light" />
                 <span className="text-sm text-primary-light font-medium">About Me</span>
               </div>
@@ -51,21 +57,24 @@ const About = () => {
 
             <motion.div variants={itemVariants} className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <div className="group glass-card p-5 rounded-xl flex flex-col items-center text-center space-y-3">
-                <div className="p-3 bg-primary/10 rounded-lg group-hover:scale-110 transition-transform duration-300">
+                <div className="p-3 rounded-lg group-hover:scale-110 transition-transform duration-300"
+                  style={{ background: 'rgba(37,99,235,0.1)' }}>
                   <Code className="text-primary-light" size={28} />
                 </div>
                 <span className="text-sm font-semibold text-text-primary">Full-Stack Dev</span>
               </div>
 
               <div className="group glass-card p-5 rounded-xl flex flex-col items-center text-center space-y-3">
-                <div className="p-3 bg-secondary/10 rounded-lg group-hover:scale-110 transition-transform duration-300">
+                <div className="p-3 rounded-lg group-hover:scale-110 transition-transform duration-300"
+                  style={{ background: 'rgba(124,58,237,0.1)' }}>
                   <Brain className="text-secondary-light" size={28} />
                 </div>
                 <span className="text-sm font-semibold text-text-primary">AI/ML Expert</span>
               </div>
 
               <div className="group glass-card p-5 rounded-xl flex flex-col items-center text-center space-y-3">
-                <div className="p-3 bg-primary/10 rounded-lg group-hover:scale-110 transition-transform duration-300">
+                <div className="p-3 rounded-lg group-hover:scale-110 transition-transform duration-300"
+                  style={{ background: 'rgba(37,99,235,0.1)' }}>
                   <BarChart3 className="text-primary-light" size={28} />
                 </div>
                 <span className="text-sm font-semibold text-text-primary">Cloud & DevOps</span>
@@ -76,8 +85,10 @@ const About = () => {
           {/* Profile Image */}
           <motion.div variants={itemVariants} className="flex justify-center lg:justify-end">
             <div className="relative">
-              <div className="relative w-80 h-80 rounded-full bg-gradient-to-r from-primary to-secondary p-1">
-                <div className="w-full h-full rounded-full bg-bg-card flex items-center justify-center overflow-hidden">
+              <div className="relative w-80 h-80 rounded-full p-[2px]"
+                style={{ background: 'linear-gradient(135deg, #2563eb, #7c3aed)' }}>
+                <div className="w-full h-full rounded-full flex items-center justify-center overflow-hidden"
+                  style={{ background: '#111111' }}>
                   <img src="/pic.jpg" alt="Nithin Sudheer" className="w-full h-full object-cover" />
                 </div>
               </div>

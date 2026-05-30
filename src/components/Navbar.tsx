@@ -107,7 +107,8 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
               href="/nithin sudheer narayanapuram MERN[resume].pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden md:inline-flex items-center gap-1.5 px-4 py-1.5 text-sm font-medium rounded-lg bg-primary text-white hover:bg-primary-dark transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary/50"
+              className="hidden md:inline-flex items-center gap-1.5 px-4 py-1.5 text-sm font-medium rounded-lg text-white hover:opacity-90 transition-colors duration-200 focus:outline-none"
+              style={{ background: '#2563eb' }}
             >
               Download CV
             </a>
@@ -150,7 +151,8 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
               href="/nithin sudheer narayanapuram MERN[resume].pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center w-full px-4 py-2.5 text-sm font-medium rounded-lg bg-primary text-white hover:bg-primary-dark transition-colors duration-200"
+              className="flex items-center justify-center w-full px-4 py-2.5 text-sm font-medium rounded-lg text-white hover:opacity-90 transition-colors duration-200"
+              style={{ background: '#2563eb' }}
             >
               Download CV
             </a>
