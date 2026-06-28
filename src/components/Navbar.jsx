@@ -2,11 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion, useScroll, useSpring } from 'framer-motion';
 
-interface NavbarProps {
-  activeSection: string;
-}
-
-const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
+const Navbar = ({ activeSection }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -18,7 +14,6 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close mobile menu on resize to desktop
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 768) setIsOpen(false);
@@ -36,7 +31,7 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
     { href: 'contact', label: 'Contact' },
   ];
 
-  const scrollToSection = (sectionId: string) => {
+  const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
@@ -56,15 +51,12 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
         scrolled ? 'navbar-scrolled' : 'navbar-top'
       }`}
     >
-      {/* Scroll progress bar */}
       <motion.div
         style={{ scaleX, transformOrigin: '0%' }}
         className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-primary to-secondary"
       />
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-14">
-
-          {/* Brand */}
           <button
             onClick={() => scrollToSection('hero')}
             className="flex-shrink-0 group focus:outline-none"
@@ -77,7 +69,6 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
             </span>
           </button>
 
-          {/* Desktop Nav Links */}
           <div className="hidden md:flex items-center gap-1">
             {navItems.map((item) => (
               <button
@@ -90,7 +81,6 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
                 }`}
               >
                 {item.label}
-                {/* Active underline indicator */}
                 <span
                   className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-px bg-primary transition-all duration-200 ${
                     activeSection === item.href ? 'w-4/5 opacity-100' : 'w-0 opacity-0'
@@ -100,9 +90,7 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
             ))}
           </div>
 
-          {/* CTA + Mobile Toggle */}
           <div className="flex items-center gap-3">
-            {/* CTA — desktop only */}
             <a
               href="/nithin sudheer narayanapuram MERN[resume].pdf"
               target="_blank"
@@ -113,7 +101,6 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
               Download CV
             </a>
 
-            {/* Hamburger */}
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="md:hidden p-1.5 rounded-md text-text-secondary hover:text-text-primary hover:bg-white/5 transition-colors duration-200 focus:outline-none"
@@ -125,7 +112,6 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
       <div
         className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
           isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
@@ -145,7 +131,6 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
               {item.label}
             </button>
           ))}
-          {/* CTA in mobile */}
           <div className="pt-2 pb-1">
             <a
               href="/nithin sudheer narayanapuram MERN[resume].pdf"

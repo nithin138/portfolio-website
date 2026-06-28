@@ -17,7 +17,6 @@ const About = () => {
 
   return (
     <section id="about" className="py-20 relative overflow-hidden" style={{ background: '#0f0f0f' }}>
-      {/* Ambient background glow */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute -top-[5%] left-[20%] w-[550px] h-[550px] rounded-full blur-[130px] opacity-[0.09]" style={{ background: '#2563eb' }} />
         <div className="absolute bottom-[10%] right-[10%] w-[450px] h-[450px] rounded-full blur-[120px] opacity-[0.07]" style={{ background: '#1d4ed8' }} />
@@ -30,7 +29,6 @@ const About = () => {
           animate={inView ? 'visible' : 'hidden'}
           className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
         >
-          {/* Text Content */}
           <div>
             <motion.div variants={itemVariants} className="mb-6">
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-4"
@@ -82,7 +80,6 @@ const About = () => {
             </motion.div>
           </div>
 
-          {/* Profile Image */}
           <motion.div variants={itemVariants} className="flex justify-center lg:justify-end">
             <div className="relative">
               <div className="relative w-80 h-80 rounded-full p-[2px]"

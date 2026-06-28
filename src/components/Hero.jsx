@@ -14,9 +14,8 @@ const codeLines = [
   { indent: 0, content: '};', color: 'text-blue-400' },
 ];
 
-// Animated counter component
-function AnimatedCounter({ to, suffix = '' }: { to: number; suffix?: string }) {
-  const ref = useRef<HTMLSpanElement>(null);
+function AnimatedCounter({ to, suffix = '' }) {
+  const ref = useRef(null);
   const inView = useInView(ref, { once: true });
 
   useEffect(() => {
@@ -34,9 +33,8 @@ function AnimatedCounter({ to, suffix = '' }: { to: number; suffix?: string }) {
   return <span ref={ref}>0{suffix}</span>;
 }
 
-// Typed line component
-function TypedLine({ line, delay }: { line: { indent: number; content: string; color: string }; delay: number }) {
-  const ref = useRef<HTMLDivElement>(null);
+function TypedLine({ line, delay }) {
+  const ref = useRef(null);
   const inView = useInView(ref, { once: true });
   const [displayed, setDisplayed] = useState('');
 
@@ -50,7 +48,7 @@ function TypedLine({ line, delay }: { line: { indent: number; content: string; c
         if (i >= line.content.length) clearInterval(interval);
       }, 100);
       return () => clearInterval(interval);
-    }, delay * 1400);
+    }, delay * 700);  
     return () => clearTimeout(timeout);
   }, [inView, line.content, delay]);
 
@@ -64,17 +62,16 @@ function TypedLine({ line, delay }: { line: { indent: number; content: string; c
   );
 }
 
-// Typed headline
 const HEADLINE_PARTS = [
   { text: 'Building ', gradient: false },
   { text: 'scalable web apps', gradient: true },
   { text: ' that actually perform.', gradient: false },
-] as const;
+];
 
 const FULL_TEXT = HEADLINE_PARTS.map(p => p.text).join('');
 
 function TypedHeadline() {
-  const ref = useRef<HTMLHeadingElement>(null);
+  const ref = useRef(null);
   const inView = useInView(ref, { once: true });
   const [count, setCount] = useState(0);
 
@@ -143,13 +140,13 @@ const Hero = () => {
     return `${experience.years}.${experience.months}+ yr`;
   };
 
-  const scrollToSection = (sectionId: string) => {
+  const scrollToSection = (sectionId) => {
     document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
   };
 
   const useMagnetic = () => {
-    const ref = useRef<HTMLButtonElement>(null);
-    const handleMouseMove = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const ref = useRef(null);
+    const handleMouseMove = (e) => {
       const el = ref.current;
       if (!el) return;
       const rect = el.getBoundingClientRect();
@@ -157,7 +154,7 @@ const Hero = () => {
       const y = e.clientY - rect.top - rect.height / 2;
       el.style.transform = `translate(${x * 0.25}px, ${y * 0.25}px)`;
     };
-    const handleMouseLeave = (_e?: React.MouseEvent<HTMLButtonElement>) => {
+    const handleMouseLeave = () => {
       if (ref.current) ref.current.style.transform = '';
     };
     return { ref, onMouseMove: handleMouseMove, onMouseLeave: handleMouseLeave };
@@ -170,33 +167,15 @@ const Hero = () => {
     <section
       id="hero"
       className="relative min-h-screen flex items-center overflow-hidden"
-      style={{ background: '#0a0a0a' }}
     >
-      {/* ── Background ── */}
-      <div className="pointer-events-none absolute inset-0" aria-hidden="true">
-        {/* Blue glow — top right */}
-        <div
-          className="absolute -top-[10%] right-[5%] w-[700px] h-[700px] rounded-full blur-[140px] opacity-[0.12]"
-          style={{ background: '#2563eb' }}
-        />
-        {/* Blue glow — bottom left */}
-        <div
-          className="absolute bottom-[5%] left-[10%] w-[500px] h-[500px] rounded-full blur-[120px] opacity-[0.08]"
-          style={{ background: '#1d4ed8' }}
-        />
-      </div>
-
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-24 lg:py-32">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-12 items-center">
-
-          {/* ── LEFT: Text content ── */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, ease: 'easeOut' }}
             className="flex flex-col max-w-xl"
           >
-            {/* Intro badge — Templar-style pill */}
             <motion.div
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -216,10 +195,8 @@ const Hero = () => {
               </span>
             </motion.div>
 
-            {/* Main headline */}
             <TypedHeadline />
 
-            {/* Supporting description */}
             <p
               className="text-base sm:text-lg leading-relaxed mb-8 max-w-lg"
               style={{ color: '#9ca3af' }}
@@ -228,7 +205,6 @@ const Hero = () => {
               AI/ML integration, performance, and clean architecture.
             </p>
 
-            {/* CTA buttons — Templar style */}
             <div className="flex flex-col sm:flex-row gap-3 mb-10">
               <button
                 ref={magneticProjects.ref}
@@ -254,12 +230,12 @@ const Hero = () => {
                   willChange: 'transform',
                 }}
                 onMouseEnter={e => {
-                  (e.currentTarget as HTMLButtonElement).style.background = 'rgba(255,255,255,0.09)';
-                  (e.currentTarget as HTMLButtonElement).style.borderColor = 'rgba(255,255,255,0.22)';
+                  e.currentTarget.style.background = 'rgba(255,255,255,0.09)';
+                  e.currentTarget.style.borderColor = 'rgba(255,255,255,0.22)';
                 }}
                 onMouseLeave={e => {
-                  (e.currentTarget as HTMLButtonElement).style.background = 'rgba(255,255,255,0.05)';
-                  (e.currentTarget as HTMLButtonElement).style.borderColor = 'rgba(255,255,255,0.12)';
+                  e.currentTarget.style.background = 'rgba(255,255,255,0.05)';
+                  e.currentTarget.style.borderColor = 'rgba(255,255,255,0.12)';
                   magneticResume.onMouseLeave(e);
                 }}
                 aria-label="Download Resume"
@@ -269,7 +245,6 @@ const Hero = () => {
               </button>
             </div>
 
-            {/* Tech strip */}
             <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
               {techStack.map((tech, i) => (
                 <span key={tech} className="flex items-center gap-2 text-sm" style={{ color: '#6b7280' }}>
@@ -286,14 +261,12 @@ const Hero = () => {
             </div>
           </motion.div>
 
-          {/* ── RIGHT: Code card visual ── */}
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, delay: 0.15, ease: 'easeOut' }}
             className="flex flex-col gap-4 lg:pl-4"
           >
-            {/* Code card */}
             <motion.div
               animate={{ y: [0, -8, 0] }}
               transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
@@ -304,7 +277,6 @@ const Hero = () => {
                 boxShadow: '0 0 0 1px rgba(37,99,235,0.12), 0 24px 64px rgba(0,0,0,0.7)',
               }}
             >
-              {/* Terminal bar */}
               <div
                 className="flex items-center gap-2 px-4 py-3 border-b"
                 style={{ background: '#0d0d0d', borderColor: 'rgba(255,255,255,0.07)' }}
@@ -312,9 +284,8 @@ const Hero = () => {
                 <span className="w-3 h-3 rounded-full bg-red-500/70" />
                 <span className="w-3 h-3 rounded-full bg-yellow-500/70" />
                 <span className="w-3 h-3 rounded-full bg-green-500/70" />
-                <span className="ml-3 text-xs font-mono" style={{ color: '#4b5563' }}>developer.ts</span>
+                <span className="ml-3 text-xs font-mono" style={{ color: '#4b5563' }}>developer.js</span>
               </div>
-              {/* Code body */}
               <div className="px-5 py-5 font-mono text-sm leading-7">
                 {codeLines.map((line, i) => (
                   <TypedLine key={i} line={line} delay={0.5 + i * 0.7} />
@@ -322,7 +293,6 @@ const Hero = () => {
               </div>
             </motion.div>
 
-            {/* Stats row */}
             <div className="grid grid-cols-3 gap-3">
               {[
                 { value: getExperienceText(), label: 'Experience', counter: false },
@@ -337,17 +307,17 @@ const Hero = () => {
                     border: '1px solid rgba(255,255,255,0.08)',
                   }}
                   onMouseEnter={e => {
-                    (e.currentTarget as HTMLDivElement).style.borderColor = 'rgba(37,99,235,0.4)';
-                    (e.currentTarget as HTMLDivElement).style.background = 'rgba(37,99,235,0.06)';
+                    e.currentTarget.style.borderColor = 'rgba(37,99,235,0.4)';
+                    e.currentTarget.style.background = 'rgba(37,99,235,0.06)';
                   }}
                   onMouseLeave={e => {
-                    (e.currentTarget as HTMLDivElement).style.borderColor = 'rgba(255,255,255,0.08)';
-                    (e.currentTarget as HTMLDivElement).style.background = 'rgba(255,255,255,0.03)';
+                    e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)';
+                    e.currentTarget.style.background = 'rgba(255,255,255,0.03)';
                   }}
                 >
                   <div className="text-2xl font-bold mb-0.5" style={{ color: '#ffffff' }}>
                     {counter ? (
-                      <AnimatedCounter to={value as number} suffix={suffix} />
+                      <AnimatedCounter to={value} suffix={suffix} />
                     ) : (
                       value
                     )}
@@ -357,7 +327,6 @@ const Hero = () => {
               ))}
             </div>
 
-            {/* Quick-info badges */}
             <div className="flex flex-wrap gap-2">
               {[
                 { icon: <Terminal size={13} />, text: 'API-Driven Systems' },
@@ -373,12 +342,12 @@ const Hero = () => {
                     color: '#6b7280',
                   }}
                   onMouseEnter={e => {
-                    (e.currentTarget as HTMLSpanElement).style.borderColor = 'rgba(255,255,255,0.18)';
-                    (e.currentTarget as HTMLSpanElement).style.color = '#e5e7eb';
+                    e.currentTarget.style.borderColor = 'rgba(255,255,255,0.18)';
+                    e.currentTarget.style.color = '#e5e7eb';
                   }}
                   onMouseLeave={e => {
-                    (e.currentTarget as HTMLSpanElement).style.borderColor = 'rgba(255,255,255,0.08)';
-                    (e.currentTarget as HTMLSpanElement).style.color = '#6b7280';
+                    e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)';
+                    e.currentTarget.style.color = '#6b7280';
                   }}
                 >
                   {icon}
@@ -389,7 +358,6 @@ const Hero = () => {
           </motion.div>
         </div>
 
-        {/* Scroll indicator */}
         <motion.button
           onClick={() => scrollToSection('skills')}
           initial={{ opacity: 0 }}
@@ -397,8 +365,8 @@ const Hero = () => {
           transition={{ delay: 1.2 }}
           className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 transition-colors duration-200"
           style={{ color: '#4b5563' }}
-          onMouseEnter={e => ((e.currentTarget as HTMLButtonElement).style.color = '#9ca3af')}
-          onMouseLeave={e => ((e.currentTarget as HTMLButtonElement).style.color = '#4b5563')}
+          onMouseEnter={e => (e.currentTarget.style.color = '#9ca3af')}
+          onMouseLeave={e => (e.currentTarget.style.color = '#4b5563')}
           aria-label="Scroll to next section"
         >
           <span className="text-xs tracking-widest uppercase">Scroll</span>

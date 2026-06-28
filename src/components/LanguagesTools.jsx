@@ -18,20 +18,7 @@ import {
   LayoutTemplate, Search, GitBranch,
 } from 'lucide-react';
 
-interface TechItem {
-  name: string;
-  icon: React.ReactNode;
-  color: string;
-}
-
-interface Category {
-  title: string;
-  headerIcon: React.ReactNode;
-  gradient: string;
-  items: TechItem[];
-}
-
-const categories: Category[] = [
+const categories = [
   {
     title: 'Languages',
     headerIcon: <Code2 className="w-4 h-4" />,
@@ -110,13 +97,7 @@ const categories: Category[] = [
   },
 ];
 
-interface Practice {
-  name: string;
-  icon: React.ReactNode;
-  color: string;
-}
-
-const practices: Practice[] = [
+const practices = [
   { name: 'Agile Development',         icon: <SiScrumalliance />,                    color: '#009FDA' },
   { name: 'Test-Driven Dev',            icon: <SiJest />,                             color: '#C21325' },
   { name: 'Responsive Design',          icon: <LayoutTemplate className="w-5 h-5" />, color: '#06B6D4' },
@@ -140,30 +121,16 @@ const containerVariants = {
 
 const itemVariants = {
   hidden: { y: 20, opacity: 0 },
-  visible: { y: 0, opacity: 1, transition: { duration: 0.45, ease: [0.4, 0, 0.2, 1] as [number, number, number, number] } },
+  visible: { y: 0, opacity: 1, transition: { duration: 0.45, ease: [0.4, 0, 0.2, 1] } },
 };
 
 const LanguagesTools = () => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
 
   return (
-    <section id="languages-tools" className="py-24 relative overflow-hidden" style={{ background: '#0a0a0a' }}>
-      {/* Ambient background glow */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute -top-[5%] right-[20%] w-[550px] h-[550px] rounded-full blur-[130px] opacity-[0.10]"
-          style={{ background: '#2563eb' }} />
-        <div className="absolute bottom-[5%] left-[15%] w-[500px] h-[500px] rounded-full blur-[120px] opacity-[0.08]"
-          style={{ background: '#1e40af' }} />
-      </div>
-
+    <section id="languages-tools" className="py-24 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <motion.div
-          ref={ref}
-          variants={containerVariants}
-          initial="hidden"
-          animate={inView ? 'visible' : 'hidden'}
-        >
-          {/* Header */}
+        <motion.div ref={ref} variants={containerVariants} initial="hidden" animate={inView ? 'visible' : 'hidden'}>
           <motion.div variants={itemVariants} className="text-center mb-16">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-5"
               style={{ background: 'rgba(124,58,237,0.08)', border: '1px solid rgba(124,58,237,0.2)' }}>
@@ -177,24 +144,16 @@ const LanguagesTools = () => {
               className="text-4xl sm:text-5xl font-bold text-text-primary"
             >
               Languages &{' '}
-              <span className=" text-primary relative inline-block">
-                Tools
-              </span>
+              <span className="text-primary relative inline-block">Tools</span>
             </motion.h2>
             <p className="text-text-muted text-base mt-5 max-w-lg mx-auto leading-relaxed">
               Technologies used across the development stack
             </p>
           </motion.div>
 
-          {/* Category panels */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-8">
             {categories.map((cat) => (
-              <motion.div
-                key={cat.title}
-                variants={itemVariants}
-                className="lt-panel group"
-              >
-                {/* Panel title */}
+              <motion.div key={cat.title} variants={itemVariants} className="lt-panel group">
                 <div className="flex items-center gap-2.5 mb-5">
                   <div className={`p-2 rounded-lg bg-gradient-to-br ${cat.gradient} text-white`}>
                     {cat.headerIcon}
@@ -202,24 +161,15 @@ const LanguagesTools = () => {
                   <h3 className="text-sm font-bold text-text-primary tracking-wide">{cat.title}</h3>
                   <div className="flex-1 h-px bg-border-default ml-1" />
                 </div>
-
-                {/* Icon grid */}
                 <div className="grid grid-cols-4 gap-x-3 gap-y-4">
                   {cat.items.map((tech) => (
                     <motion.div
-                      key={tech.name}
-                      className="lt-icon-item group/icon"
-                      title={tech.name}
+                      key={tech.name} className="lt-icon-item group/icon" title={tech.name}
                       whileHover={{ scale: 1.15, y: -4 }}
                       transition={{ type: 'spring', stiffness: 400, damping: 18 }}
                     >
-                      <div
-                        className="lt-icon-box"
-                        style={{ '--icon-color': tech.color } as React.CSSProperties}
-                      >
-                        <span className="text-xl leading-none" style={{ color: tech.color }}>
-                          {tech.icon}
-                        </span>
+                      <div className="lt-icon-box" style={{ '--icon-color': tech.color }}>
+                        <span className="text-xl leading-none" style={{ color: tech.color }}>{tech.icon}</span>
                       </div>
                       <span className="text-[10px] text-text-muted group-hover/icon:text-text-secondary transition-colors duration-200 text-center leading-tight mt-1 font-medium line-clamp-2">
                         {tech.name}
@@ -231,7 +181,6 @@ const LanguagesTools = () => {
             ))}
           </div>
 
-          {/* Development Practices */}
           <motion.div variants={itemVariants} className="lt-practices-panel">
             <div className="flex items-center gap-3 mb-7">
               <div className="p-2 rounded-lg bg-gradient-to-br from-primary to-secondary text-white">
@@ -243,17 +192,12 @@ const LanguagesTools = () => {
             <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 gap-4">
               {practices.map((practice) => (
                 <motion.div
-                  key={practice.name}
-                  variants={itemVariants}
-                  className="lt-icon-item group/p"
-                  title={practice.name}
+                  key={practice.name} variants={itemVariants} className="lt-icon-item group/p" title={practice.name}
                   whileHover={{ scale: 1.15, y: -4 }}
                   transition={{ type: 'spring', stiffness: 400, damping: 18 }}
                 >
                   <div className="lt-icon-box">
-                    <span className="text-xl leading-none" style={{ color: practice.color }}>
-                      {practice.icon}
-                    </span>
+                    <span className="text-xl leading-none" style={{ color: practice.color }}>{practice.icon}</span>
                   </div>
                   <span className="text-[10px] text-text-muted group-hover/p:text-text-secondary transition-colors duration-200 text-center leading-tight mt-1 font-medium line-clamp-2">
                     {practice.name}

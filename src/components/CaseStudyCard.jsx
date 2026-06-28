@@ -1,20 +1,13 @@
 import React, { useState, useRef, useCallback } from 'react';
 import { ChevronDown, ExternalLink, Github } from 'lucide-react';
-import { CaseStudy } from '../types/project';
 import { motion, AnimatePresence } from 'framer-motion';
 
-interface CaseStudyCardProps {
-  study: CaseStudy;
-  index: number;
-  isLarge?: boolean;
-}
-
-const CaseStudyCard: React.FC<CaseStudyCardProps> = ({ study, index, isLarge = false }) => {
+const CaseStudyCard = ({ study, index, isLarge = false }) => {
   const [expanded, setExpanded] = useState(false);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-  const cardRef = useRef<HTMLDivElement>(null);
+  const cardRef = useRef(null);
 
-  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+  const handleMouseMove = useCallback((e) => {
     if (!cardRef.current) return;
     const rect = cardRef.current.getBoundingClientRect();
     setMousePos({ x: e.clientX - rect.left, y: e.clientY - rect.top });
@@ -36,22 +29,18 @@ const CaseStudyCard: React.FC<CaseStudyCardProps> = ({ study, index, isLarge = f
         border: '1px solid rgba(255,255,255,0.06)',
       }}
     >
-      {/* Spotlight */}
       <div
         className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
         style={{
           background: `radial-gradient(500px circle at ${mousePos.x}px ${mousePos.y}px, ${study.accentColor}06, transparent 40%)`,
         }}
       />
-
-      {/* Top accent line */}
       <div
         className="absolute top-0 left-0 right-0 h-[1px] opacity-0 group-hover:opacity-100 transition-opacity duration-500"
         style={{ background: `linear-gradient(90deg, transparent, ${study.accentColor}, transparent)` }}
       />
 
       <div className="relative z-10 p-5 sm:p-6 lg:p-7">
-        {/* Header row: badge + links */}
         <div className="flex items-center justify-between mb-4">
           <span
             className="inline-flex items-center px-2.5 py-1 rounded-full text-[11px] font-semibold tracking-wide uppercase"
@@ -81,17 +70,13 @@ const CaseStudyCard: React.FC<CaseStudyCardProps> = ({ study, index, isLarge = f
           </div>
         </div>
 
-        {/* Title */}
         <h3 className="text-xl sm:text-2xl font-bold text-white mb-2 tracking-tight leading-tight">
           {study.title}
         </h3>
-
-        {/* Outcome — single line description */}
         <p className="text-gray-400 text-sm leading-relaxed mb-5 line-clamp-2">
           {study.outcome}
         </p>
 
-        {/* Metrics — compact inline row */}
         <div className={`grid gap-2 mb-5 ${isLarge ? 'grid-cols-4' : 'grid-cols-2'}`}>
           {study.metrics.map((metric) => (
             <div key={metric.label} className="text-center py-2.5 px-2 rounded-xl"
@@ -102,7 +87,6 @@ const CaseStudyCard: React.FC<CaseStudyCardProps> = ({ study, index, isLarge = f
           ))}
         </div>
 
-        {/* Architecture chips */}
         <div className="flex flex-wrap gap-1.5 mb-4">
           {study.architectureHighlights.slice(0, isLarge ? 5 : 3).map((h) => (
             <span key={h} className="px-2.5 py-1 rounded-md text-[11px] font-medium"
@@ -117,7 +101,6 @@ const CaseStudyCard: React.FC<CaseStudyCardProps> = ({ study, index, isLarge = f
           )}
         </div>
 
-        {/* Expand toggle */}
         <button
           onClick={() => setExpanded(!expanded)}
           className="flex items-center gap-1.5 text-xs font-medium text-gray-500 hover:text-white transition-colors duration-300"
@@ -139,7 +122,6 @@ const CaseStudyCard: React.FC<CaseStudyCardProps> = ({ study, index, isLarge = f
               className="overflow-hidden"
             >
               <div className="pt-5 space-y-4 border-t border-white/5 mt-4">
-                {/* Challenge / Solution */}
                 <div className={`grid gap-4 ${isLarge ? 'grid-cols-1 md:grid-cols-2' : 'grid-cols-1'}`}>
                   <div>
                     <div className="flex items-center gap-1.5 mb-1.5">
@@ -157,7 +139,6 @@ const CaseStudyCard: React.FC<CaseStudyCardProps> = ({ study, index, isLarge = f
                   </div>
                 </div>
 
-                {/* Engineering Insights */}
                 <div className="space-y-3 pt-2">
                   {[
                     { label: 'Architecture', content: study.engineeringInsights.architectureDecisions },
